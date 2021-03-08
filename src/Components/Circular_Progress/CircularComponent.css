@@ -1,0 +1,10 @@
+.circ1{
+    position: absolute;
+    z-index: 10;
+}
+.circ1>.MuiCircularProgress-determinate{
+    color: #699DFF;
+}
+.circ2>.MuiCircularProgress-determinate{
+    color: white;
+}

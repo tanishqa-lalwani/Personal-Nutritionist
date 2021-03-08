@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+.intro__main{
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 95vw;
+    height: calc(100vh - 35px);
+    justify-content: space-between;
+    margin:auto;
+}
+.bada__dabba{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.tools__cont{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+.dabba{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer{
+    margin-top: 30vh;
+    display: flex;
+    background: #BBF6C4;
+    height: 40vh;
+}
+.dabba{
+    height: 40vh;
+    width: 17vw;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid #BBF6C4;
+    box-shadow: 0 5px 5px 0 #BBF6C4;
+}
+.tools
+{
+    color: #321E59;
+    text-align: center;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 60px 10px;
+    font-weight: bold;
+}
+.intro{
+    background-color:#F6FFF8;
+}
+
+.intro__image{
+    height: calc(100vh - 35px);
+}
+.intro__image>img{
+    height: 80vh;
+    padding: 10% 10px;
+    margin: 0;
+}
+.intro__text>p{
+    font-size: 20px;
+    font-weight: 800;
+    line-height: normal;
+}
+.intro__text>button{
+    border: white 2px solid;
+    background: #699df6;
+    color: white;
+    height: 50px;
+    width: 15vw;
+    padding: 10px 5px;
+    font-size: medium;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.intro__text{
+
+    padding: 20vh 20px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: "Poppins" , sans-serif;
+    font-weight: bold;
+    color: #321E59;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 55px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .intro__main{
+        position: relative;
+        display: flex;
+        width: auto;
+        height: auto;
+        padding: 0;
+        flex-direction: column-reverse;
+        padding-top: 50px;
+    }
+    #up{
+        position: absolute;
+        height: 40vh;
+    }
+    .intro__image{
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+    .intro__image>img{
+        height: 35vh;
+        padding: 0;
+    }
+    .tools__cont{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .intro__text{
+        padding: 20px;
+    }
+    .bada__dabba{
+        width: 70vw;
+    }
+    .dabba{
+        width: auto;
+    }
+    #trial__but{
+        width: auto;
+    }
+}
