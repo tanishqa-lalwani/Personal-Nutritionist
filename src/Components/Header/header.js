@@ -5,7 +5,7 @@ import logo from './pineapple-icon.png'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button';
 import Drawer from '../Mobile Drawer/Drawer'
-
+import SignUpModal from '../../Components/Modals/SignUpModal'
 
 function Header() {
 
@@ -53,8 +53,8 @@ function Header() {
                 About Us
             </div>
             <div className='four'>
-            <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',fontFamily:'Poppins, sans-serif',border:'1px solid #321E59',color:'#321E59'}}>
-                Sign up
+            <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',padding:0,fontFamily:'Poppins, sans-serif',border:'0px solid #321E59',color:'#321E59'}}>
+                <SignUpModal/>
             </Button>
             <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',fontFamily:'Poppins, sans-serif',border:'1px solid #321E59',color:'#321E59'}}>
                 Login
