@@ -15,22 +15,23 @@ const useStyles = makeStyles({
     },
   });
 
-function Recipeitem() {
+function Recipeitem({title,calories,image}) {
     const classes = useStyles();
+    const kcalories=Math.round(calories);
     return (
     <>
         <Card className={classes.cards}>
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    alt="Chicken & spring green bun cha"
+                    alt={title}
                     height="230"
-                    image={img}
-                    title="Chicken & spring green bun cha"
+                    image={image}
+                    title={title}
                 />
                 <CardContent>
                 <Typography gutterBottom variant="body2" component="h2">
-                Chicken & spring green bun cha
+                {title}
                 </Typography>
                 </CardContent>
             </CardActionArea>
@@ -38,15 +39,9 @@ function Recipeitem() {
                 <div className="stats">
                     <div className="statitem">
                             <div className="statvalue">
-                                480
+                               {kcalories}
                             </div>
                             <p>CALORIES</p>
-                        </div>
-                        <div className="statitem">
-                            <div className="statvalue">
-                                55
-                            </div>
-                            <p>MINUTES</p>
                         </div>
                     </div>
             </CardActions>
@@ -56,4 +51,4 @@ function Recipeitem() {
 
 }
 
-export default Recipeitem
+export default Recipeitem;
