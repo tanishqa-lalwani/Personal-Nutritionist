@@ -15,33 +15,36 @@ function Header() {
     const location = useLocation();
 
     const handlescroll = () => {
-        if (window.scrollY > 50) {
-            document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
-            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
-        }
-        else {
-            if (location.pathname.includes('dashboard') === 0) {
-                document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
-                document.getElementsByClassName('header')[0].style.background = 'transparent';
-            }
-        }
-    }
 
-    window.addEventListener('scroll', handlescroll);
-
-
-    useEffect(() => {
-        if (location.pathname.includes('dashboard') > 0) {
+        if (window.scrollY > 50 || location.pathname.includes('dashboard') > 0) 
+        {
             document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
             document.getElementsByClassName('header')[0].style.borderBottom = '1px solid #321e59';
-            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0';
-
         }
         else {
             document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
             document.getElementsByClassName('header')[0].style.background = 'transparent';
             document.getElementsByClassName('header')[0].style.borderBottom = '0px solid #321e59';
         }
+
+    }
+
+    window.addEventListener('scroll', handlescroll);
+
+
+    useEffect(() => {
+
+        if (location.pathname.includes('dashboard') > 0) {
+            document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
+            document.getElementsByClassName('header')[0].style.borderBottom = '1px solid #321e59';
+        }
+        else
+        {
+            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
+            document.getElementsByClassName('header')[0].style.background = 'transparent';
+            document.getElementsByClassName('header')[0].style.borderBottom = '0px solid #321e59';
+        }
+
     }, [location])
 
     return (
