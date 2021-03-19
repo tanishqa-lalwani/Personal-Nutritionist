@@ -9,8 +9,16 @@
     font-weight: normal;
     align-items: center;
     position: fixed;
-    z-index: 100;
+    z-index: 1400;
     top: 0;
+}
+.header__user{
+    display: flex;
+    gap:5px;
+    border-radius: 10px;
+    border : 1px solid #321E59;
+    padding:5px;
+    align-items: center;
 }
 .two{
     color: #321E59;
@@ -26,34 +34,26 @@
     padding: 0 20px;
     margin-left: auto;
 }
-.ham{
-    display: none;
-}
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 500px) 
+{
+    .header__mobile{
+        width: 96%;
+        display: flex;
+        justify-content: space-between;
+        z-index: 100;
+        padding: 2%;
+        gap: 0;
+        background: black;
+    }
+    .links{
+        display: none;
+    }
+    .two{
+        display: none;
+    }
+    .four{
+        display: none;
+    }
 
-.header{
-    display: flex;
-    align-items: center;
-    height: 5vh;
-    width: 95vw;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    padding: 10px;
-    justify-content: space-between;
-    background: transparent;
-}
-.two{
-    display: none;
-}
-.four{
-    display: none;
-}
-.ham{
-    display: flex;
-}
-.links{
-    display: none;
-}
 }
