@@ -1,0 +1,84 @@
+.items__drawer > .MuiListItem-root:hover{
+    background: #1B3E81;
+}
+
+.items__drawer > .MuiListItem-root{
+    border-radius: 10px;
+}
+
+.goals__dashboard{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+}
+
+.title{
+    padding-left: 20px;
+    padding-top: 20px;
+    height: 25%;
+}
+.track{
+    padding: 5% 5%;
+}
+.something_to_eat{
+    padding: 0 30px;
+}
+.time_to_eat{
+    display: flex;
+    flex-direction: column;
+}
+.render_circle{
+    display: flex;
+    justify-content: center;
+}
+.track__boxes{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.box{
+    background: #ddeaff;
+    height: 250px;
+    min-width: 186px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px 0px rgba(105, 157, 255, 0.1);
+}
+.dash__head{
+ display: flex;
+}
+
+@media only screen and (max-width: 500px) {
+
+.dash__head__mobile{
+    display: flex;
+    flex-direction: column;
+}
+
+.goals__dashboard__mobile{
+    width: 100vw;
+    margin-top: 5px;
+}
+
+.track__boxes__mobile{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vw;
+}
+
+.box__mobile{
+    max-height: 40vh;
+    min-width: 20vw;
+}
+
+.track__mobile{
+    padding: 5vw;
+}
+
+.something_to_eat__mobile{
+    padding: 0 5vw;
+}
+
+}
