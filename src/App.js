@@ -4,6 +4,7 @@ import Header from './Components/Header/header'
 import Recipes  from "./Pages/Recipes/Recipes";
 import Blogs  from "./Pages/Blogs/Blogs";
 import Food  from "./Pages/Food/Food";
+import Clientprofile from './Pages/Profile page/Clientprofile'
 import { BrowserRouter as Router, Switch ,Route } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/blogs" component={Blogs} />
         <Route exact path="/food" component={Food} />
         <Route exact path="/recipes" component={Recipes} />
+        <Route exact path="/Clientprofile" component={Clientprofile} />
       </AnimatedSwitch>
     </Router>
     </>
