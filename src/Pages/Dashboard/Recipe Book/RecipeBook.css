@@ -1,0 +1,34 @@
+.recipe__dash{
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+}
+
+.recipe__boxes{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+}
+
+.recipe__front{
+    width: 100%;
+    padding: 5%;
+}
+
+@media only screen and (max-width: 500px) {
+    .recipe__dash__mobile{
+        display:flex;
+        flex-direction: column;
+        width:100vw;
+        margin-top: 0;
+    }
+    .recipe__front_mobile{
+        width: 90vw;
+    }
+    .recipe__boxes__mobile{
+        display: grid;
+        grid-template-columns: repeat(1,90vw);
+        grid-row-gap: 5vw;
+    }
+}

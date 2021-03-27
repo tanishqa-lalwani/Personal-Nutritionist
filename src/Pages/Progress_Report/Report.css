@@ -1,0 +1,60 @@
+.report__head {
+  display: flex;
+}
+
+.report__screen {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+}
+
+.report__screen__intro {
+  padding: 5% 5%;
+}
+
+.report__screen__intro p {
+  font-size: 17px;
+}
+.report__intro {
+  color: rgba(50, 30, 89, 1);
+  font-size: 20px;
+}
+
+.user__personal__info {
+  display: flex;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  gap: 5%;
+  /*justify-content: space-between; */
+}
+
+.report__box {
+  background: #ffffff;
+  border: 3px solid #a7d489;
+  /* box-sizing: border-box; */
+  box-shadow: 4px 4px 10px rgba(167, 212, 137, 0.2);
+  border-radius: 10px;
+  min-width: 150px;
+  height: 139px;
+}
+.report__box__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.report__box__title b {
+  margin-top: 10px;
+  color: rgba(50, 30, 89, 1);
+  font-weight: bold;
+  font-size: 20px;
+}
+.report__box__title p {
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.calorie__title {
+  margin-bottom: 20px;
+}

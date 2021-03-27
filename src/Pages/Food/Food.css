@@ -1,7 +1,135 @@
-.food__head{
-    background: #B3F4F9;
-    padding: 15vh 50px;
-    padding-bottom: 5vh;
-    color: #321E59;
-    font-weight: 600;
+.food__head {
+  background: #b3f4f9;
+  padding: 15vh 50px;
+  padding-bottom: 5vh;
+  color: #321e59;
+  font-weight: 600;
+}
+
+.search__food__screen {
+  display: flex;
+  width: 100%;
+}
+.search__food {
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile__screen {
+  display: none;
+}
+
+.full__screen {
+  display: flex;
+}
+
+.searchbox__food {
+  border: 1px solid gray;
+  display: flex;
+  padding: 5px;
+  gap: 5px;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.search__food > .searchbox__food > input {
+  border: none;
+  width: 40vw;
+  font-size: medium;
+  outline: none;
+}
+
+.food__display {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  height: auto;
+}
+
+.desc_of_food {
+  width: 60vw;
+  /* padding: 10px; */
+  min-height: 40vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-column-gap: 10px; */
+  /* grid-row-gap: 10px; */
+}
+
+.sample_boxes {
+  border: 1px solid #321e59;
+  min-height: 30vh;
+}
+
+.food_page_img {
+  width: 40vw;
+  min-height: 60vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.food_page_img > img {
+  width: 25vw;
+  object-fit: cover;
+  border-radius: 50%;
+  height: 45vh;
+}
+
+.nutrient__img {
+  clip-path: circle(40%);
+  height: 40vh;
+  width: 25vw;
+  background-size: contain;
+  object-fit: contain;
+  background-position: center;
+  background-image: url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+  
+}
+@media only screen and (max-width: 600px) {
+  .search__food__mobile {
+    width: 100%;
+  }
+  .search__food__mobile > .searchbox__food {
+    width: 100%;
+  }
+  .search__food__mobile > .searchbox__food {
+    justify-content: space-between;
+  }
+
+  .food__display__mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    /* align-items: center; */
+  }
+
+  .desc__food__mobile {
+     /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vw;  */
+    
+    /* width: 100%; */
+    justify-content: center;
+    
+    
+  } 
+  .food_page_img__mobile{
+
+    width: 100%;
+  }
+
+  .nutrient__img{
+    /* height: 40vh;
+    width: 20vw; */
+    width: 100%;
+
+    /* background-size: cover;
+    object-fit: cover;
+    background-position: center; */
+
+  }
 }
