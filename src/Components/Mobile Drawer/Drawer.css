@@ -1,0 +1,25 @@
+.listitemsidebar {
+  font-family: 'Poppins', sans-serif;
+  color: #321E59;
+  text-align: left;
+  padding-left: 30px;
+  width: 100%;
+  font-weight: 550;  
+}
+.username__sidebar__mobile{
+    display: flex;
+    /* gap: 20px; */
+    /* padding: 0 20px; */
+    width: 100%;
+    padding-left: 30px;
+    align-items: center;
+}
+.header__user__mobile{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    border : 1px solid #321E59;
+    padding:5px;
+    align-items: center;
+    min-width: 150px;
+}

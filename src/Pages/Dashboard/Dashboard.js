@@ -72,7 +72,7 @@ function Dashboard() {
                                         <CircularComponent size={150} thick={7} text="15g" color="rgba(249, 169, 188, 1)" value={80} />
                                     ) : (
 
-                                        <CircularComponent size={window.screen.width * 0.35} thick={7} text="15g" color="rgba(249, 169, 188, 1)" value={80} />
+                                        <CircularComponent size={window.screen.width *  0.15 + window.screen.height *  0.1} thick={7} text="15g" color="rgba(249, 169, 188, 1)" value={80} />
                                     )
                                 }
                             </div>
@@ -89,7 +89,7 @@ function Dashboard() {
                                         <CircularComponent size={150} text="175g" color="rgba(131, 216, 223, 1)" thick={7} value={10} />
                                     ) : (
 
-                                        <CircularComponent size={window.screen.width * 0.35} text="175g" color="rgba(131, 216, 223, 1)" thick={7} value={10} />
+                                        <CircularComponent size={window.screen.width *  0.15 + window.screen.height *  0.1} text="175g" color="rgba(131, 216, 223, 1)" thick={7} value={10} />
                                     )
                                 }
                             </div>

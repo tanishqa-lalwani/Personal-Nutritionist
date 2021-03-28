@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     },
   });
 
-function Recipeitem() {
+function Recipeitem({foodimg, foodname, foodcal}) {
     const classes = useStyles();
     return (
     <>
@@ -23,14 +23,14 @@ function Recipeitem() {
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    alt="Chicken & spring green bun cha"
+                    alt={foodname}
                     height="230"
-                    image={img}
-                    title="Chicken & spring green bun cha"
+                    image={foodimg}
+                    title={foodname}
                 />
                 <CardContent>
                 <Typography gutterBottom variant="body2" component="h2">
-                Chicken & spring green bun cha
+                {foodname}
                 </Typography>
                 </CardContent>
             </CardActionArea>
@@ -38,7 +38,7 @@ function Recipeitem() {
                 <div className="stats">
                     <div className="statitem">
                             <div className="statvalue">
-                                480
+                                {Math.round(foodcal)}
                             </div>
                             <p>CALORIES</p>
                         </div>
