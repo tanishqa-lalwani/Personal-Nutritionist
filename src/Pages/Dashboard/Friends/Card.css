@@ -1,0 +1,35 @@
+.friend__card{
+    margin-right: 15px;
+    width: 153px;
+    height: 160px;
+    background: #FFFFFF;
+    opacity: 0.5;
+    border: 3px solid #B6D1FC;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 10px rgba(105, 157, 255, 0.2);
+    border-radius: 10px;
+}
+
+.circle{
+    width: 40px;
+    height: 40px;
+    margin-left: 52px;
+    margin-top: 20px;
+    background: #A7D489;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.user_name{
+    width: 74px;
+    height: 20px;
+    margin-left: 36px;
+    margin-top: 15px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #321E59;
+}
