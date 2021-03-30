@@ -36,7 +36,7 @@ function Header() {
 
     useEffect(() => {
 
-        if (location.pathname.includes('dashboard') > 0) {
+        if (location.pathname.includes('userclass') > 0) {
             document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
             document.getElementsByClassName('header')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
         }
