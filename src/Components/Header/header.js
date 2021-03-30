@@ -19,9 +19,9 @@ function Header() {
 
     const handlescroll = () => {
 
-        if (window.scrollY > 50 || location.pathname.includes('dashboard') > 0) {
+        if (window.scrollY > 50 || location.pathname.includes('userclass') > 0) {
             document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
-            document.getElementsByClassName('header')[0].style.borderBottom = '1px solid #321e59';
+            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
         }
         else {
             document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
@@ -38,7 +38,7 @@ function Header() {
 
         if (location.pathname.includes('dashboard') > 0) {
             document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
-            document.getElementsByClassName('header')[0].style.borderBottom = '1px solid #321e59';
+            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
         }
         else {
             document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
