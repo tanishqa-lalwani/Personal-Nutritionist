@@ -7,6 +7,7 @@ import Food  from "./Pages/Food/Food";
 import Progress from './Pages/Progress_Report/Report'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Clientprofile from './Pages/Profile page/Clientprofile'
+import Nutritionistprofile from './Pages/Profile page/Nutritionistprofile'
 import { BrowserRouter as Router, Switch ,Route } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
 import DropFile from './Pages/Food/DropFile';
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/userclass/dashboard/recipebook" component={RecipeBook} />
         <Route exact path="/userclass/dashboard/savedblogs" component={SavedBlogs} />
         <Route exact path="/Clientprofile" component={Clientprofile} />
+        <Route exact path="/Nutritionistprofile" component={Nutritionistprofile} />
       </AnimatedSwitch>
     </Router>
     </>

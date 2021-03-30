@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './Clientprofile.css';
 import avatar from './user.png';
+import Footer from '../../Components/Footer/footer'
 
 
 export default function Clientprofile() {
@@ -63,6 +64,7 @@ export default function Clientprofile() {
                 </Button>
             </div>
         </div>
+        <Footer />
     </div>
 
   )
