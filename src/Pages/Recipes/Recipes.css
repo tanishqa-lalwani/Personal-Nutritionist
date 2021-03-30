@@ -6,15 +6,17 @@
     font-weight: 600;
 }
 #search{
-    padding: 20px 50px;
+    padding: 10px 65px 10px 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
+    overflow: hidden;
 }
 .searchbox{
     border:1px solid gray;
     display: flex;
-    padding: 5px;
+    align-self: flex-start;
+    padding: 5px; 
     gap: 5px;
     border-radius: 20px;
     align-items: center;
@@ -47,6 +49,7 @@
 #searchmob{
     display: none;
 }
+
 @media only screen and (max-width: 600px) {
 
 .recipes{
@@ -67,9 +70,9 @@
 }
 #searchmob{
     width: 84vw;
-    margin: auto;
     display: flex;
-    padding: 10px 7px;
+    padding: 10px 40px 10px 5px;
+    padding: 10px 5px;
     justify-content: space-between;
     align-items: center;
 }
@@ -78,6 +81,10 @@
     width: 50vw;
     font-size: medium;
     outline: none;
+}
+
+form.search{
+    padding:10px 30px;
 }
 
 }
