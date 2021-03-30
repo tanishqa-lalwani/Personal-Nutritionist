@@ -1,0 +1,38 @@
+.BlogDashboard{
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+}
+
+.Blog_info{
+    width: 100%;
+    padding: 5%;
+}
+
+.Blog_items{
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-column-gap: 10px; 
+    grid-row-gap: 15px; 
+}
+
+@media only screen and (max-width:500px){
+
+    .BlogDashboard_mobile{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        margin-top:0;
+    }
+    
+    .Blog_info_mobile{
+        width: 90vw;
+    }
+    
+    .Blog_items_mobile{
+        display: grid;
+        grid-template-columns:repeat(1,1fr); 
+        grid-row-gap: 5vw; 
+    }
+
+} 

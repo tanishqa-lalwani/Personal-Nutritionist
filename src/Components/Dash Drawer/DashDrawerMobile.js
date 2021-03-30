@@ -72,7 +72,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to="/userclass/dashboard/recipebook" style={{ textDecoration: "none" }}>
+                            <Link to="/userclass/dashboard/savedblogs" style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Bookmark} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Saved Blogs</p>

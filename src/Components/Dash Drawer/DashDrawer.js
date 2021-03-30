@@ -86,10 +86,12 @@ function DashDrawer(props) {
                         <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Recipe Book</ListItemText>
                     </ListItem>
                 </Link>
+                <Link className="dash_items_drawer" to="/userclass/dashboard/savedblogs" style={{ textDecoration: "none", color: 'white' }}>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('savedblogs') > 0 ? '#1B3E81':"#1f1b48"}`}}>
                     {/* <ListItemIcon><img src={Bookmark} height="16px" width="16px" /></ListItemIcon> */}
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Saved Blogs</ListItemText>
                 </ListItem>
+                </Link>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('personalnutritionists') > 0 ? '#1B3E81':"#1f1b48"}`}}>
                     {/* <ListItemIcon><img src={Nutri} height="16px" width="16px" /></ListItemIcon> */}
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Subscribed Nutritionists</ListItemText>
