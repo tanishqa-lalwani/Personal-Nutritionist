@@ -113,10 +113,10 @@ function Header() {
                                 onClose={handleClose}
                                 style={{zIndex:'2000',marginTop:'35px'}}
                             >
-                                <MenuItem onClick={handleClose}>View Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>View Dashboard</MenuItem>
-                                <MenuItem onClick={handleClose}>Notifications</MenuItem>
-                                <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                                <Link to='/Clientprofile' style={{textDecoration:'none', color:'black'}}><MenuItem onClick={handleClose}>View Profile</MenuItem></Link>
+                                <Link to='/userclass/dashboard' style={{textDecoration:'none', color:'black'}}><MenuItem onClick={handleClose}>View Dashboard</MenuItem></Link>
+                                <Link to='/userclass/dashboard' style={{textDecoration:'none', color:'black'}}><MenuItem onClick={handleClose}>Notifications</MenuItem></Link>
+                                <Link to='/' style={{textDecoration:'none', color:'black'}}><MenuItem onClick={handleClose}>Sign Out</MenuItem></Link>
                             </Menu>
                         </div>
                     ) :
