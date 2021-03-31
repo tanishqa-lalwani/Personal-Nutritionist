@@ -12,6 +12,8 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+
 
 const useStyles = makeStyles((theme) => ({
     cards: {
@@ -31,11 +33,16 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,foodrecipe}) {
+function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,foodservings,foodrecipe}) {
      const classes = useStyles();
-     const [open, setOpen] = React.useState(false);
-     const handleOpen = () => {setOpen(true);};
-     const handleClose = () => {setOpen(false);};
+     const [openInst, setOpenInst] = React.useState(false);
+     const handleOpenInst = () => {setOpenInst(true);};
+     const handleCloseInst = () => {setOpenInst(false);};
+
+     const [openBook, setOpenBook] = React.useState(false);
+     const handleOpenBook = () => {setOpenBook(true);};
+     const handleCloseBook = () => {setOpenBook(false);};
+
     return (
           <Card className={classes.cards} >
               <CardActionArea>
@@ -46,10 +53,37 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
                       image={foodimg}
                       title={foodname}
                   />
-                  <CardContent>
+                  <CardContent style={{display:'flex', justifyContent: 'space-between'}}>
                   <Typography gutterBottom variant="body2" component="h2">
                     {foodname}
                   </Typography>
+                  <BookmarkBorderIcon style={{marginLeft:'auto'}} onClick={handleOpenBook}/>
+                  <div>
+                    <Modal
+                        aria-labelledby="transition-modal-title"
+                        aria-describedby="transition-modal-description"
+                        className={classes.modal}
+                        open={openBook}
+                        onClose={handleCloseBook}
+                        closeAfterTransition
+                        BackdropComponent={Backdrop}
+                        BackdropProps={{
+                          timeout: 500,
+                        }}
+                        style={{
+                          backdropFilter: 'saturate(180%) blur(10px)',
+                      }}
+                      >
+                        <Fade in={openBook}>
+                          <div className="bookmark_modal">
+                            <h3 style={{padding:'30px'}}>Please sign up to bookmark recipes</h3>
+                            <Button variant="outlined" style={{borderRadius: '10px', textTransform: 'capitalize', fontFamily: 'Poppins, sans-serif',fontWeight:'bold', border: '1px solid #321E59', color: '#321E59',width:'fit-content',alignSelf:'center'}}>
+                              Sign Up
+                            </Button>
+                          </div>
+                        </Fade>
+                    </Modal>
+                  </div>
                   </CardContent>
               </CardActionArea>
               <CardActions>
@@ -61,19 +95,17 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
                               <p>CALORIES</p>
                           </div> 
 
-                <div className="statitem">
-                <Button variant="contained" color="primary" id="View_btn" onClick={handleOpen} >
-                  View Recipe
+                <Button variant="contained" color="primary" id="View_btn" onClick={handleOpenInst} >
+                  View details
                 </Button>
-                </div>
                 
               <div className="Recipe_Modal">
                 <Modal
                   aria-labelledby="transition-modal-title"
                   aria-describedby="transition-modal-description"
                   className={classes.modal}
-                  open={open}
-                  onClose={handleClose}
+                  open={openInst}
+                  onClose={handleCloseInst}
                   closeAfterTransition
                   BackdropComponent={Backdrop}
                   BackdropProps={{
@@ -83,14 +115,15 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
                     backdropFilter: 'saturate(180%) blur(10px)',
                 }}
                 >
-                  <Fade in={open}>
+                  <Fade in={openInst}>
                   <div className="Recipe_info" > 
                     <div className="close_btn">
-                        <CloseIcon onClick={handleClose} style={{ background: 'rgba(0,150,255)', padding: '8px', borderRadius: '50%', color: 'white' }} />
+                        <CloseIcon onClick={handleCloseInst} style={{ background: 'rgba(0,150,255)', padding: '8px', borderRadius: '50%', color: 'white' }} />
                     </div> 
 
                       <div className="Nutrients_Info">
-                        <h2>Nutrients: </h2>
+                        <h2>Nutrients: </h2> 
+                        <p> (Per {foodservings} Servings)</p>
                         <div className="Nutrients_box">
 
                             <div className="Nutrients_stats">
@@ -125,7 +158,7 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
                       </div>
 
                       <div className="Recipe_Instructions">  
-                        <h2>Instructions: </h2>
+                        <h2 style={{paddingBottom:'12px'}}>Instructions: </h2>
                         <div className="Instruction">
                         <ol>
                         {foodrecipe.map((steps) =>  

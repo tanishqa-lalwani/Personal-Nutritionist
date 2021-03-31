@@ -96,6 +96,7 @@ function Recipes() {
                     foodfat={recipe.nutrition.nutrients[1].amount}
                     foodcarbs={recipe.nutrition.nutrients[3].amount}
                     foodprotein={recipe.nutrition.nutrients[8].amount}
+                    foodservings={recipe.servings}
                     foodrecipe={recipe.analyzedInstructions[0].steps}/>
                 ))}
             </div>

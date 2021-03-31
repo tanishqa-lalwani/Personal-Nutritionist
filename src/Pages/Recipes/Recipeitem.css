@@ -29,16 +29,18 @@
 .stats{
     display:flex;
     gap: 5px;
+    justify-content: space-between;
 }
 
 #View_btn{
-    border-radius: 18px;
-    background-color:black;
+    border-radius: 8px;
+    background-color:#699DFF;
     font-size: 13px;
     font-family:Poppins, sans-serif;
     text-transform:capitalize;
     color:white;
-    margin-left: 85px;
+    align-self: center;
+    margin-left: 130px;
 
 }
 
@@ -113,11 +115,31 @@
 }
 
 .Instruction{
-    padding: 12px;
+    padding: 15px;
+    border-radius: 12px;
+    border-style: solid;
+    border-color: #B3F4F9;
+    border-width: 4px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05), 0 6px 8px 0 rgba(0, 0, 0, 0.05);
+
 }
 
 .close_btn{
     float: right;
+}
+
+.bookmark_modal{
+    background: #D1F9D7;
+    color: #321E59;
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    width: 30%;
+    text-align: center;
+    padding: 30px;
+    font-family: "Poppins";
+    font-size: 15px;
+    font-weight: 500;
 }
 
 @media only screen and (max-width:600px){
@@ -133,6 +155,22 @@
     .Recipe_info{
         width: 100%;
         height: 95%;
+    }
+
+    #View_btn{
+        margin-left: 110px;
+        align-self: center;
+    }
+
+    .Instruction{
+        padding:5px;
+        border:none;
+        box-shadow: none;
+    }
+
+    .bookmark_modal{
+        width: 80%;
+        height: 20%;
     }
 
 }
