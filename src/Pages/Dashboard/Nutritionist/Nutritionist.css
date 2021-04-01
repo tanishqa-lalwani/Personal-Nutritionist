@@ -1,0 +1,78 @@
+.Nutritionist{
+    display: flex;
+   }
+   
+   .Nutritionist_body{
+       margin-top: 60px;
+       margin-left: 40px;
+   }
+   
+   .Nutritionist__username{
+       width: 342px;
+       height: 33px;
+       margin-top: 24px;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: 500;
+       font-size: 14px;
+       line-height: 21px;
+       color: #321E59;
+   }
+
+   .yourNutritionist{
+    width: 342px;
+    height: 33px;
+    margin: 20px 0 ;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #321E59;
+}
+
+.Nutritionist_card{
+    display: flex;
+}
+
+@media only screen and (max-width: 500px) {
+
+.Nutritionist_mob{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.Nutritionist_body_mob{
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+.Nutritionist__username_mob{
+    width: 100px;
+    height: 33px;
+    margin-top: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #321E59;
+}   
+
+.yourNutritionist_mob{
+    width: 90%;
+    height: 33px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #321E59;
+}
+
+.Nutritionist_card_mob{
+    display: flex;
+    /* flex-direction: column; */
+}
+
+}

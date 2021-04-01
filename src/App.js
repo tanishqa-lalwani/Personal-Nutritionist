@@ -15,6 +15,7 @@ import Nutrients from './Pages/Food/Nutrients';
 import RecipeBook from './Pages/Dashboard/Recipe Book/RecipeBook'
 import SavedBlogs from './Pages/Dashboard/SavedBlogs/SavedBlogs'
 import Friends from './Pages/Dashboard/Friends/Friends'
+import Nutritionist from './Pages/Dashboard/Nutritionist/Nutritionist'
 
 function App() {
   return (
@@ -36,7 +37,8 @@ function App() {
         <Route exact path="/userclass/dashboard/savedblogs" component={SavedBlogs} />
         <Route exact path="/Clientprofile" component={Clientprofile} />
         <Route exact path="/Nutritionistprofile" component={Nutritionistprofile} />
-        <Route exact path='/userclass/dashboard/friends' component={Friends} />     
+        <Route exact path='/userclass/dashboard/friends' component={Friends} />
+        <Route exact path='/userclass/dashboard/Nutritionist' component={Nutritionist} />     
       </AnimatedSwitch>
     </Router>
     </>
