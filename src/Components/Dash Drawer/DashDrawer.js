@@ -72,10 +72,12 @@ function DashDrawer(props) {
                         <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Today</ListItemText>
                     </ListItem>
                 </Link>
+                <Link className="dash_items_drawer" to="/userclass/dashboard/progress" style={{ textDecoration: "none", color: 'white' }}>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('progress') > 0 ? '#1B3E81':'#1f1b48'}`}}>
                     {/* <ListItemIcon><img src={Progress} height="16px" width="16px" /></ListItemIcon> */}
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Progress</ListItemText>
                 </ListItem>
+                </Link>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('dietplan') > 0 ? '#1B3E81':'#1f1b48'}`}}>
                     {/* <ListItemIcon><img src={Diet} height="16px" width="16px" /></ListItemIcon> */}
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Your Diet Plan</ListItemText>

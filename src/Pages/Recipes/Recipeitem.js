@@ -18,6 +18,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 const useStyles = makeStyles((theme) => ({
     cards: {
         border:'2px solid #9CBEFF',
+        width:'100%',
     },
     modal: {
       display: 'flex',
@@ -123,34 +124,34 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
 
                       <div className="Nutrients_Info">
                         <h2>Nutrients: </h2> 
-                        <p> (Per {foodservings} Servings)</p>
+                        <p> (Per {foodservings?foodservings:""} Servings)</p>
                         <div className="Nutrients_box">
 
                             <div className="Nutrients_stats">
                               <p>Calories</p>  
                               <div className="Nutrients_values">
-                                {Math.round(foodcal)} kcal
+                                {Math.round(foodcal)?Math.round(foodcal):""} kcal
                               </div>
                             </div>
 
                             <div className="Nutrients_stats">
                               <p>Protein</p>  
                               <div className="Nutrients_values">
-                                {foodprotein} gm
+                                {foodprotein?foodprotein:""} gm
                               </div>
                             </div>
 
                             <div className="Nutrients_stats">
                               <p>Carbs</p>  
                               <div className="Nutrients_values">
-                                {foodcarbs} gm
+                                {foodcarbs?foodcarbs:""} gm
                               </div>
                             </div>
 
                             <div className="Nutrients_stats">
                               <p>Fat</p>  
                               <div className="Nutrients_values">
-                                {foodfat} gm
+                                {foodfat?foodfat:""} gm
                               </div>
                             </div>
 
@@ -161,7 +162,7 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
                         <h2 style={{paddingBottom:'12px'}}>Instructions: </h2>
                         <div className="Instruction">
                         <ol>
-                        {foodrecipe.map((steps) =>  
+                        {foodrecipe?.map((steps) =>  
                             <li key={steps.number}>{steps.step}</li>)}
                         </ol>
                         </div>
