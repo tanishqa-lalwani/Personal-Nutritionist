@@ -3,6 +3,7 @@ import DashDrawer from '../../Components/Dash Drawer/DashDrawer'
 import DashDrawerMobile from '../../Components/Dash Drawer/DashDrawerMobile'
 import './Report.css'
 import {CanvasJSChart} from 'canvasjs-react-charts'
+import {useAuth} from '../../AuthContext'
 
 // Resolves charts dependancy
 const options = {

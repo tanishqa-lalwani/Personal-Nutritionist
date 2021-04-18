@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core';
-import { db } from '../../../firebase'
+import  {db}  from '../../../firebase'
 import React from 'react'
 import './Card.css'
 
