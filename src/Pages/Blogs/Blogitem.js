@@ -57,7 +57,7 @@ function Blogitem() {
               Recipe 
             </div>  
         </div>
-       
+
         <img className = "blog__image" src = {img} /> 
 
         
