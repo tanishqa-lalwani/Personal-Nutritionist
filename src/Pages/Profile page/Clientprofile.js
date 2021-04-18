@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -8,10 +8,12 @@ import './Clientprofile.css';
 // import avatar from './user.png';
 import Footer from '../../Components/Footer/footer'
 import { Avatar } from '@material-ui/core';
+import {useAuth} from '../../AuthContext'
 
 
 export default function Clientprofile(props) {
-
+    const user = useAuth()
+    const name = useRef(null);
     const details = {
         height: 0,
         weight: 0,
@@ -36,7 +38,7 @@ export default function Clientprofile(props) {
         })
 
     }, [])
-
+    name.current = data?.name
     const handlechange = ()=>{
         // change code
     }

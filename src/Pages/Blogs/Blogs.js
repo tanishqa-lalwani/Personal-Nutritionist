@@ -4,10 +4,12 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
 import Blogitem from './Blogitem';
 import Button from '@material-ui/core/Button';
-
-
+import {useAuth} from '../../AuthContext'
+import { useLocation } from 'react-router';
 
 function Blogs() {
+    const location = useLocation();
+    const user = useAuth()
     return (
         <div style={{width:'100vw'}}>
         <div className="Blog__head">
@@ -25,24 +27,8 @@ function Blogs() {
         <div className="Blogs">
             <Blogitem />
             <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
-            <Blogitem />
+
+         
         </div>
     </div>
     )

@@ -16,10 +16,12 @@ import RecipeBook from './Pages/Dashboard/Recipe Book/RecipeBook'
 import SavedBlogs from './Pages/Dashboard/SavedBlogs/SavedBlogs'
 import Friends from './Pages/Dashboard/Friends/Friends'
 import Nutritionist from './Pages/Dashboard/Nutritionist/Nutritionist'
+import {AuthProvider} from './AuthContext'
 
 function App() {
   return (
     <>
+    <AuthProvider>
     <Router>
     <Header/>
       <AnimatedSwitch
@@ -42,6 +44,7 @@ function App() {
         <Route exact path='/userclass/dashboard/Nutritionist' component={Nutritionist} />     
       </AnimatedSwitch>
     </Router>
+    </AuthProvider>
     </>
   );
 }

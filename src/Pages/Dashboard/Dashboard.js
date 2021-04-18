@@ -10,9 +10,10 @@ import Not_a_Cup from './Not a Cup.svg'
 import Comp_Cup from './Comp Cup.svg'
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import {useAuth} from '../../AuthContext'
 
 function Dashboard() {
-
+    const user = useAuth();
     return (
         <div className="dash__head dash__head__mobile">
             {

@@ -1,112 +1,129 @@
 .Friends{
- display: flex;
-}
-
-.Friends_body{
-    margin-top: 60px;
-    margin-left: 40px;
-}
-
-.friends__username{
-    width: 342px;
-    height: 33px;
-    margin-top: 24px;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #321E59;
-}
-
-.friends__leaderboard__heading{
-    width: 342px;
-    height: 33px;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    color: #321E59;
-}
-
-.leaderboard__card{
-    width: 250px;
-    height: 261px;
-    background: #DDEAFF;
-    border-radius: 10px;
-}
-
-.yourfriends{
-    width: 342px;
-    height: 33px;
-    margin: 20px 0 ;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    color: #321E59;
-}
-
-.friends_card{
     display: flex;
-}
-
-@media only screen and (max-width: 500px) {
-
-.Friends_mob{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.Friends_body_mob{
-    margin-top: 10px;
-    margin-left: 40px;
-}
-
-.friends__username_mob{
-    width: 100px;
-    height: 33px;
-    margin-top: 10px;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 21px;
-    color: #321E59;
-}
-.friends__leaderboard__heading_mob{
-    width: 100px;
-    height: 33px;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    color: #321E59;
-}
-.leaderboard__card_mob{
-    width: 90%;
-    height: 261px;
-    background: #DDEAFF;
-    border-radius: 10px;
-}
-
-.yourfriends_mob{
-    width: 90%;
-    height: 33px;
-    font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 27px;
-    color: #321E59;
-}
-
-.friedns_card_mob{
-    display: flex;
-    /* flex-direction: column; */
-}
-
-}
+   }
+   
+   .Friends_body{
+       margin-top: 60px;
+       margin-left: 40px;
+       display: flex;
+       width: calc(60vw + 10px);
+       min-height: calc(100vh - 35px);
+   }
+   .results{
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+       backdrop-filter: blur(10px) saturate(180%);
+       height: auto;
+       overflow: hidden;
+       color: white;
+       width: 100%;
+       background: rgba(0,0,0,0.60);
+       /* box-shadow: 0 0 3px 0 black; */
+       margin-top: 20px;
+       border-radius: 10px;
+   }
+   .friends__username{
+       width: 342px;
+       height: 33px;
+       margin-top: 24px;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: 500;
+       font-size: 14px;
+       line-height: 21px;
+       color: #321E59;
+   }
+   
+   .friends__leaderboard__heading{
+       width: 342px;
+       height: 33px;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: bold;
+       font-size: 18px;
+       line-height: 27px;
+       color: #321E59;
+   }
+   
+   .leaderboard__card{
+       width: 250px;
+       height: 261px;
+       background: #DDEAFF;
+       border-radius: 10px;
+   }
+   
+   .yourfriends{
+       width: 342px;
+       height: 33px;
+       margin: 20px 0 ;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: bold;
+       font-size: 18px;
+       line-height: 27px;
+       color: #321E59;
+   }
+   
+   .friends_card{
+       display: flex;
+   }
+   
+   @media only screen and (max-width: 500px) {
+   
+   .Friends_mob{
+       display: flex;
+       flex-direction: column;
+       width: 100%;
+   }
+   .Friends_body_mob{
+       margin-top: 10px;
+       margin-left: 40px;
+   }
+   
+   .friends__username_mob{
+       width: 100px;
+       height: 33px;
+       margin-top: 10px;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: 500;
+       font-size: 14px;
+       line-height: 21px;
+       color: #321E59;
+   }
+   .friends__leaderboard__heading_mob{
+       width: 100px;
+       height: 33px;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: bold;
+       font-size: 18px;
+       line-height: 27px;
+       color: #321E59;
+   }
+   .leaderboard__card_mob{
+       width: 90%;
+       height: 261px;
+       background: #DDEAFF;
+       border-radius: 10px;
+   }
+   
+   .yourfriends_mob{
+       width: 90%;
+       height: 33px;
+       font-family: Poppins;
+       font-style: normal;
+       font-weight: bold;
+       font-size: 18px;
+       line-height: 27px;
+       color: #321E59;
+   }
+   
+   .friedns_card_mob{
+       display: flex;
+       /* flex-direction: column; */
+   }
+   
+   }
+   

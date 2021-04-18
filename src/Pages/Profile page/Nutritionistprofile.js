@@ -6,9 +6,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import './Nutritionistprofile.css';
 import avatar from './user.png';
 import Footer from '../../Components/Footer/footer'
+import {useAuth} from '../../AuthContext'
 
 export default function Clientprofile() {
-
+    const user = useAuth()
   return (
 
     <div className="Profile">

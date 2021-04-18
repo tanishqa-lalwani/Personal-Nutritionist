@@ -1,0 +1,1 @@
+signup(emailRef.current.value, passwordRef.current.value)

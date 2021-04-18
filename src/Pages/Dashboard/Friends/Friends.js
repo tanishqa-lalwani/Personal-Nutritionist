@@ -12,40 +12,60 @@ const Friends = () => {
 
   const [name, setname] = React.useState("");
   const [ser, setser] = React.useState([]);
+  const [str, setstr] = React.useState([]);
   const [tan_data, settan] = React.useState("");
 
   React.useEffect(() => {
-    db.collection('Users')
-      .doc('Client')
-      .collection('clientel')
-      .doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2')
-      .collection('requests')
-      .onSnapshot(
-        (resp) => {
-          resp.docs.map((doc) => { setname(doc.id) }
-          )
-        }
-      )
+    // db.collection('Users')
+    //   .doc('Client')
+    //   .collection('clientel')
+    //   .doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2')
+    //   .collection('requests')
+    //   .onSnapshot(
+    //     (resp) => {
+    //       resp.docs.map((doc) => { setname(doc.id) }
+    //       )
+    //     }
+    //   )
+
+      // db.collection('Users').doc('Client').collection('clientel')
+      //   .orderBy('name')
+      //   .startAt(str)
+      //   .endAt(str + '\uf8ff')
+      //   .get()
+      //   .then((snapshot) => {
+      //     setser(
+      //       snapshot.docs.map((doc) => ({
+      //         id: doc.id,
+      //         sers: doc.data(),
+      //       }))
+      //     );
+      //   });
 
   }, [name])
 
-  const search = (e) => {
-    if (e !== "") {
+  const search = (friend_id) => {
+    // setstr(e.target.value);
+
+   setstr(friend_id)
 
       db.collection('Users').doc('Client').collection('clientel')
         .orderBy('name')
-        .startAt(e.target.value)
-        .endAt(e.target.value + '\uf8ff')
+        .startAt(friend_id)
+        .endAt(friend_id + '\uf8ff')
         .get()
         .then((snapshot) => {
+
           setser(
             snapshot.docs.map((doc) => ({
               id: doc.id,
               sers: doc.data(),
-            }))
-          );
+
+            }
+            ))
+          )
         });
-    }
+    
   }
 
   const add_friend = (e) => {
@@ -86,9 +106,8 @@ const Friends = () => {
       </div>
       <div style={{ width: '30%', background: "url('https://images.unsplash.com/photo-1617348523950-66b425e5c66b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1095&q=80')", marginTop: '50px', display: 'flex', flexDirection: 'column', padding: '20px', paddingTop: '40px', alignItems: 'center' }}>
         {/* <h1>Search bar</h1> */}
-        <TextField id="outlined-basic" label="Search Friends" onChange={search} variant="outlined" style={{ width: '100%' }} />
+        <TextField id="outlined-basic" label="Search Friends" value={str} onChange={(e)=>search(e.target.value)} variant="outlined" style={{ width: '100%' }} />
         <div className="results">
-          {/* <h1>Search</h1> */}
           {
             ser.map(({ id, sers }) => (
               <div style={{
@@ -99,6 +118,7 @@ const Friends = () => {
                   <p>
                     {sers.name}
                   </p>
+                  {console.log("Age",sers.age)}
                   <p>Age : {sers.age}</p>
                 </p>
                 <p onClick={add_friend(id)} style={{ marginLeft: 'auto', display: 'flex', gap: '5px', alignItems: 'center' }}>

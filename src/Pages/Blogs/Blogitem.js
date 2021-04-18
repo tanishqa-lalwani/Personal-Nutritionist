@@ -1,6 +1,7 @@
 import React from 'react'
 import './Blogitem.css'
-import img from './image 1.png'
+import img from './image 10.png'
+import yellow from '../../Images/avatar_yellow.png'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -14,6 +15,8 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import {useAuth} from '../../AuthContext' 
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,57 +43,41 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Blogitem() {
+    const user = useAuth()
     const classes = useStyles();
     return (
-        // <div style={{
-        //     display:'flex',
-        //     gap:'20px',
-        //     border:'2px solid #F9CED8',
-        // }}>
-        //     <img src={img} />
-        //     <div className="desc">
-        //         <p style={{ 
-        //             fontWeight:'bold',
-        //             fontSize:'15px',
-        //             padding:'10px 0'
-        //         }}>Chicken & spring green bun cha</p>
-        //     </div>
-        // </div>
-        <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
-      />
-      <CardMedia
-        className={classes.media}
-        image={img}
-        title="Chicken & spring green bun cha"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        </CardActions>
-    </Card>
+       
+    <div className = "blogs__card">
+      <div className = "blog__info">
+        <div className = "content">
+            <h3>The 10 Vegetarian Recipes We Eat Week After Week</h3>
+            <h4 className = "date">30 March</h4>
+            <p>So long, Plant-Powered January! It’s easy to keep the vegetarian party going when everything is so dang delicious. </p>
+            <div className = "blog__tags">
+              Recipe 
+            </div>  
+        </div>
+       
+        <img className = "blog__image" src = {img} /> 
+
+        
+      </div>
+      <div className = "blogs__author">
+        <div className = "author__info">
+          <Avatar className="avatar" src = {yellow} alt = "N"  style = {{ width : '40px', height : '40px'}}/>
+        </div>
+        <div className = "author__name">
+            <h4>Chloe ting</h4>
+            <h5>Fitness trainer </h5>
+        </div> 
+
+        <div className="save_icon">
+          <BookmarkBorderIcon fontSize = "large"  />
+        
+        </div>
+      </div>
+    </div>
+
     )
 }
 
