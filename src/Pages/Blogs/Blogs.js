@@ -27,6 +27,11 @@ function Blogs() {
         <div className="Blogs">
             <Blogitem />
             <Blogitem />
+            <Blogitem />
+            <Blogitem />
+            <Blogitem />
+            <Blogitem />
+            <Blogitem />
 
          
         </div>
