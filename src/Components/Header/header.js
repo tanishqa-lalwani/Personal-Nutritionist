@@ -23,14 +23,14 @@ function Header() {
     console.log(user);
     const handlescroll = () => {
 
-        if (window.scrollY > 50 || location.pathname.includes('userclass') > 0) {
-            document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
-            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
+        if (window.scrollY > 50 || location.pathname.includes('dashboard') > 0) {
+            document.getElementsByClassName('header__page')[0].style.background = 'rgba(255,255,255,1)';
+            document.getElementsByClassName('header__page')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
         }
         else {
-            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
-            document.getElementsByClassName('header')[0].style.background = 'transparent';
-            document.getElementsByClassName('header')[0].style.borderBottom = '0px solid #321e59';
+            document.getElementsByClassName('header__page')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
+            document.getElementsByClassName('header__page')[0].style.background = 'transparent';
+            document.getElementsByClassName('header__page')[0].style.borderBottom = '0px solid #321e59';
         }
 
     }
@@ -40,14 +40,14 @@ function Header() {
 
     useEffect(() => {
 
-        if (location.pathname.includes('userclass') > 0) {
-            document.getElementsByClassName('header')[0].style.background = 'rgba(255,255,255,1)';
-            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
+        if (location.pathname.includes('dashboard') > 0) {
+            document.getElementsByClassName('header__page')[0].style.background = 'rgba(255,255,255,1)';
+            document.getElementsByClassName('header__page')[0].style.boxShadow = '0 0 5px 0 rgba(0,0,0,0.5)';
         }
         else {
-            document.getElementsByClassName('header')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
-            document.getElementsByClassName('header')[0].style.background = 'transparent';
-            document.getElementsByClassName('header')[0].style.borderBottom = '0px solid #321e59';
+            document.getElementsByClassName('header__page')[0].style.boxShadow = '0 0 0 0 rgba(0,0,0,0.5)';
+            document.getElementsByClassName('header__page')[0].style.background = 'transparent';
+            document.getElementsByClassName('header__page')[0].style.borderBottom = '0px solid #321e59';
         }
 
     }, [location,user])
@@ -76,7 +76,7 @@ function Header() {
     };
 
     return (
-        <div className='header header__mobile'>
+        <div className='header__page header__mobile__page'>
             {
                 window.screen.width > 500 ? (
                     <>
@@ -93,30 +93,30 @@ function Header() {
                     </>
                 )
             }
-            <Link className='links' to='/food' style={{ textDecoration: 'none' }}>
+            <Link className='links__page' to='/food' style={{ textDecoration: 'none' , color:'#321E59'}}>
                 <div className='two'>
                     Food
             </div>
             </Link>
-            <Link className='links' to='/recipes' style={{ textDecoration: 'none' }}>
+            <Link className='links__page' to='/recipes' style={{ textDecoration: 'none' , color:'#321E59'}}>
                 <div className='two'>
                     Recipes
                 </div>
             </Link>
-            <Link className='links' to='/blogs' style={{ textDecoration: 'none' }}>
+            <Link className='links__page' to='/blogs' style={{ textDecoration: 'none' , color:'#321E59'}}>
                 <div className='two'>
                     Blogs
             </div>
             </Link>
-            <div className='two'>
+            <div className='two__page'>
                 About Us
             </div>
             {
                 user.currentUser?
                 (
-                    <div className="four" style={{ alignItems: "center" }}>
+                    <div className="four__page" style={{ alignItems: "center" }}>
                         <NotificationsIcon />
-                        <div className="header__user" onClick={handleClick}>
+                        <div className="header__user__page" onClick={handleClick}>
                             {/* <Avatar style={{ width: "30px", height: '30px' }} /> */}
                             <div style={{ background: 'rgba(167, 212, 137, 1)', height: '30px', width: '30px', clipPath: 'circle(40%)', display: 'flex', color: "white", alignItems: 'center', justifyContent: 'center' }}></div>
                             <p>{user.currentUser.email}</p>
@@ -131,17 +131,17 @@ function Header() {
                           
                             style={{zIndex:'2000',marginTop:'35px'}}
                         >
-                            <Link to='/Clientprofile' style={{textDecoration:'none',color:'black'}}>
+                            <Link to={`/${user.currentUser.uid}`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
                              onClick={handleClose_Menu}
                             >View Profile</MenuItem>
                             </Link>
-                            <Link to='/userclass/dashboard' style={{textDecoration:'none',color:'black'}}>
+                            <Link to={`/${user.currentUser.uid}/dashboard`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
                              onClick={handleClose_Menu}
                             >View Dashboard</MenuItem>
                             </Link>
-                            <Link to='/userclass/dashboard' style={{textDecoration:'none',color:'black'}}>
+                            <Link to={`/${user.currentUser.uid}/Notifications`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
                             // onClick={handleClose}
                             >Notifications</MenuItem>
@@ -153,7 +153,7 @@ function Header() {
                     </div>
                     ) :
                     (
-                        <div className='four'>
+                        <div className='four__page'>
                             <Button variant="outlined" style={{ borderRadius: '10px', textTransform: 'capitalize', padding: 0, fontFamily: 'Poppins, sans-serif', border: '0px solid #321E59', color: '#321E59' }}>
                                 <SignUpModal />
                             </Button>

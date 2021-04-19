@@ -9,7 +9,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
 import './Drawer.css'
 import { Divider } from '@material-ui/core';
+import {useAuth} from '../../AuthContext'
 import Avatar from "@material-ui/core/Avatar"
+import SignUpModal from '../../Components/Modals/SignUpModal'
+import LoginModal from '../../Components/Modals/LoginModal'
+import { auth } from '../../firebase'
 
 const useStyles = makeStyles({
     list: {
@@ -21,6 +25,7 @@ const useStyles = makeStyles({
 });
 
 export default function TemporaryDrawer({ loc }) {
+    const user = useAuth();
     const classes = useStyles();
     const [state, setState] = React.useState({
         top: false,
@@ -56,33 +61,41 @@ export default function TemporaryDrawer({ loc }) {
                         </div>
                     </div>
                 </ListItem>
-                <Link to='/userclass/profile' style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to={`/${user.currentUser.uid}`} style={{ textDecoration: 'none', color: 'black' }}>
                     <ListItem button key="Food" >
                         <div className="listitemsidebar">View Profile</div>
                     </ListItem>
                 </Link>
-                <Link to='/userclass/dashboard' style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to={`/${user.currentUser.uid}/dashboard`} style={{ textDecoration: 'none', color: 'black' }}>
                     <ListItem button key="Food" >
                         <div className="listitemsidebar">View Dashboard</div>
                     </ListItem>
                 </Link>
-                <Link to='/userclass/Notifications' style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to={`/${user.currentUser.uid}/Notifications`} style={{ textDecoration: 'none', color: 'black' }}>
                     <ListItem button key="Food" >
                         <div className="listitemsidebar">Notifications</div>
                     </ListItem>
                 </Link>
                 {
-                    loc.includes('userclass') > 0 ? (
+                    user.currentUser ? (
 
                         <Link to='/' style={{ textDecoration: 'none', color: 'black' }}>
-                            <ListItem button key="Food" >
+                            <ListItem onClick={()=>(auth.signOut())} button key="Food" >
                                 <div className="listitemsidebar">Sign Out</div>
                             </ListItem>
                         </Link>
                     ) : (<>
-                    <Link to='/userclass/dashboard' style={{ textDecoration: 'none', color: 'black' }}>
+                            <Link to='/loginmobile' style={{ textDecoration: 'none', color: 'black' }}>
+                            <ListItem button >
+                                <div className="listitemsidebar">
+                                Login
+                                </div>
+                            </ListItem>
+                        </Link>
+
+                            <Link to='/signupmobile' style={{ textDecoration: 'none', color: 'black' }}>
                             <ListItem button>
-                                <div className="listitemsidebar">Sign In</div>
+                                <div className="listitemsidebar">Sign Up</div>
                             </ListItem>
                         </Link>
                     </>)

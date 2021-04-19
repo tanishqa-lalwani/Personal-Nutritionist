@@ -12,15 +12,15 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {useAuth} from '../../AuthContext'
 
-function Dashboard() {
+function Dashboard(props) {
     const user = useAuth();
     return (
         <div className="dash__head dash__head__mobile">
             {
                 window.screen.width > 500 ? (
-                    <DashDrawer />
+                    <DashDrawer uid={props.match.params.uid}/>
                 ) : (
-                    <DashDrawerMobile loc="Daily Goals" img="Goals"/>
+                    <DashDrawerMobile loc="Daily Goals" img="Goals" uid={props.match.params.uid}/>
                 )
             }
 

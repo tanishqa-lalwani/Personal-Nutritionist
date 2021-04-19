@@ -15,13 +15,13 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import {useAuth} from '../../AuthContext' 
+import { useAuth } from '../../AuthContext'
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
-    border:'2px solid #F9CED8',
+    border: '2px solid #F9CED8',
   },
   media: {
     height: 0,
@@ -43,42 +43,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Blogitem() {
-    const user = useAuth()
-    const classes = useStyles();
-    return (
-       
-    <div className = "blogs__card">
-      <div className = "blog__info">
-        <div className = "content">
-            <h3>The 10 Vegetarian Recipes We Eat Week After Week</h3>
-            <h4 className = "date">30 March</h4>
-            <p>So long, Plant-Powered January! It’s easy to keep the vegetarian party going when everything is so dang delicious. </p>
-            <div className = "blog__tags">
-              Recipe 
-            </div>  
+  const user = useAuth()
+  const classes = useStyles();
+  return (
+
+    <div className="blogs__card">
+      <div className="blog__info">
+        <div className="content">
+          <h3>The 10 Vegetarian Recipes We Eat Week After Week</h3>
+          <h4 className="date">30 March</h4>
+          <p>So long, Plant-Powered January! It’s easy to keep the vegetarian party going when everything is so dang delicious. </p>
+          <div className="blog__tags">
+            Recipe
+            </div>
         </div>
 
-        <img className = "blog__image" src = {img} /> 
-
-        
+        <img className="blog__image" src={img} />
       </div>
-      <div className = "blogs__author">
-        <div className = "author__info">
-          <Avatar className="avatar" src = {yellow} alt = "N"  style = {{ width : '40px', height : '40px'}}/>
+      <div className="blogs__author">
+        <div className="author__info">
+          <Avatar className="avatar" src={yellow} alt="N" />
         </div>
-        <div className = "author__name">
-            <h4>Chloe ting</h4>
-            <h5>Fitness trainer </h5>
-        </div> 
+        <div className="author__name">
+          <h4>Chloe ting</h4>
+          <h5>Fitness trainer </h5>
+        </div>
 
         <div className="save_icon">
-          <BookmarkBorderIcon fontSize = "large"  />
-        
+          <BookmarkBorderIcon fontSize="large" />
+
         </div>
       </div>
     </div>
 
-    )
+  )
 }
 
 export default Blogitem
