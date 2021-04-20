@@ -1,6 +1,7 @@
 import React, { useEffect, useState , useRef} from 'react'
 import './header.css'
 import { Link } from 'react-router-dom'
+import {db} from '../../firebase'
 import logo from './pineapple-icon.png'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button';
@@ -50,10 +51,20 @@ function Header() {
             document.getElementsByClassName('header__page')[0].style.borderBottom = '0px solid #321e59';
         }
 
+        db.collection('Users').doc('Client')
+        .collection('clientel')
+        .doc(user.currentUser.uid)
+        .onSnapshot((snap)=>{
+            seturs(snap.data().image);
+            setname(snap.data().name);
+        })
+
     }, [location,user])
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(true);
+    const [usrimg,seturs] = React.useState("");
+    const [name,setname] = React.useState("");
 
 
     const handleClick = (event) => {
@@ -118,8 +129,9 @@ function Header() {
                         <NotificationsIcon />
                         <div className="header__user__page" onClick={handleClick}>
                             {/* <Avatar style={{ width: "30px", height: '30px' }} /> */}
-                            <div style={{ background: 'rgba(167, 212, 137, 1)', height: '30px', width: '30px', clipPath: 'circle(40%)', display: 'flex', color: "white", alignItems: 'center', justifyContent: 'center' }}></div>
-                            <p>{user.currentUser.email}</p>
+                            
+                            <Avatar src={usrimg} style={{ background:"rgba(167, 212, 137, 1)", height: '30px', width: '30px',}} />
+                            <p>{name}</p>
                             <ArrowDropDownIcon />
                         </div>
                         <Menu 
@@ -143,7 +155,6 @@ function Header() {
                             </Link>
                             <Link to={`/${user.currentUser.uid}/Notifications`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
-                            // onClick={handleClose}
                             >Notifications</MenuItem>
                             </Link>
                             <Link to="/" style={{textDecoration:'none', color:'black'}}>
@@ -158,7 +169,7 @@ function Header() {
                                 <SignUpModal />
                             </Button>
                             <Button variant="outlined" style={{ borderRadius: '10px', textTransform: 'capitalize', padding: 0, fontFamily: 'Poppins, sans-serif', border: '0px solid #321E59', color: '#321E59' }}>
-                                <LoginModal />
+                                <LoginModal text="Login"/>
                             </Button>
                         </div>
                     )

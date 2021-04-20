@@ -1,6 +1,7 @@
 import React from 'react'
 import './Dashboard.css'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom'
 import CircularComponent from '../../Components/Circular_Progress/CircularComponent'
 import DashDrawer from '../../Components/Dash Drawer/DashDrawer'
 import DashDrawerMobile from '../../Components/Dash Drawer/DashDrawerMobile'
@@ -14,6 +15,12 @@ import {useAuth} from '../../AuthContext'
 
 function Dashboard(props) {
     const user = useAuth();
+    const history = useHistory();
+
+    React.useEffect(() => {
+        if(user.currentUser===null) history.push('/');
+    }, [])
+
     return (
         <div className="dash__head dash__head__mobile">
             {

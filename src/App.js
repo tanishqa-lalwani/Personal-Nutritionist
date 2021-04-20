@@ -10,8 +10,6 @@ import Clientprofile from './Pages/Profile page/Clientprofile'
 import Nutritionistprofile from './Pages/Profile page/Nutritionistprofile'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AnimatedSwitch } from 'react-router-transition';
-import DropFile from './Pages/Food/DropFile';
-import Nutrients from './Pages/Food/Nutrients';
 import RecipeBook from './Pages/Dashboard/Recipe Book/RecipeBook'
 import SavedBlogs from './Pages/Dashboard/SavedBlogs/SavedBlogs'
 import Signupmobile from './Pages/Signup/Signup_mobile'
@@ -47,7 +45,7 @@ function App() {
                 <Route exact path="/signupmobile" component={Signupmobile} />
                 <Route exact path="/loginmobile" component={loginmobile} /></>)
                 : (<></>)
-            }
+              }
             <Route exact path="/Nutritionistprofile" component={Nutritionistprofile} />
             <Route exact path='/:uid/dashboard/Nutritionist' component={Nutritionist} />
           </AnimatedSwitch>

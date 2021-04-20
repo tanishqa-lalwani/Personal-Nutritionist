@@ -59,7 +59,7 @@ function DashDrawerMobile({loc,img}) {
                         PaperProps={{background:'#1B3E81'}}
                     >
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Goals} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Daily Goals</p>
@@ -67,7 +67,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard/recipebook`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard/recipebook`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Book} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Recipe Book</p>
@@ -75,7 +75,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard/savedblogs`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard/savedblogs`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Bookmark} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Saved Blogs</p>
@@ -83,7 +83,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard/Nutritionist`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard/Nutritionist`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Nutri} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Subscribed Nutritionists</p>
@@ -91,7 +91,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard/friends`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard/friends`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Friends} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Your Friends</p>
@@ -99,7 +99,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard/recipebook`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard/recipebook`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Diet} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Diet Plan</p>
@@ -107,7 +107,7 @@ function DashDrawerMobile({loc,img}) {
                             </Link>
                         </MenuItem>
                         <MenuItem onClick={handleClose}>
-                            <Link to={`/${user.currentUser.uid}/dashboard/progress`} style={{ textDecoration: "none" }}>
+                            <Link to={`/${user.currentUser?.uid}/dashboard/progress`} style={{ textDecoration: "none" }}>
                                 <div style={{ display: 'flex', alignItems: 'center', background: 'inherit', gap: '10px' , width:'100%' }}>
                                     <img src={Progress} height="16px" width="16px" />
                                     <p style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: 'white' }}>Progress</p>

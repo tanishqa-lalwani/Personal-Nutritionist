@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
 import { SettingsPowerRounded } from '@material-ui/icons';
 
-function Login({ close }) {
+function Login_mobile({ close }) {
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
@@ -71,4 +71,4 @@ function Login({ close }) {
     )
 }
 
-export default Login
+export default Login_mobile

@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
 
 
-function Signup() {
+function Signup_mobile() {
 
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -76,4 +76,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Signup_mobile
