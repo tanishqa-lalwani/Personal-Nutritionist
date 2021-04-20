@@ -37,7 +37,7 @@ export default function Clientprofile(props) {
             setdata(snap.data());
         })
 
-    }, [data.length])
+    }, [])
     
     const handleChange = (e) => {
       const {name,value} = e.target
