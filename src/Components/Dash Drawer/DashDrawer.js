@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Book from '../../Pages/Dashboard/Book.svg'
 import Goals from '../../Pages/Dashboard/Goals.svg'
+import {useAuth} from '../../AuthContext'
 import Bookmark from '../../Pages/Dashboard/Bookmark.svg'
 import Friends from '../../Pages/Dashboard/Friends.svg'
 import Progress from '../../Pages/Dashboard/Progress.svg'
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 function DashDrawer(props) {
 
     const Loc = useLocation();
+    const user = useAuth();
     const { window } = props;
     const classes = useStyles();
     const theme = useTheme();
@@ -66,43 +68,43 @@ function DashDrawer(props) {
             </List>
             <div className={classes.toolbar} />
             <List className="dash_items_drawer">
-                <Link className="dash_items_drawer" to="/userclass/dashboard" style={{ textDecoration: "none", color: 'white' }}>
-                    <ListItem className='dash-item' style={{background:`${Loc.pathname !== "/userclass/dashboard" ? '#1f1b48':'#1B3E81'}`}}>
-                        {/* <ListItemIcon><img src={Goals} height="16px" width="16px" /></ListItemIcon> */}
+                <Link className="dash_items_drawer" to={`/${user.currentUser.uid}/dashboard`} style={{ textDecoration: "none", color: 'white' }}>
+                    <ListItem className='dash-item' style={{background:`${Loc.pathname !== `/${user.currentUser.uid}/dashboard` ? '#1f1b48':'#1B3E81'}`}}>
+                        <ListItemIcon><img src={Goals} height="16px" width="16px" /></ListItemIcon>
                         <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Today</ListItemText>
                     </ListItem>
                 </Link>
-                <Link className="dash_items_drawer" to="/userclass/dashboard/progress" style={{ textDecoration: "none", color: 'white' }}>
+                <Link className="dash_items_drawer" to={`/${user.currentUser.uid}/dashboard/progress`} style={{ textDecoration: "none", color: 'white' }}>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('progress') > 0 ? '#1B3E81':'#1f1b48'}`}}>
-                    {/* <ListItemIcon><img src={Progress} height="16px" width="16px" /></ListItemIcon> */}
+                    <ListItemIcon><img src={Progress} height="16px" width="16px" /></ListItemIcon>
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Progress</ListItemText>
                 </ListItem>
                 </Link>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('dietplan') > 0 ? '#1B3E81':'#1f1b48'}`}}>
-                    {/* <ListItemIcon><img src={Diet} height="16px" width="16px" /></ListItemIcon> */}
+                    <ListItemIcon><img src={Diet} height="16px" width="16px" /></ListItemIcon>
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Your Diet Plan</ListItemText>
                 </ListItem>
-                <Link className="dash_items_drawer" to="/userclass/dashboard/recipebook" style={{ textDecoration: "none", color: 'white' }}>
+                <Link className="dash_items_drawer" to={`/${user.currentUser.uid}/dashboard/recipebook`} style={{ textDecoration: "none", color: 'white' }}>
                     <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('recipebook') > 0 ? '#1B3E81':'#1f1b48'}`}}>
-                        {/* <ListItemIcon><img src={Book} height="16px" width="16px" /></ListItemIcon> */}
+                        <ListItemIcon><img src={Book} height="16px" width="16px" /></ListItemIcon>
                         <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Recipe Book</ListItemText>
                     </ListItem>
                 </Link>
-                <Link className="dash_items_drawer" to="/userclass/dashboard/savedblogs" style={{ textDecoration: "none", color: 'white' }}>
+                <Link className="dash_items_drawer" to={`/${user.currentUser.uid}/dashboard/savedblogs`} style={{ textDecoration: "none", color: 'white' }}>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('savedblogs') > 0 ? '#1B3E81':"#1f1b48"}`}}>
-                    {/* <ListItemIcon><img src={Bookmark} height="16px" width="16px" /></ListItemIcon> */}
+                    <ListItemIcon><img src={Bookmark} height="16px" width="16px" /></ListItemIcon>
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Saved Blogs</ListItemText>
                 </ListItem>
                 </Link>
-                <Link className="dash_items_drawer" to="/userclass/dashboard/Nutritionist" style={{ textDecoration: "none", color: 'white' }}>
+                <Link className="dash_items_drawer" to={`/${user.currentUser.uid}/dashboard/Nutritionist`} style={{ textDecoration: "none", color: 'white' }}>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('personalnutritionists') > 0 ? '#1B3E81':"#1f1b48"}`}}>
-                    {/* <ListItemIcon><img src={Nutri} height="16px" width="16px" /></ListItemIcon> */}
+                    <ListItemIcon><img src={Nutri} height="16px" width="16px" /></ListItemIcon>
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Subscribed Nutritionists</ListItemText>
                 </ListItem>
                 </Link>
-                <Link className="dash_items_drawer" to="/userclass/dashboard/friends" style={{ textDecoration: "none", color: 'white' }}>
+                <Link className="dash_items_drawer" to={`/${user.currentUser.uid}/dashboard/friends`} style={{ textDecoration: "none", color: 'white' }}>
                 <ListItem className='dash-item' style={{background:`${Loc.pathname.includes('friends') > 0 ? '#1B3E81':'#1f1b48'}`}}>
-                    {/* <ListItemIcon><img src={Friends} height="16px" width="16px" /></ListItemIcon> */}
+                    <ListItemIcon><img src={Friends} height="16px" width="16px" /></ListItemIcon>
                     <ListItemText disableTypography style={{ fontSize: '15px', fontFamily: 'Poppins, sans-serif' }}>Your Friends</ListItemText>
                 </ListItem>
                 </Link>

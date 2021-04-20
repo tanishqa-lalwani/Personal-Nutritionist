@@ -1,9 +1,9 @@
-.header{
+.header__page{
     font-family: 'Poppins', sans-serif;
     background: transparent;
     padding: 10px 20px;
     display: flex;
-    width: calc(100% - 20px);
+    width: calc(100vw - 20px);
     gap : 30px;
     height: 35px;
     font-weight: normal;
@@ -12,7 +12,7 @@
     z-index: 1400;
     top: 0;
 }
-.header__user{
+.header__user__page{
     display: flex;
     gap:5px;
     border-radius: 10px;
@@ -20,14 +20,14 @@
     padding:5px;
     align-items: center;
 }
-.two{
+.two__page{
     color: #321E59;
     width: auto;
     padding: 10px;
     text-align: center;
     cursor: pointer;
 }
-.four{
+.four__page{
     cursor: pointer;
     display: flex;
     gap: 20px;
@@ -37,7 +37,7 @@
 
 @media only screen and (max-width: 500px) 
 {
-    .header__mobile{
+    .header__mobile__page{
         width: 96%;
         display: flex;
         justify-content: space-between;
@@ -46,13 +46,13 @@
         gap: 0;
         background: black;
     }
-    .links{
+    .links__page{
         display: none;
     }
-    .two{
+    .two__page{
         display: none;
     }
-    .four{
+    .four__page{
         display: none;
     }
 

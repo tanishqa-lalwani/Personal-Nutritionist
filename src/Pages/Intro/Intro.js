@@ -35,9 +35,9 @@ function Intro() {
                 </div>
                 </Fade>
                 <Fade bottom delay={600}>
-                <div className="intro__image">
-                    <img src={img} alt="" style={{ margin: 'auto' }} />
-                </div>
+                {/* <div className="intro__image"> */}
+                    <img src={img} alt="" style={{ margin: 'auto', height:'auto', width:'50vw'}} />
+                {/* </div> */}
                 </Fade>
             </div>
             <div className='tools'>
