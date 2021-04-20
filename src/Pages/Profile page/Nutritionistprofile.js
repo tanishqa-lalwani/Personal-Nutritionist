@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import TextField from '@material-ui/core/TextField';
+import {db} from '../../firebase'
+
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -10,6 +12,33 @@ import {useAuth} from '../../AuthContext'
 
 export default function Clientprofile() {
     const user = useAuth()
+
+    const name = useRef(null);
+    const details = {
+        qualification : "",
+        experience : "",
+        name:"Your Name goes here!",
+        occupation : "",
+        description : "",
+        email:"",
+        image:""
+    };
+
+    const [data,setdata] = React.useState(details);
+     user.current = data?.name
+    React.useEffect(()=>{
+        db.collection('Users').doc('Nutritionist')
+        .collection('test_nutritionist')
+        .doc('Uxsc0cMfOe9yej0Ac4xn')
+        .onSnapshot((doc)=>{
+           setdata(doc.data());
+        })
+    },[])
+
+    const handlechange = ()=>{
+        
+    }
+
   return (
 
     <div className="Profile">
@@ -26,16 +55,18 @@ export default function Clientprofile() {
             </div>
 
             <div className="Info">
-                <TextField id="username" label="Username" defaultValue="Your_username" variant="outlined" />
-                <TextField id="Email" label="Email" defaultValue="Your_username@gmail.com" variant="outlined" type="email" />
+                <TextField id="username" label="Username" defaultValue="Your_username" value = {data?.name} variant="outlined" />
+                <TextField id="Email" label="Email" defaultValue="Your_username@gmail.com" value = {user?.currentUser.email} variant="outlined" type="email" />
                 <TextField id="Password" label="Password" defaultValue="12345" variant="outlined" type="password" />
-                <TextField id="Occupation" label="Occupation" defaultValue="Fitness trainer" variant="outlined" />
-                <TextField id="Qualification" label="Qualification" defaultValue="M.S. in nutrition and exercise" variant="outlined" />
-                <TextField id="Bio" label="Bio" defaultValue="Providing Fitness Training, Consulting for Diet, Weight Loss Training, Zumba Classes. " variant="outlined" />
+                <TextField id="Occupation" label="Occupation" defaultValue="Fitness trainer" value = {data?.occupation} variant="outlined" />
+                <TextField id="Experience" label="Experience" defaultValue="Since 2014" value = {data?.experience} variant="outlined" />
+
+                <TextField id="Qualification" label="Qualification" defaultValue="M.S. in nutrition and exercise"  value = {data?.qualification} variant="outlined" />
+                <TextField id="Bio" label="Bio" defaultValue="Providing Fitness Training, Consulting for Diet, Weight Loss Training, Zumba Classes. " value = {data?.description} variant="outlined" />
             </div>
 
             <div style={{width:'100%', display:'flex', justifyContent:'center'}}>
-                <Button id='trial__but' variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white'}}> 
+                <Button id='trial__but' onClick={handlechange} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white'}}> 
                     Save Changes
                 </Button>
             </div>

@@ -42,7 +42,7 @@ export default function Clientprofile(props) {
     const handlechange = ()=>{
         // change code
     }
-
+console.log(name)
     return (
 
     <div className="Profile">
