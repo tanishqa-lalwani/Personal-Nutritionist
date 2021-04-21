@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import img from './image 1.png'
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
-import { SettingsPowerRounded } from '@material-ui/icons';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Login({ close }) {
   const emailRef = useRef()
@@ -21,9 +21,8 @@ function Login({ close }) {
     try {
       setError("")
       setLoading(true)
-      await login(emailRef.current.value, passwordRef.current.value).then(() => {
-        console.log('login successful.');
-        history.push("/userclass/dashboard");
+      await login(emailRef.current.value, passwordRef.current.value).then((res) => {
+        history.push(`/${res.user.uid}/dashboard`);
         close();
       })
         .catch((error) => {
@@ -61,10 +60,10 @@ function Login({ close }) {
             <span className="text">{error}</span>
           </div>
           </div>
-          <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection:'column', gap:'20px'}}>
           <Button id='trial__but' onClick={handleSubmit} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
-            Log in
-                  </Button>
+          {loading?<CircularProgress size={25} style={{margin:'auto', color:'white'}}/>:<>Log in</>}
+          </Button>
         </div>
 
       </div>

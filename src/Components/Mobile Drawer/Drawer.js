@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
 import './Drawer.css'
-import { Divider } from '@material-ui/core';
+import { Divider, unstable_createMuiStrictModeTheme } from '@material-ui/core';
 import { useAuth } from '../../AuthContext'
 import Avatar from "@material-ui/core/Avatar"
 import SignUpModal from '../../Components/Modals/SignUpModal'
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function TemporaryDrawer({ loc }) {
+export default function TemporaryDrawer({ loc,uname , usrimg}) {
     const user = useAuth();
     const classes = useStyles();
     const [state, setState] = React.useState({
@@ -56,14 +56,14 @@ export default function TemporaryDrawer({ loc }) {
                     <div className='username__sidebar__mobile'>
                         <Link to='/loginmobile' style={{ textDecoration: 'none', color: 'black' }}>
                             <div className="header__user__mobile">
-                                {/* <Avatar style={{ width: "30px", height: '30px' }} /> */}
-                                <div style={{ background: 'rgba(167, 212, 137, 1)', height: '30px', width: '30px', clipPath: 'circle(40%)', display: 'flex', color: "white", alignItems: 'center', justifyContent: 'center' }}></div>
-                                <p>{user.currentUser ? user.currentUser.email : "Sign in"}</p>
+                                <Avatar src= {usrimg} style={{ width: "30px", height: '30px' }} />
+                                {/* <div style={{ background: 'rgba(167, 212, 137, 1)', height: '30px', width: '30px', clipPath: 'circle(40%)', display: 'flex', color: "white", alignItems: 'center', justifyContent: 'center' }}></div> */}
+                                <p>{user.currentUser ? uname : "Sign in"}</p>
                             </div>
                         </Link>
                     </div>
                 </ListItem>
-                <Link to={`/${user.currentUser?.uid}`} style={{ textDecoration: 'none', color: 'black', display: `${user.currentUser ? "block" : "none"}` }}>
+                <Link to={`/${user.currentUser?.uid}/profile`} style={{ textDecoration: 'none', color: 'black', display: `${user.currentUser ? "block" : "none"}` }}>
                     <ListItem button key="Food" >
                         <div className="listitemsidebar">View Profile</div>
                     </ListItem>

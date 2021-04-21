@@ -34,7 +34,7 @@ export default function TransitionsModal({text, color, border}) {
 
   return (
     <div>
-      <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',fontFamily:'Poppins, sans-serif',border:`${border === "" ? "1px solid #321E59" : border}`,color:`${color?color:"#321E59"}`}} onClick={handleOpen}>
+      <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',fontFamily:'Poppins, sans-serif',border:`${border === undefined ? "1px solid #321E59" : border}`,color:`${color?color:"#321E59"}`}} onClick={handleOpen}>
         {text}
       </Button>
       <Modal

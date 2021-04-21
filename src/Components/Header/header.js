@@ -21,7 +21,6 @@ function Header() {
     const location = useLocation();
     const user = useAuth();
     
-    console.log(user);
     const handlescroll = () => {
 
         if (window.scrollY > 50 || location.pathname.includes('dashboard') > 0) {
@@ -35,9 +34,11 @@ function Header() {
         }
 
     }
-
+    
     window.addEventListener('scroll', handlescroll);
-
+    
+    const [usrimg,seturs] = React.useState("");
+    const [name,setname] = React.useState("");
 
     useEffect(() => {
 
@@ -53,23 +54,20 @@ function Header() {
 
         db.collection('Users').doc('Client')
         .collection('clientel')
-        .doc(user.currentUser.uid)
+        .doc(user.currentUser?.uid)
         .onSnapshot((snap)=>{
-            seturs(snap.data().image);
-            setname(snap.data().name);
+            seturs(snap.data()?.image);
+            setname(snap.data()?.name);
         })
 
-    }, [location,user])
+    }, [location,user,usrimg,name])
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(true);
-    const [usrimg,seturs] = React.useState("");
-    const [name,setname] = React.useState("");
 
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        console.log(open)
         setOpen(!open)
     };
 
@@ -82,7 +80,6 @@ function Header() {
 
     const handleClose = (e) => {
         auth.signOut()
-        console.log(user);
         setAnchorEl(null);
     };
 
@@ -100,7 +97,7 @@ function Header() {
                         <Link to='/'>
                             <Avatar src={logo} />
                         </Link>
-                        <Drawer loc={location.pathname} />
+                        <Drawer loc={location.pathname} uname={name} usrimg={usrimg}/>
                     </>
                 )
             }
@@ -128,8 +125,6 @@ function Header() {
                     <div className="four__page" style={{ alignItems: "center" }}>
                         <NotificationsIcon />
                         <div className="header__user__page" onClick={handleClick}>
-                            {/* <Avatar style={{ width: "30px", height: '30px' }} /> */}
-                            
                             <Avatar src={usrimg} style={{ background:"rgba(167, 212, 137, 1)", height: '30px', width: '30px',}} />
                             <p>{name}</p>
                             <ArrowDropDownIcon />
@@ -143,7 +138,7 @@ function Header() {
                           
                             style={{zIndex:'2000',marginTop:'35px'}}
                         >
-                            <Link to={`/${user.currentUser.uid}`} style={{textDecoration:'none',color:'black'}}>
+                            <Link to={`/${user.currentUser.uid}/profile`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
                              onClick={handleClose_Menu}
                             >View Profile</MenuItem>

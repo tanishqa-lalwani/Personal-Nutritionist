@@ -82,11 +82,11 @@ const Friends = () => {
 
   return (
     <div className="Friends Friends_mob">
-      {window.screen.width > 500 ? (
+      {/* {window.screen.width > 500 ? (
         <DashDrawer />
       ) : (
         <DashDrawerMobile loc="Daily Goals" img="Goals" />
-      )}
+      )} */}
       <div className="Friends_body Friends_body_mob">
         <div style={{ width: '50%' }}>
           <p className="friends__username friends__username_mob">

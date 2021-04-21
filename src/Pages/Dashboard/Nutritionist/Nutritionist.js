@@ -7,11 +7,11 @@ import Card from '../Friends/Card'
 const Nutritionist = () => {
     return (
       <div className="Nutritionist Nutritionist_mob">
-        {window.screen.width > 500 ? (
+        {/* {window.screen.width > 500 ? (
           <DashDrawer />
         ) : (
           <DashDrawerMobile loc="Daily Goals" img="Goals" />
-        )}
+        )} */}
         <div className="Nutritionist_body Nutritionist_body_mob">
           <p className="Nutritionist__username Nutritionist__username_mob">
             {" "}
