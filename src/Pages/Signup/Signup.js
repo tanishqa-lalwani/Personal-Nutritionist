@@ -10,40 +10,7 @@ import { useAuth } from '../../AuthContext'
 
 function Signup({ close }) {
 
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const history = useHistory()
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      setLoading(true);
-      setError("Password and Confirm Password are not matching.");
-      setLoading(false);
-      return;
-    }
-    try {
-      setError("")
-      setLoading(true)
-      signup(emailRef.current.value, passwordRef.current.value).then(() => {
-        console.log('Signup successful.');
-        history.push("/userclass/dashboard");
-        close()
-      })
-        .catch((error) => {
-          console.log(error.code);
-          setError(error.message);
-        });
-
-    }
-    catch {
-      setError("Failed to create an account, try again after sometime.")
-    }
-    setLoading(false)
+  
   }
 
   return (
