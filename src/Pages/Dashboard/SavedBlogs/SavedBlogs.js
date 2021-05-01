@@ -8,9 +8,9 @@ function SavedBlogs()
 {
     return(
         <div className="BlogDashboard  BlogDashboard_mobile">
-            {
+            {/* {
                 window.screen.width > 500 ? (<DashDrawer/>) : (<DashDrawerMobile loc="SavedBlogs" img="Blogs"/>)
-            }
+            } */}
 
             <div className="Blog_info Blog_info_mobile">
                 <p style={{fontFamily:'Poppins',fontWeight:'600', color:'#321E59'}}>Hii Username!!!</p>

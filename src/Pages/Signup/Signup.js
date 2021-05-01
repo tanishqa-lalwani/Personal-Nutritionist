@@ -28,10 +28,8 @@ function Signup({ close }) {
     try {
       setError("")
       setLoading(true)
-      signup(emailRef.current.value, passwordRef.current.value).then(() => {
-        console.log('Signup successful.');
-        history.push("/userclass/dashboard");
-        close()
+      signup(emailRef.current.value, passwordRef.current.value).then((res) => {
+        history.push(`/${res.user.uid}/dashboard`);
       })
         .catch((error) => {
           console.log(error.code);
@@ -64,12 +62,10 @@ function Signup({ close }) {
             </div>
           </div>
         </div>
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <Link className="items__drawer" to="/userclass/dashboard" style={{ textDecoration: "none", color: 'white' }}>
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection:'column'}}>
             <Button onClick={handleSubmit} id='trial__but' variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
               Sign Up
-                    </Button>
-          </Link>
+            </Button>
         </div>
       </div>
     </div>

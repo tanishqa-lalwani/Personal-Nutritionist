@@ -40,13 +40,13 @@ function RecipeBook() {
     }, [data.length])
     return (
         <div className="recipe__dash recipe__dash__mobile">
-            {
+            {/* {
                 window.screen.width > 500 ? (
                     <DashDrawer />
                 ) : (
                     <DashDrawerMobile loc="Recipe Book" img="Book"/>
                 )
-            }
+            } */}
             <div className="recipe__front recipe__front_mobile">
                 <p>Hi Username!</p>
                 {
