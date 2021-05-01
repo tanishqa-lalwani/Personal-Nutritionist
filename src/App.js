@@ -18,6 +18,7 @@ import Signupmobile from './Pages/Signup/Signup_mobile'
 import loginmobile from './Pages/Login/login_mobile'
 import Friends from './Pages/Dashboard/Friends/Friends'
 import Nutritionist from './Pages/Dashboard/Nutritionist/Nutritionist'
+import CreateBlog from './Pages/Nutritionist/CreateBlog'
 import { AuthProvider } from './AuthContext'
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route exact path="/:uid/dashboard/savedblogs" component={SavedBlogs} />
             <Route exact path="/:uid" component={Clientprofile} />
             <Route exact path="/:uid/dashboard/friends" component={Friends} />
+            <Route exact path="/userclass/dashboard/createblog" component={CreateBlog} />  
             {
               window.screen.width <= 500 ? (<>
                 <Route exact path="/signupmobile" component={Signupmobile} />
