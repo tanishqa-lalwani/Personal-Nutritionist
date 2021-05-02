@@ -2,13 +2,12 @@ import React, { useState, useRef } from 'react'
 import './login.css'
 import { Link, useHistory } from "react-router-dom"
 import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
 import img from './image 1.png'
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
-import { SettingsPowerRounded } from '@material-ui/icons';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-function Login({ close }) {
+function Login_mobile({ close }) {
     const emailRef = useRef()
     const passwordRef = useRef()
     const { login } = useAuth()
@@ -21,9 +20,8 @@ function Login({ close }) {
         try {
             setError("")
             setLoading(true)
-            await login(emailRef.current.value, passwordRef.current.value).then(() => {
-                console.log('login successful.');
-                history.push("/userclass/dashboard");
+            await login(emailRef.current.value, passwordRef.current.value).then((res) => {
+                history.push(`/${res.user.uid}/dashboard`);
                 close();
             })
                 .catch((error) => {
@@ -50,7 +48,6 @@ function Login({ close }) {
                 <div>
                     <div className="login__title">
                         <h3> Log in </h3>
-                        {/* <CloseIcon onClick={close} style={{ background: 'rgba(0,150,255)', padding: '10px', borderRadius: '50%', color: 'white' }} /> */}
                     </div>
                     <div className="login__container">
                         <TextField id="outlined-basic" inputRef={emailRef} name="email" label="Email" variant="outlined" />
@@ -60,9 +57,9 @@ function Login({ close }) {
                         <span className="text">{error}</span>
                     </div>
                 </div>
-                <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection:'column', gap:'20px'}}>
                     <Button id='trial__but' onClick={handleSubmit} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
-                        Log in
+                    {loading?<CircularProgress style={{margin:'auto', color:'white'}}/>:<>Log in</>}
                   </Button>
                 </div>
 
@@ -71,4 +68,4 @@ function Login({ close }) {
     )
 }
 
-export default Login
+export default Login_mobile

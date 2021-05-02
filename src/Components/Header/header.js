@@ -1,6 +1,7 @@
 import React, { useEffect, useState , useRef} from 'react'
 import './header.css'
 import { Link } from 'react-router-dom'
+import {db} from '../../firebase'
 import logo from './pineapple-icon.png'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button';
@@ -20,7 +21,6 @@ function Header() {
     const location = useLocation();
     const user = useAuth();
     
-    console.log(user);
     const handlescroll = () => {
 
         if (window.scrollY > 50 || location.pathname.includes('dashboard') > 0) {
@@ -34,9 +34,11 @@ function Header() {
         }
 
     }
-
+    
     window.addEventListener('scroll', handlescroll);
-
+    
+    const [usrimg,seturs] = React.useState("");
+    const [name,setname] = React.useState("");
 
     useEffect(() => {
 
@@ -50,7 +52,15 @@ function Header() {
             document.getElementsByClassName('header__page')[0].style.borderBottom = '0px solid #321e59';
         }
 
-    }, [location,user])
+        db.collection('Users').doc('Client')
+        .collection('clientel')
+        .doc(user.currentUser?.uid)
+        .onSnapshot((snap)=>{
+            seturs(snap.data()?.image);
+            setname(snap.data()?.name);
+        })
+
+    }, [location,user,usrimg,name])
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(true);
@@ -58,7 +68,6 @@ function Header() {
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        console.log(open)
         setOpen(!open)
     };
 
@@ -71,7 +80,6 @@ function Header() {
 
     const handleClose = (e) => {
         auth.signOut()
-        console.log(user);
         setAnchorEl(null);
     };
 
@@ -89,7 +97,7 @@ function Header() {
                         <Link to='/'>
                             <Avatar src={logo} />
                         </Link>
-                        <Drawer loc={location.pathname} />
+                        <Drawer loc={location.pathname} uname={name} usrimg={usrimg}/>
                     </>
                 )
             }
@@ -117,9 +125,8 @@ function Header() {
                     <div className="four__page" style={{ alignItems: "center" }}>
                         <NotificationsIcon />
                         <div className="header__user__page" onClick={handleClick}>
-                            {/* <Avatar style={{ width: "30px", height: '30px' }} /> */}
-                            <div style={{ background: 'rgba(167, 212, 137, 1)', height: '30px', width: '30px', clipPath: 'circle(40%)', display: 'flex', color: "white", alignItems: 'center', justifyContent: 'center' }}></div>
-                            <p>{user.currentUser.email}</p>
+                            <Avatar src={usrimg} style={{ background:"rgba(167, 212, 137, 1)", height: '30px', width: '30px',}} />
+                            <p>{name}</p>
                             <ArrowDropDownIcon />
                         </div>
                         <Menu 
@@ -131,7 +138,7 @@ function Header() {
                           
                             style={{zIndex:'2000',marginTop:'35px'}}
                         >
-                            <Link to={`/${user.currentUser.uid}`} style={{textDecoration:'none',color:'black'}}>
+                            <Link to={`/${user.currentUser.uid}/profile`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
                              onClick={handleClose_Menu}
                             >View Profile</MenuItem>
@@ -143,7 +150,6 @@ function Header() {
                             </Link>
                             <Link to={`/${user.currentUser.uid}/Notifications`} style={{textDecoration:'none',color:'black'}}>
                             <MenuItem 
-                            // onClick={handleClose}
                             >Notifications</MenuItem>
                             </Link>
                             <Link to="/" style={{textDecoration:'none', color:'black'}}>
@@ -158,7 +164,7 @@ function Header() {
                                 <SignUpModal />
                             </Button>
                             <Button variant="outlined" style={{ borderRadius: '10px', textTransform: 'capitalize', padding: 0, fontFamily: 'Poppins, sans-serif', border: '0px solid #321E59', color: '#321E59' }}>
-                                <LoginModal />
+                                <LoginModal text="Login"/>
                             </Button>
                         </div>
                     )
