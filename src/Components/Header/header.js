@@ -115,10 +115,12 @@ function Header() {
                 <div className='two'>
                     Blogs
             </div>
-            </Link>
-            <div className='two__page'>
+            </Link >
+            <Link className='links__page' to='/aboutus' style={{ textDecoration: 'none' , color:'#321E59'}}>
+            <div className='two'>
                 About Us
             </div>
+            </Link>
             {
                 user.currentUser?
                 (

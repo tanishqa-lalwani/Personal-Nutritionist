@@ -4,6 +4,7 @@ import Header from './Components/Header/header'
 import Recipes from "./Pages/Recipes/Recipes";
 import Blogs from "./Pages/Blogs/Blogs";
 import Food from "./Pages/Food/Food";
+import AboutUs from "./Pages/AboutUs/AboutUs";
 import Notfound404 from "./Pages/Notfound404/Notfound";
 import Progress from './Pages/Progress_Report/Report'
 import Dashboard from './Pages/Dashboard/Dashboard'
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/blogs" component={Blogs} />
             <Route exact path="/food" component={Food} />
             <Route exact path="/recipes" component={Recipes} />
+            <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/:uid/dashboard" component={Dashboard} />
             {/* <Route exact path="/:uid/dashboard/progress" component={Progress} /> */}
             {/* <Route exact path="/:uid/dashboard/recipebook" component={RecipeBook} /> */}
