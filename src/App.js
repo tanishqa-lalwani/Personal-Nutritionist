@@ -42,8 +42,7 @@ function App() {
             <Route exact path="/:uid/dashboard/recipebook" component={RecipeBook} />
             <Route exact path="/:uid/dashboard/savedblogs" component={SavedBlogs} />
             <Route exact path="/:uid" component={Clientprofile} />
-            <Route exact path="/:uid/dashboard/friends" component={Friends} />
-            <Route exact path="/userclass/dashboard/createblog" component={CreateBlog} />  
+            <Route exact path="/:uid/dashboard/friends" component={Friends} />  
             {
               window.screen.width <= 500 ? (<>
                 <Route exact path="/signupmobile" component={Signupmobile} />
