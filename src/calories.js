@@ -10,7 +10,7 @@ var userGoal = 50;
 function BmiCalculator(weight , height) {
     var BMI = weight / (height * height);
     var status;
-    BMI_int = Math.floor(BMI);
+    var BMI_int = Math.floor(BMI);
     if(BMI_int < 18) status = "underweight";
     else if (BMI_int >= 18 && BMI_int<25) status = "Normal weight";
     else if (BMI_int >= 25 && BMI_int < 30) status = "overweight";
@@ -29,7 +29,7 @@ function idealWeight (height){
 
 
 //if user want to go with ideal weight
-function CaloriesWithoutGoal(age, height, gender, activity) {
+export default function CaloriesWithoutGoal(age, height, gender, activity) {
     var median_ideal_weight = idealWeight(height);
     
     //male
@@ -69,7 +69,7 @@ function CaloriesWithoutGoal(age, height, gender, activity) {
 }
 
 //function with goal
-function CaloriesWithGoal(age, gender, activity, goal){
+export function CaloriesWithGoal(age, gender, activity, goal){
     //male
     if(gender == 1) {
         switch(true){
@@ -107,15 +107,15 @@ function CaloriesWithGoal(age, gender, activity, goal){
 }
 
 
-//ideal weight
-console.log(idealWeight(userHeight));
+// //ideal weight
+// console.log(idealWeight(userHeight));
 
-//BMI calculator 
-console.log(BmiCalculator(userWeight, userHeight));
+// //BMI calculator 
+// console.log(BmiCalculator(userWeight, userHeight));
 
-//with goal
-console.log(CaloriesWithGoal(userAge, userGender, userActivity, userGoal));
+// //with goal
+// console.log(CaloriesWithGoal(userAge, userGender, userActivity, userGoal));
 
-//without goal
-console.log(CaloriesWithoutGoal(userAge, userHeight, userGender, userActivity));
+// //without goal
+// console.log(CaloriesWithoutGoal(userAge, userHeight, userGender, userActivity));
 

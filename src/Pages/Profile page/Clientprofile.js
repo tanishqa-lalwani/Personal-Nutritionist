@@ -18,8 +18,8 @@ export default function Clientprofile(props) {
         height: 0,
         weight: 0,
         activity_level:0,
-        gender:"Female",
-        name:"Your Name goes here!",
+        gender:0,
+        name:"",
         goal:1,
         age: 0,
         email:"",
@@ -51,7 +51,7 @@ export default function Clientprofile(props) {
         height: data.height,
         weight: data.weight,
         activity_level: data.activity_level,
-        gender: data.gender,
+        gender : data.gender,
         name: data.name,
         goal: data.goal,
         age: data.age,
@@ -95,6 +95,10 @@ console.log(name)
                             }}
                             variant="outlined" />
                 </div>
+                <TextField id="gender" name="gender" onChange={handleChange} label="Gender" value={data?.gender} variant="outlined" placeholder="Moderate" select>
+                            <MenuItem value="0">Male</MenuItem>
+                            <MenuItem value="1">Female</MenuItem>
+                </TextField>
                 <TextField id="Goal_select" name="goal" onChange={handleChange} label="Goal" value={data?.goal} variant="outlined" placeholder="Maintain weight" select>
                             <MenuItem value="0">Maintain weight</MenuItem>
                             <MenuItem value="1">Lose weight</MenuItem>

@@ -19,7 +19,6 @@ function Recipes() {
 
     const getRecipes = async () => {
 
-       
             try {
             const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true`)
             const json = await response.json();  
@@ -87,7 +86,7 @@ function Recipes() {
                 </Button>
             </div>
            <div className="recipes">
-                {recipes !== [] && recipes.map(recipe => (  
+                {recipes !== [] && recipes?.map(recipe => (  
                     <Recipeitem 
                     key={recipe.id}
                     foodname={recipe.title}  

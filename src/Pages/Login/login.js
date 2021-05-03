@@ -3,7 +3,7 @@ import './login.css'
 import { Link, useHistory } from "react-router-dom"
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
-import img from './image 1.png'
+import img from './login.png'
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
 import CircularProgress from '@material-ui/core/CircularProgress';

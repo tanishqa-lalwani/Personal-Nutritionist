@@ -4,7 +4,7 @@ import Header from './Components/Header/header'
 import Recipes from "./Pages/Recipes/Recipes";
 import Blogs from "./Pages/Blogs/Blogs";
 import Food from "./Pages/Food/Food";
-import Notfound404 from "./Pages/Notfound404/Notfound";
+import Notfound from "./Pages/Notfound404/Notfound";
 import Progress from './Pages/Progress_Report/Report'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Clientprofile from './Pages/Profile page/Clientprofile'
@@ -18,6 +18,7 @@ import loginmobile from './Pages/Login/login_mobile'
 import Friends from './Pages/Dashboard/Friends/Friends'
 import Nutritionist from './Pages/Dashboard/Nutritionist/Nutritionist'
 import { AuthProvider } from './AuthContext'
+
 
 function App() {
   return (
@@ -36,11 +37,7 @@ function App() {
             <Route exact path="/food" component={Food} />
             <Route exact path="/recipes" component={Recipes} />
             <Route exact path="/:uid/dashboard" component={Dashboard} />
-            {/* <Route exact path="/:uid/dashboard/progress" component={Progress} /> */}
-            {/* <Route exact path="/:uid/dashboard/recipebook" component={RecipeBook} /> */}
-            {/* <Route exact path="/:uid/dashboard/savedblogs" component={SavedBlogs} /> */}
             <Route exact path="/:uid/profile" component={Clientprofile} />
-            {/* <Route exact path="/:uid/dashboard/friends" component={Friends} /> */}
             {
               window.screen.width <= 500 ? (<>
                 <Route exact path="/signupmobile" component={Signupmobile} />
@@ -48,8 +45,6 @@ function App() {
                 : (<></>)
             }
             <Route exact path="/Nutritionistprofile" component={Nutritionistprofile} />
-            {/* <Route exact path='/:uid/dashboard/Nutritionist' component={Nutritionist} /> */}
-            <Route component={Notfound404} />
           </AnimatedSwitch>
         </Router>
       </AuthProvider>
