@@ -1,31 +1,58 @@
 import { Button } from '@material-ui/core';
 import  {db}  from '../../../firebase'
-import React from 'react'
+import React, { useState } from 'react'
 import './Card.css'
+import { useParams } from 'react-router';
 
-const handlereq = (e) => {
 
-  if (e) {
+
+const Card = ({ name,client_id,my_name }) => {
+  const params = useParams();
+  const my_id = params.uid;
+const [acceptRequest, setAcceptRequests] = useState(false);
+
+
+const handlereq =  () => {
+
+  console.log(my_id);
+  if (client_id) {
+    console.log(my_name + "has acccepted friend requests to ",name)
 
     // Accepts a request and adds friend
-    db.collection('Users').doc('Client').collection('clientel').doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2').collection('friends')
-      .doc(e.toString()).set(
+    db.collection('Users').doc('Client').collection('clientel').doc(my_id).collection('friends')
+      .doc(client_id).set(
         {
-          name: "friend",
+          name: name,
+        }
+      ).then(()=>{
+        console.log("Added")
+      })
+
+      db.collection('Users').doc('Client').collection('clientel').doc(client_id).collection('friends')
+      .doc(my_id).set(
+        {
+          name: my_name,
         }
       )
 
-    // requests are deleted after acceptance
-    db.collection('Users').doc('Client').collection('clientel').doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2').collection('requests')
-      .doc(e).delete();
+      db.collection('Users').doc('Client').collection('clientel').doc(my_id).collection('requests')
+      .doc(client_id).delete()
+    //   .then(() => {
+    //     console.log("Document successfully deleted!");
+    // }).catch((error) => {
+    //     console.error("Error removing document: ", error);
+    // });
+  //  // requests are deleted after acceptance
+  // //  
+   }
+
   }
-}
-const Card = ({ name }) => {
+
   return (
     <div className="friend__card">
       <div className="circle"></div>
       <div className="user_name">{name}</div>
-      <Button onClick={handlereq(name)}>Accept Request</Button>
+      <Button onClick={handlereq}>Accept Request</Button>
     </div>
   );
 }

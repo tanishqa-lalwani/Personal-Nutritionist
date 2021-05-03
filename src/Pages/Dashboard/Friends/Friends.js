@@ -7,42 +7,50 @@ import Card from './Card'
 import { db } from '../../../firebase'
 import { Avatar } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { useParams } from 'react-router';
+import { Search } from '@material-ui/icons';
 
 const Friends = () => {
 
+  const params = useParams();
   const [name, setname] = React.useState("");
+
   const [ser, setser] = React.useState([]);
+  const [allUsers, setAllUsers] = React.useState([]);
+
   const [str, setstr] = React.useState([]);
   const [tan_data, settan] = React.useState("");
+  const [friendrequests, setFriendRequests] = React.useState([])
 
+  const accept_requests = (client_id) =>{
+    db.collection('Users').doc('Client').collection('clientel').doc(client_id).collection('requests').onSnapshot(friend_requests=>{
+      setFriendRequests(
+        friend_requests.docs.map((doc) => ({
+          id: doc.id,
+          friends: doc.data(),
+
+        }
+        ))
+      )
+    })
+  }
   React.useEffect(() => {
-    // db.collection('Users')
-    //   .doc('Client')
-    //   .collection('clientel')
-    //   .doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2')
-    //   .collection('requests')
-    //   .onSnapshot(
-    //     (resp) => {
-    //       resp.docs.map((doc) => { setname(doc.id) }
-    //       )
-    //     }
+    
+    // const searchFriends =   ser?.filter( userId => {
+    //   userId.id == params.uid ? setname(userId.sers.name) : <></>
+    //     return userId.id !== params.uid 
+    //   }
     //   )
+       
+        ser?.map(({id,sers}) => (
+          id == params.uid ? setname(sers.name) :<></>
+        ))
+          
+           
+    // setser(searchFriends)
+     accept_requests(params.uid);
 
-      // db.collection('Users').doc('Client').collection('clientel')
-      //   .orderBy('name')
-      //   .startAt(str)
-      //   .endAt(str + '\uf8ff')
-      //   .get()
-      //   .then((snapshot) => {
-      //     setser(
-      //       snapshot.docs.map((doc) => ({
-      //         id: doc.id,
-      //         sers: doc.data(),
-      //       }))
-      //     );
-      //   });
-
-  }, [name])
+  }, [ser.length,friendrequests.length])
 
   const search = (friend_id) => {
     // setstr(e.target.value);
@@ -57,36 +65,41 @@ const Friends = () => {
         .then((snapshot) => {
 
           setser(
-            snapshot.docs.map((doc) => ({
+            snapshot.docs.map((doc) => (
+
+               {
               id: doc.id,
               sers: doc.data(),
+              }
 
-            }
+            
             ))
           )
         });
-    
+       
+       
+
   }
 
   const add_friend = (e) => {
-    // if (e) {
-    db.collection('Users').doc('Client').collection('clientel').doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2').collection('requests')
-      .doc(e).set(
+     if (name) {
+    db.collection('Users').doc('Client').collection('clientel').doc(e).collection('requests')
+      .doc(params.uid.toString()).set(
         {
-          name: "wants to add friend",
+          name: name,
         }
       )
-    // }
+     }
   }
 
 
   return (
     <div className="Friends Friends_mob">
-      {/* {window.screen.width > 500 ? (
+      {window.screen.width > 500 ? (
         <DashDrawer />
       ) : (
         <DashDrawerMobile loc="Daily Goals" img="Goals" />
-      )} */}
+      )}
       <div className="Friends_body Friends_body_mob">
         <div style={{ width: '50%' }}>
           <p className="friends__username friends__username_mob">
@@ -100,7 +113,15 @@ const Friends = () => {
           <p className="yourfriends yourfriends_mob">Your Friends</p>
           <div className="friends_card friedns_card_mob">
 
-            < Card name={name} />
+          {
+            
+              friendrequests?.map(requests=>{
+                return(
+                  < Card name={requests.friends.name} client_id = {requests.id} my_name = {name} />
+
+                )
+              })
+            }
           </div>
         </div>
       </div>
@@ -110,21 +131,24 @@ const Friends = () => {
         <div className="results">
           {
             ser.map(({ id, sers }) => (
+              id !== params.uid? 
+              (
               <div style={{
                 display: 'flex', padding: '10px', gap: '10px', alignItems: 'center',
+
               }}>
                 <Avatar src={sers.image} />
                 <p style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
                   <p>
                     {sers.name}
                   </p>
-                  {console.log("Age",sers.age)}
                   <p>Age : {sers.age}</p>
                 </p>
-                <p onClick={add_friend(id)} style={{ marginLeft: 'auto', display: 'flex', gap: '5px', alignItems: 'center' }}>
+                <p onClick={add_friend(id)} style={{ marginLeft: 'auto', display: 'flex', gap: '5px', alignItems: 'center',cursor : 'pointer' }}>
                   <p>Add</p>
                   <AddCircleIcon /></p>
               </div>
+              ) : <></>
             ))
           }
           {/* 

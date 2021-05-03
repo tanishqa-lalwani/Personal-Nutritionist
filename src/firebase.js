@@ -8,15 +8,14 @@ import 'firebase/auth'
 //import 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCIxJQb8eDVqC2g6Oo3eo0sAszt1WDrgLs",
-    authDomain: "personal-nutritionist-6e19a.firebaseapp.com",
-    projectId: "personal-nutritionist-6e19a",
-    storageBucket: "personal-nutritionist-6e19a.appspot.com",
-    messagingSenderId: "681616636716",
-    appId: "1:681616636716:web:4762d820dc950446460a89",
-    measurementId: "G-GVMTBP2823"
-  };
-
+  apiKey: "AIzaSyB2n-Nad47j1a-glTI5ADpvuKnVd3UQPFE",
+  authDomain: "personal-nutritionist-g29.firebaseapp.com",
+  projectId: "personal-nutritionist-g29",
+  storageBucket: "personal-nutritionist-g29.appspot.com",
+  messagingSenderId: "400715200185",
+  appId: "1:400715200185:web:c3db821843152f99794d68",
+  measurementId: "G-54SH5FPFGE"
+};
   const firebaseApp =  firebase.initializeApp(firebaseConfig);
 //firebase.analytics();
   const db = firebaseApp.firestore();
