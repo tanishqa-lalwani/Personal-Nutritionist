@@ -46,7 +46,8 @@ function Signup({ close }) {
           name: "New User",
           goal: 0,
           age: 0,
-          email: res.user.email
+          email: res.user.email,
+          recipe_update : 0,
           })
           history.push(`/${res.user.uid}/dashboard`);
         })

@@ -6,6 +6,9 @@ var userGender = 0;
 var userActivity = 1.7;
 var userGoal = 50;
 
+// High = 1.7
+// low = 1.3
+// medium = 1.5
 //BMI calculator
 function BmiCalculator(weight , height) {
     var BMI = weight / (height * height);

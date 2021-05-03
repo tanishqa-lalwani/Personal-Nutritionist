@@ -48,13 +48,13 @@ export default function Clientprofile(props) {
         db.collection('Users').doc('Client')
         .collection('clientel')
         .doc(props.match.params.uid).update({
-        height: data.height,
-        weight: data.weight,
-        activity_level: data.activity_level,
-        gender : data.gender,
+        height: Number(data.height),
+        weight: Number(data.weight),
+        activity_level: Number(data.activity_level),
+        gender : Number(data.gender),
         name: data.name,
-        goal: data.goal,
-        age: data.age,
+        goal: Number(data.goal),
+        age: Number(data.age),
         email: data.email
         })
     }
