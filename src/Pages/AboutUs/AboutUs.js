@@ -7,7 +7,7 @@ import akshar from '../../Images/Akshar.png'
 import jigar from '../../Images/Jigar.png'
 import kushagra from '../../Images/Kushagra.png'
 import anany from '../../Images/Anany.png'
-// import rushi from '../../Images/Rushi.png'
+import rushi from '../../Images/Rushi.png'
 import tanishqa from '../../Images/Tanishqa.png'
 import akash from '../../Images/Aakash.png'
 import marmik from '../../Images/Marmik.png'
@@ -154,7 +154,7 @@ function AboutUs() {
               </div>
 
               <div className="object">
-                <div className="imgbox"><img src={akshar} alt="" /></div>
+                <div className="imgbox"><img src={rushi} alt="" /></div>
                 <div className="text">
                 Rushi Rajpara<br />ID - 201801410
                 </div>
