@@ -1,17 +1,46 @@
 import React,{useState} from 'react'
 import './CreateBlog.css'
 import Blogitem from '../../Pages/Blogs/Blogitem.js'
-import DashDrawer from '../../Components/Dash Drawer/DashDrawer.js'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {db} from '../../firebase'
 
 function CreateBlog()
 {
     const [open,setOpen] = useState(false);
+    const[title,setTitle] = useState("");
+    const[shortdesc,setShortdesc] = useState("");
+    const[desc,setDesc] = useState("");
+    const [img,setImg] = useState(null);
+
+    const blogtitle = item => {
+        setTitle(item.target.value);
+    }
+
+    const blogshortdesc = item => {
+        setShortdesc(item.target.value);
+    }
+
+    const blogdesc = item => {
+        setDesc(item.target.value);
+    }
+
+    const blogimage = item => {
+        setImg(item.target.files[0]);
+    }
+
+    const handleSubmit = e =>{
+        db.collection('Users').doc('Nutritionist').collection('blogs').doc('one').set({
+            image:img,
+            long_desc:desc,
+            short_desc:shortdesc,
+            title:title
+        }).then(()=>{console.log("Successful")})
+        
+    }
 
     return(
         <div className="BlogDashboard">
-            <DashDrawer/>
 
             <div className="Blog_info">
                 <div style={{display:'flex', justifyContent:'space-between'}}>
@@ -32,23 +61,23 @@ function CreateBlog()
                             <div style={{paddingBottom:'15px',display:'flex',justifyContent:'space-between'}}>
                                 <div>
                                     <label style={{color:'#321E59'}}>Title</label><br/>
-                                    <input type="text" style={{width:'500px',padding:'12px 15px',margin:'8px 0'}}/>
+                                    <input type="text" style={{width:'500px',padding:'12px 15px',margin:'8px 0'}} value={title} onChange={blogtitle}/>
                                 </div>    
                                 <div>
                                     <p>Upload Image (180x200 px)</p>
-                                    <button id="upload_img">Upload</button>
+                                    <input type="file" onChange={blogimage}/>
                                 </div>    
                             </div>
                             <div style={{paddingBottom:'15px'}}>
                                 <label style={{color:'#321E59'}}>Short Introduction (1-2 lines)</label><br/>
-                                <input type="text" style={{width:'100%',padding:'12px 15px',margin:'8px 0'}}/>
+                                <input type="text" style={{width:'100%',padding:'12px 15px',margin:'8px 0'}} value={shortdesc} onChange={blogshortdesc}/>
                             </div>
                             <div style={{paddingBottom:'15px'}}>
                                 <label style={{color:'#321E59'}}>Description</label><br/>
-                                <textarea style={{width:'100%',height:'200px',border:'1px solid #2F80ED',resize:'none',padding:'12px 15px',margin:'8px 0'}}/>
+                                <textarea style={{width:'100%',height:'200px',border:'1px solid #2F80ED',resize:'none',padding:'12px 15px',margin:'8px 0'}} value={desc} onChange={blogdesc}/>
                             </div>
                             <div className="uploadbtn">
-                                <button id="upload_btn" onClick={()=>setOpen(!open) }>Upload blog</button>
+                                <button id="upload_btn" onClick={handleSubmit}>Upload blog</button>
                             </div>
                         </form>
                     </div>
