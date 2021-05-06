@@ -11,7 +11,9 @@ function Recipes() {
     const [recipes, setRecipes] = useState([]);
     const [search,setSearch] = useState("");
     const [query,setQuery] = useState("");
-    const API_KEY = '0e06064897434c9ea1e85457f3fb7b26'
+    const API_KEY = 'f8c828fd138c4a9eafba6575753ae18c'
+    const [max, setmax] = useState(Number(2000));
+    const [min, setmin] = useState(Number(1000));
     
     useEffect(() => {
         getRecipes();
@@ -19,7 +21,6 @@ function Recipes() {
 
     const getRecipes = async () => {
 
-       
             try {
             const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true`)
             const json = await response.json();  
@@ -87,7 +88,9 @@ function Recipes() {
                 </Button>
             </div>
            <div className="recipes">
-                {recipes !== [] && recipes.map(recipe => (  
+                {
+                recipes !== [] && recipes?.map(recipe => ( 
+                recipe.nutrition.nutrients[0].amount >= Number(min) && recipe.nutrition.nutrients[0].amount<=Number(max) ? 
                     <Recipeitem 
                     key={recipe.id}
                     foodname={recipe.title}  
@@ -97,7 +100,7 @@ function Recipes() {
                     foodcarbs={recipe.nutrition.nutrients[3].amount}
                     foodprotein={recipe.nutrition.nutrients[8].amount}
                     foodservings={recipe.servings}
-                    foodrecipe={recipe.analyzedInstructions[0].steps}/>
+                    foodrecipe={recipe.analyzedInstructions[0].steps}/>:<></>
                 ))}
             </div>
             <Footer/>

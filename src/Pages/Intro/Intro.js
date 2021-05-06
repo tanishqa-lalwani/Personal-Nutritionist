@@ -8,6 +8,7 @@ import './Intro.css'
 import Button from '@material-ui/core/Button';
 import Fade from 'react-reveal/Fade';
 import Footer from '../../Components/Footer/footer'
+import LoginModal from '../../Components/Modals/LoginModal'
 
 function Intro() {
     return (
@@ -29,15 +30,15 @@ function Intro() {
                     </Fade>
                     <Fade bottom delay={700}>
                     <Button id='trial__but' variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white', }}>
-                        Start for free
+                        <LoginModal text="Start for free" border="none" color="white"/>
                     </Button>
                     </Fade>
                 </div>
                 </Fade>
                 <Fade bottom delay={600}>
-                <div className="intro__image">
-                    <img src={img} alt="" style={{ margin: 'auto' }} />
-                </div>
+                {/* <div className="intro__image"> */}
+                    <img src={img} alt="" style={{ margin: 'auto', height:'auto', width:'50vw'}} />
+                {/* </div> */}
                 </Fade>
             </div>
             <div className='tools'>

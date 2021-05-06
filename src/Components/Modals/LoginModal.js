@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransitionsModal() {
+export default function TransitionsModal({text, color, border}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -34,8 +34,8 @@ export default function TransitionsModal() {
 
   return (
     <div>
-      <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',fontFamily:'Poppins, sans-serif',border:'1px solid #321E59',color:'#321E59'}} onClick={handleOpen}>
-        Login
+      <Button variant="outlined" style={{borderRadius:'10px',textTransform:'capitalize',fontFamily:'Poppins, sans-serif',border:`${border === undefined ? "1px solid #321E59" : border}`,color:`${color?color:"#321E59"}`}} onClick={handleOpen}>
+        {text}
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"

@@ -5,15 +5,15 @@
 .blogs__card {
   display: flex;
   flex-direction: column;
-  width: 45vw;
+  max-width: 45vw;
   height: auto;
-  padding: 1%;
+  /* padding: 1%; */
   border: 1px solid #f9ced8;
   box-sizing: border-box;
 }
 
-img {
-  padding-right: 20px;
+.blog__info > img {
+  /* padding-right: 20px; */
   height: 100%;
 }
 .avatar {
@@ -34,11 +34,13 @@ img {
 
 .blog__info {
   display: flex;
+  padding: 3%;
+  gap:10px;
 }
 .content {
   display: flex;
   flex-direction: column;
-  padding: 3%;
+  /* padding: 3%; */
 
   /* margin-top: 5%; */
 }
@@ -63,6 +65,7 @@ img {
 .blogs__author {
   display: flex;
   background-color: #f9ced8;
+  align-items: center;
   justify-content: center;
   gap: 5%;
   padding: 2%;

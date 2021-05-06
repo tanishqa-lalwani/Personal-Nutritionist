@@ -28,15 +28,11 @@
 
 .Blogs {
   padding: 30px 50px;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* flex-wrap: wrap; */
   margin: auto;
-  /* gap:20px; */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 45px;
-  grid-row-gap: 10px;
+  grid-row-gap: 20px;
   width: calc(100vw - 110px);
 }
 .search > button {

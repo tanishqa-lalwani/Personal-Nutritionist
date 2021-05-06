@@ -1,19 +1,25 @@
 .signUp{
     background: white;
     border-radius: 15px;
-    height: 60%;
-    width: 50%;
+    height: 70%;
+    width: 60%;
     display: flex;
     justify-content: center;
-    overflow: hidden;
+    overflow: auto;
 }
-.parent__container{
+.parent__container_signup{
     width: 50%;
-    padding: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .left__signup{
     width: 50%;
+    background: cornflowerblue;
+    position: sticky;
+    top: 0;
 }
 
 .signUp__title{
@@ -26,13 +32,11 @@
     font-size: 36px;
     line-height: 55px;
     color: #321E59;
-    gap : 10px;
-
 }
+
 .signUp__container {
     display : flex;
     flex-direction: column;
-    justify-content: center;
     padding-bottom : 20px;
     padding-top: 15%;
     gap:10px;
@@ -54,4 +58,21 @@
     font-weight: 500;
     font-size: 14px;
     color: #cf1919;
+}
+
+@media only screen and (max-width: 500px) {
+    .left__signup{
+        height: 40vh;
+        width: 100%;
+    }
+
+    .parent__container_signup{
+        width: calc(100vw - 40px);
+    }
+
+    .signUp{
+        width: 100vw;
+        border-radius: 0;
+        flex-direction: column;
+    }
 }

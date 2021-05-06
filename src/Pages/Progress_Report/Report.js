@@ -54,15 +54,15 @@ const options = {
 
 function Report() {
     return (
-        <div className = "report__head report__head__mobile">
-            {
+        <div className = "report__head report__head__mobile" style={{display:`${window.screen.width < 500 ? "block" : "flex"}`}}>
+            {/* {
                 window.screen.width > 500 ? (
                     <DashDrawer />
                 ) : (
                     <DashDrawerMobile loc="Progress" img="Progress"/>
                 )
-            }
-            <div className = "report__screen">
+            } */}
+            <div className = "report__screen" style={{width:`${window.screen.width < 500 ? "100vw" : "80vw"}`}}>
                 <div className = "report__screen__intro">
                     <p>Hi, Username!</p>
                     <h3 className = "report__intro">You’re doing great </h3>
