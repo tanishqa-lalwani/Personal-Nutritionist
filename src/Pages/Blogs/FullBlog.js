@@ -48,7 +48,7 @@ function FullBlog(props) {
                     {/* </div> */}
                 </div>
                 <div className="full__image">
-                    <img className="full__blog__image" src={img} />
+                    <img className="full__blog__image" src={data.image} />
                 </div>
 
             </div>

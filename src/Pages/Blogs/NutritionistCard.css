@@ -1,6 +1,7 @@
-.nutri__card {
-  width: 306px;
-  height: 318px;
+.nutri__card__popover {
+  width: auto;
+  padding-right: 5%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

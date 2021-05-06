@@ -10,7 +10,7 @@ import DashDrawer from '../../Components/Dash Drawer/DashDrawer'
 import DashDrawerMobile from '../../Components/Dash Drawer/DashDrawerMobile'
 import CheckIcon from '@material-ui/icons/Check';
 import Cup from './Cup.svg'
-import Friends from './Friends/Friends'
+import Friends from './Friends/Friends copy'
 import Nutritionist from './SubscribeNutritionist/SubscribeNutritionist'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import RecipeBook from './Recipe Book/RecipeBook'

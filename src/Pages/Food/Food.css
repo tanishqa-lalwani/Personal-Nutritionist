@@ -1,5 +1,5 @@
 .food__head {
-  background: #b3f4f9;
+  background: "#b3f4f9";
   padding: 15vh 50px;
   padding-bottom: 5vh;
   color: #321e59;
@@ -50,6 +50,7 @@
 
 .desc_of_food {
   width: 60vw;
+  margin-top: 15px;
   /* padding: 10px; */
   min-height: 40vh;
   display: grid;
@@ -65,6 +66,7 @@
 
 .food_page_img {
   width: 40vw;
+  margin-bottom: 15%;
   min-height: 60vh;
   display: flex;
   justify-content: space-evenly;
@@ -86,8 +88,7 @@
   background-size: contain;
   object-fit: contain;
   background-position: center;
-  background-image: url('https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
-  
+  background-image: url("https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max");
 }
 @media only screen and (max-width: 600px) {
   .search__food__mobile {
@@ -107,22 +108,19 @@
   }
 
   .desc__food__mobile {
-     /* display: grid;
+    /* display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 5vw;
     grid-row-gap: 5vw;  */
-    
+
     /* width: 100%; */
     justify-content: center;
-    
-    
-  } 
-  .food_page_img__mobile{
-
+  }
+  .food_page_img__mobile {
     width: 100%;
   }
 
-  .nutrient__img{
+  .nutrient__img {
     /* height: 40vh;
     width: 20vw; */
     width: 100%;
@@ -130,6 +128,5 @@
     /* background-size: cover;
     object-fit: cover;
     background-position: center; */
-
   }
 }
