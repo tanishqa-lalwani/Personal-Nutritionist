@@ -6,6 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import img from './login.png'
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
+import {auth, db} from '../../firebase'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Login({ close }) {
@@ -22,7 +23,20 @@ function Login({ close }) {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value).then((res) => {
-        history.push(`/${res.user.uid}/dashboard`);
+        if(res.user.displayName === "Nutritionist")
+        {
+         db.collection('Users').doc('Nutritionist').collection('staff').doc(res.user.uid)
+         .onSnapshot(
+           snap=>{
+             console.log(snap,res.user.uid)
+             if(snap.data()?.verify===0)
+             {auth.signOut(); history.push('/verification') }
+             else 
+             history.push(`/${res.user.uid}/${res.user.displayName==="User" ? "dashboard":"Nutritionistdashboard"}`);
+            }) 
+        }
+        else
+          history.push(`/${res.user.uid}/${res.user.displayName==="User" ? "dashboard":"Nutritionistdashboard"}`);
         close();
       })
         .catch((error) => {

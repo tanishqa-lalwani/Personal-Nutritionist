@@ -3,6 +3,7 @@ import './login.css'
 import { Link, useHistory } from "react-router-dom"
 import Button from '@material-ui/core/Button';
 import img from './login.png'
+import {db,auth} from '../../firebase'
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -21,7 +22,16 @@ function Login_mobile({ close }) {
             setError("")
             setLoading(true)
             await login(emailRef.current.value, passwordRef.current.value).then((res) => {
-                history.push(`/${res.user.uid}/dashboard`);
+                if (res.user.displayName === "Nutritionist") {
+                    db.collection('Users').doc('Nutritionist').collection('staff').doc(res.user.uid)
+                        .onSnapshot(
+                            snap => {
+                                if (snap.data().verify === 0) { history.push('/verification'); auth.signOut() }
+                                else
+                                    history.push(`/${res.user.uid}/${res.user.displayName === "User" ? "dashboard" : "Nutritionistdashboard"}`);
+                            })
+                }
+                history.push(`/${res.user.uid}/${res.user.displayName === "User" ? "dashboard" : "Nutritionistdashboard"}`);
                 close();
             })
                 .catch((error) => {
@@ -57,10 +67,10 @@ function Login_mobile({ close }) {
                         <span className="text">{error}</span>
                     </div>
                 </div>
-                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection:'column', gap:'20px'}}>
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: '20px' }}>
                     <Button id='trial__but' onClick={handleSubmit} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
-                    {loading?<CircularProgress style={{margin:'auto', color:'white'}}/>:<>Log in</>}
-                  </Button>
+                        {loading ? <CircularProgress style={{ margin: 'auto', color: 'white' }} /> : <>Log in</>}
+                    </Button>
                 </div>
 
             </div>

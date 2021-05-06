@@ -15,7 +15,7 @@ const Friends = (props) => {
   const [str, setstr] = React.useState([]);
 
   React.useEffect(() => {
-    
+
     db.collection('Users')
       .doc('Client')
       .collection('clientel')
@@ -27,9 +27,10 @@ const Friends = (props) => {
             snapsht.docs.map((docs) => ({
               ids: docs.id,
               dc: docs.data(),
-            })))}
+            })))
+        }
       )
-    
+
     console.log(requests);
   }, [requests.length])
 
@@ -57,16 +58,11 @@ const Friends = (props) => {
 
   }
 
-  const add_friend = (e) => {
-    // if (e) {
-    db.collection('Users').doc('Client').collection('clientel').doc('hyQ5flbxihZTI5Uc0r4UgZPAkCS2').collection('requests')
-      .doc(e).set(
-        {
-          name: "wants to add friend",
-        }
-      )
-    // }
-  }
+  // const add_friend = (e) => {
+  // if (e) {
+
+  // }
+  // }
 
 
   return (
@@ -90,7 +86,7 @@ const Friends = (props) => {
           <div className="friends_card friedns_card_mob">
             {
               requests?.map(({ ids, dc }) => (
-                <Card name={ids} />
+                <Card name={ids} uid={props.uid}/>
               ))
             }
           </div>
@@ -112,7 +108,20 @@ const Friends = (props) => {
                   {console.log("Age", sers.age)}
                   <p>Age : {sers.age}</p>
                 </p>
-                <p onClick={add_friend(id)} style={{ marginLeft: 'auto', display: 'flex', gap: '5px', alignItems: 'center' }}>
+                <p onClick={
+                  () => {
+                    db.collection('Users').doc('Client').collection('clientel').doc(id).collection('requests')
+                      .doc(props.uid).set(
+                        {
+                          name: "wants to add friend",
+                        }
+                      )
+                      db.collection('Users').doc('Client').collection('clientel').doc(id).collection('Notifs').add({
+                        text : props.myname + "sent you a request!"
+                      })
+                  }
+
+                } style={{ marginLeft: 'auto', display: 'flex', gap: '5px', alignItems: 'center' }}>
                   <p>Add</p>
                   <AddCircleIcon /></p>
               </div>

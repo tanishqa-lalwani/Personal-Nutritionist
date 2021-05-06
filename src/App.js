@@ -3,8 +3,11 @@ import Intro from './Pages/Intro/Intro'
 import Header from './Components/Header/header'
 import Recipes from "./Pages/Recipes/Recipes";
 import Blogs from "./Pages/Blogs/Blogs";
+import Fblogs from "./Pages/Blogs/FullBlog";
 import Food from "./Pages/Food/Food";
+import verification from "./Pages/Notfound404/verifi";
 import Notfound from "./Pages/Notfound404/Notfound";
+import AboutUs from './Pages/About Us/AboutUs'
 import Progress from './Pages/Progress_Report/Report'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Clientprofile from './Pages/Profile page/Clientprofile'
@@ -32,11 +35,16 @@ function App() {
             atActive={{ opacity: 1 }}
             className="switch-wrapper"
           >
+            <Route exact path="/verification" component={verification} />
+            <Route exact path="/:uid/Nutritionistprofile" component={Nutritionistprofile} />
             <Route exact path="/" component={Intro} />
             <Route exact path="/blogs" component={Blogs} />
             <Route exact path="/food" component={Food} />
+            <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/recipes" component={Recipes} />
+            <Route exact path="/:blogid/fullBlog" component={Fblogs} />
             <Route exact path="/:uid/dashboard" component={Dashboard} />
+            <Route exact path="/:uid/Nutritionistdashboard" component={Nutritionist} />
             <Route exact path="/:uid/profile" component={Clientprofile} />
             {
               window.screen.width <= 500 ? (<>
@@ -44,7 +52,6 @@ function App() {
                 <Route exact path="/loginmobile" component={loginmobile} /></>)
                 : (<></>)
             }
-            <Route exact path="/Nutritionistprofile" component={Nutritionistprofile} />
           </AnimatedSwitch>
         </Router>
       </AuthProvider>

@@ -11,7 +11,7 @@ import DashDrawerMobile from '../../Components/Dash Drawer/DashDrawerMobile'
 import CheckIcon from '@material-ui/icons/Check';
 import Cup from './Cup.svg'
 import Friends from './Friends/Friends'
-import Nutritionist from './Nutritionist/Nutritionist'
+import Nutritionist from './SubscribeNutritionist/SubscribeNutritionist'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import RecipeBook from './Recipe Book/RecipeBook'
 import { db, firebase } from '../../firebase'
@@ -227,15 +227,15 @@ function Dashboard(props) {
             .onSnapshot((snap) => {
                 setuserdata(snap.data());
             })
-
-        if (userdata.activity_level === 0) setuserdata({ ...userdata, activity_level: 1.3 })
+        
+        // if (userdata.activity_level === 0) setuserdata({ ...userdata, activity_level: 1.3 })
 
         setdetails({
             ...details, cal: Math.ceil(CaloriesWithoutGoal(
                 Math.ceil(Number(userdata.age)),
                 Math.ceil(Number(userdata.height)) / 100,
                 (1 - Math.ceil(Number(userdata.gender))),
-                Math.ceil(Number(userdata.activity_level))))
+                Math.ceil(Number(userdata.activity_level===0?1.3:userdata.activity_level))))
         });
 
         setcnt(cnt + 1);
@@ -262,25 +262,24 @@ function Dashboard(props) {
                             setchk(ct + 1);
                         }
                     )
-                }
             }
-            if (cnt === 5) {
-                setstats({
-                    ...stats,
-                    pro: stats?.pro + comps[0] * dumfb[0].pro + comps[1] * dumfb[1].pro + comps[2] * dumfb[2].pro,
-                    cal: stats?.cal + comps[0] * dumfb[0].cal + comps[1] * dumfb[1].cal + comps[2] * dumfb[1].cal,
-                    fat: stats?.fat + comps[0] * dumfb[0].fat + comps[1] * dumfb[1].fat + comps[2] * dumfb[2].fat,
-                    carbs: stats?.carbs + comps[0] * dumfb[0].carbs + comps[1] * dumfb[1].carbs + comps[2] * dumfb[2].carbs
-                });
+        }
+        if (cnt === 5) {
+            setstats({
+                ...stats,
+                pro: stats?.pro + comps[0] * dumfb[0]?.pro + comps[1] * dumfb[1]?.pro + comps[2] * dumfb[2]?.pro,
+                cal: stats?.cal + comps[0] * dumfb[0]?.cal + comps[1] * dumfb[1]?.cal + comps[2] * dumfb[1]?.cal,
+                fat: stats?.fat + comps[0] * dumfb[0]?.fat + comps[1] * dumfb[1]?.fat + comps[2] * dumfb[2]?.fat,
+                carbs: stats?.carbs + comps[0] * dumfb[0]?.carbs + comps[1] * dumfb[1]?.carbs + comps[2] * dumfb[2]?.carbs
+            });
 
-                setbrek(comps[0]); setlunch(comps[2]); setdinner(comps[1]);
-            }
+            setbrek(comps[0]); setlunch(comps[2]); setdinner(comps[1]);
+        }
 
 
-            console.log(cnt);
     }, [userdata?.length, ct, backup, details.cal])
 
-    // console.log(meals)
+
     return (
         <>
             <div className="dash__head dash__head__mobile">
@@ -400,10 +399,10 @@ function Dashboard(props) {
                                     <div style={{ display: 'flex', gap: "10px", alignItems: 'center' }}>
                                         <img src={Cup} height="54px" width="54px" />
                                         <h3>Breakfast</h3>
-                                        <div style={{ display: `${brek === 0 ? "flex" : "none"}`, alignItems: 'center', gap: "10px", cursor: 'pointer', marginLeft: 'auto' }}>
+                                        {/* <div style={{ display: `${brek === 0 ? "flex" : "none"}`, alignItems: 'center', gap: "10px", cursor: 'pointer', marginLeft: 'auto' }}>
                                             <p>Add</p>
                                             <AddCircleIcon />
-                                        </div>
+                                        </div> */}
                                     </div>
                                     {
                                         Array(1).fill().map((_, i) => (
@@ -520,10 +519,10 @@ function Dashboard(props) {
                                     <div style={{ display: 'flex', gap: "10px", alignItems: 'center' }}>
                                         <img src={Comp_Cup} height="54px" width="54px" />
                                         <h3>Lunch</h3>
-                                        <div style={{ display: `${lunch === 0 ? "flex" : "none"}`, alignItems: 'center', gap: "10px", cursor: 'pointer', marginLeft: 'auto' }}>
+                                        {/* <div style={{ display: `${lunch === 0 ? "flex" : "none"}`, alignItems: 'center', gap: "10px", cursor: 'pointer', marginLeft: 'auto' }}>
                                             <p>Add</p>
                                             <AddCircleIcon />
-                                        </div>
+                                        </div> */}
                                     </div>
                                     {
                                         Array(1).fill().map((_, i) => (
@@ -638,10 +637,10 @@ function Dashboard(props) {
                                     <div style={{ display: 'flex', gap: "10px", alignItems: 'center' }}>
                                         <img src={Kinda_Cup} height="54px" width="54px" />
                                         <h3>Dinner</h3>
-                                        <div style={{ display: `${dinner === 0 ? "flex" : "none"}`, alignItems: 'center', gap: "10px", cursor: 'pointer', marginLeft: 'auto' }}>
+                                        {/* <div style={{ display: `${dinner === 0 ? "flex" : "none"}`, alignItems: 'center', gap: "10px", cursor: 'pointer', marginLeft: 'auto' }}>
                                             <p>Add</p>
                                             <AddCircleIcon />
-                                        </div>
+                                        </div> */}
                                     </div>
                                     {
                                         Array(1).fill().map((_, i) => (
@@ -767,9 +766,9 @@ function Dashboard(props) {
                                                 <div style={{ display: 'none', position: 'absolute', top: 0, height: "100%", width: '100%', textAlign: 'center', fontSize: '2.5rem', borderRadius: "inherit", margin: "0 -10px", alignItems: 'center', justifyContent: 'center', color: 'rgba(105, 157, 255, 1)', background: '#ddeaff', zIndex: 10 }}><p>All Done</p><CheckIcon fontSize="large" style={{ background: 'rgb(0,155,255)', color: 'white', marginLeft: '20px', borderRadius: "50%" }} /></div>
                                                 {
                                                     window.screen.width > 500 ? (
-                                                        <div style={{ background: 'rgba(105, 157, 255, 1)', height: '100px', width: '100px', borderRadius: '10px' }}></div>
+                                                        <img src={Not_a_Cup} className="time_to_eat" style={{ height: '100px', width: '100px', borderRadius: '10px' }}></img>
                                                     ) : (
-                                                        <div style={{ background: 'rgba(105, 157, 255, 1)', height: '10vw', width: '10vw', borderRadius: '10px' }}></div>
+                                                        <img src={Not_a_Cup} className="time_to_eat" style={{ height: '10vw', width: '10vw', borderRadius: '10px' }}></img>
                                                     )
                                                 }
                                                 <p>Add your own snack!</p>
@@ -819,16 +818,16 @@ function Dashboard(props) {
                         : <></>
                 }
                 {
-                    page === 1 ? <ProgressReport /> : <></>
+                    page === 1 ? <ProgressReport uid={props.match.params.uid}/> : <></>
                 }
                 {
-                    page === 3 ? <RecipeBook /> : <></>
+                    page === 3 ? <RecipeBook uid={props.match.params.uid}/> : <></>
                 }
                 {
-                    page === 4 ? <SavedBlogs /> : <></>
+                    page === 4 ? <SavedBlogs uid={props.match.params.uid}/> : <></>
                 }
                 {
-                    page === 5 ? <Nutritionist /> : <></>
+                    page === 5 ? <Nutritionist uid={user.currentUser.uid} udata={userdata}/> : <></>
                 }
                 {
                     page === 6 ? <Friends myname={userdata.name} uid={props.match.params.uid} /> : <></>
