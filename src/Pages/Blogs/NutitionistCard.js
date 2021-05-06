@@ -45,7 +45,7 @@ function NutitionistCard(props) {
           horizontal: 'center',
         }}
       >
-        <div className = "nutri__card">
+        <div className = "nutri__card__popover">
         <div className="author__info__nutri">
             <Avatar className="avatar__second" style={{ height: '70px', width: '70px' }} src={yellow} alt="N"/>
         </div>
@@ -61,7 +61,7 @@ function NutitionistCard(props) {
         <div className = "nutritionist__follow">
             <h5>Follow</h5>
         </div>
-        <div className = "nutritionist__follow__gmail">
+        <div className = "nutritionist__follow__gmail" >
             <h5>chloeting@gmail.com</h5>
         </div>
 

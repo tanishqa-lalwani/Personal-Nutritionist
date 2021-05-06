@@ -11,7 +11,7 @@ import { db } from '../../firebase';
 function Blogs() {
 
     const [blogs, setblogs] = React.useState([]);
-
+    const [search,setSearch] = React.useState("");
     useEffect(() => {
         db.collection('Users').doc('Nutritionist').collection('blogs').orderBy('date','desc').onSnapshot(
             snap=>(setblogs(snap.docs.map(doc=>({
@@ -20,6 +20,10 @@ function Blogs() {
         )
     }, [blogs.length])
 
+    const searchItem = item => {
+        setSearch(item.target.value);
+    }
+
     return (
         <div style={{width:'100vw'}}>
         <div className="Blog__head">
@@ -27,8 +31,11 @@ function Blogs() {
         </div>
         <div className='search'>
             <div className="searchbox">
-                <SearchIcon />
-                <input type='text' placeholder="Search for Blogs"/>
+                {/* <SearchIcon /> */}
+                <input type='text' placeholder="Search for Blogs" value={search} onChange={searchItem}/>
+                <Button >
+                    <SearchIcon /> 
+                </Button>
             </div>
                 <Button variant="filled" style={{background:'#699DFF',fontFamily:'Poppins, sans-serif',textTransform:'capitalize',color:'white',}}>
                     <FilterListIcon/> Apply Filter
