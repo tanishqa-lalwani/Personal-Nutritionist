@@ -43,6 +43,7 @@ function Recipes() {
             const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=${API_KEY}&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true`)
             const json = await response.json();  
             setRecipes(json.results)
+            console.log(json.results)
             }
             catch (error) {
                 console.log(error);

@@ -3,7 +3,8 @@ import './Dashboard.css'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
-import CaloriesWithoutGoal from '../../calories'
+import { CaloriesWithoutGoal } from '../../calories'
+import Dietplans from './Dietplans/Dietplans'
 import AddIcon from '@material-ui/icons/Add';
 import CircularComponent from '../../Components/Circular_Progress/CircularComponent'
 import DashDrawer from '../../Components/Dash Drawer/DashDrawer'
@@ -227,7 +228,7 @@ function Dashboard(props) {
             .onSnapshot((snap) => {
                 setuserdata(snap.data());
             })
-        
+
         // if (userdata.activity_level === 0) setuserdata({ ...userdata, activity_level: 1.3 })
 
         setdetails({
@@ -235,7 +236,7 @@ function Dashboard(props) {
                 Math.ceil(Number(userdata.age)),
                 Math.ceil(Number(userdata.height)) / 100,
                 (1 - Math.ceil(Number(userdata.gender))),
-                Math.ceil(Number(userdata.activity_level===0?1.3:userdata.activity_level))))
+                Math.ceil(Number(userdata.activity_level === 0 ? 1.3 : userdata.activity_level))))
         });
 
         setcnt(cnt + 1);
@@ -292,7 +293,7 @@ function Dashboard(props) {
                 }
                 {
                     page === 0 ?
-                        <div className="goals__dashboard goals__dashboard__mobile" >
+                        <div className="goals__dashboard goals__dashboard__mobile" style={{ marginBottom: '20px' }}>
                             <div className="track track__mobile">
                                 <p>Hi {userdata?.name}</p>
                                 <h3 style={{ color: 'rgba(50, 30, 89, 1)' }}>Your goal for today</h3>
@@ -751,7 +752,7 @@ function Dashboard(props) {
                                         ))
                                     }
                                 </div>
-                                <div className="time_to_eat time_to_eat__mobile">
+                                {/* <div className="time_to_eat time_to_eat__mobile">
                                     <div style={{ display: 'flex', gap: "10px", alignItems: 'center' }}>
                                         <img src={Not_a_Cup} height="54px" width="54px" />
                                         <h3>Snacks</h3>
@@ -771,7 +772,7 @@ function Dashboard(props) {
                                                         <img src={Not_a_Cup} className="time_to_eat" style={{ height: '10vw', width: '10vw', borderRadius: '10px' }}></img>
                                                     )
                                                 }
-                                                <p>Add your own snack!</p>
+                                                <p>Add a snack!</p>
                                                 <div style={{ display: 'flex', gap: "10px", alignItems: 'center', marginLeft: "auto" }}>
                                                     {
                                                         window.screen.width > 500 ?
@@ -799,11 +800,11 @@ function Dashboard(props) {
                                                     }
                                                     {
                                                         window.screen.width > 500 ? (
-                                                            <div style={{ marginLeft: '40px', height: '100px', width: '50px', color: 'darkgreen', background: "rgba(0, 255, 100, 0.4)", borderRadius: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                            <div onClick={ } style={{ marginLeft: '40px', height: '100px', width: '50px', color: 'darkgreen', background: "rgba(0, 255, 100, 0.4)", borderRadius: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                                 <AddIcon fontSize="large" />
                                                             </div>
                                                         ) : (
-                                                            <div style={{ height: '10vw', width: '10vw', background: "rgba(0, 255, 100, 0.4)", color: 'darkgreen', borderRadius: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                            <div onClick={ } style={{ height: '10vw', width: '10vw', background: "rgba(0, 255, 100, 0.4)", color: 'darkgreen', borderRadius: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                                                 <AddIcon fontSize="small" />
                                                             </div>
                                                         )
@@ -811,23 +812,29 @@ function Dashboard(props) {
                                                 </div>
                                             </div>
                                         ))
-                                    }
+                                    } 
                                 </div>
+                                    */}
                             </div>
                         </div>
                         : <></>
                 }
                 {
-                    page === 1 ? <ProgressReport uid={props.match.params.uid}/> : <></>
+                    page === 1 ? <ProgressReport uid={props.match.params.uid} userdata={userdata} /> : <></>
                 }
                 {
-                    page === 3 ? <RecipeBook uid={props.match.params.uid}/> : <></>
+                    page === 3 ? <RecipeBook uid={props.match.params.uid} /> : <></>
                 }
                 {
-                    page === 4 ? <SavedBlogs uid={props.match.params.uid}/> : <></>
+                    page === 2 ? 
+                    <Dietplans uid={props.match.params.uid} userdata={userdata} />
+                    :<></>
                 }
                 {
-                    page === 5 ? <Nutritionist uid={user.currentUser.uid} udata={userdata}/> : <></>
+                    page === 4 ? <SavedBlogs uid={props.match.params.uid} /> : <></>
+                }
+                {
+                    page === 5 ? <Nutritionist uid={user.currentUser.uid} udata={userdata} /> : <></>
                 }
                 {
                     page === 6 ? <Friends myname={userdata.name} uid={props.match.params.uid} /> : <></>
