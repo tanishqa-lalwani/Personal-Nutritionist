@@ -1,6 +1,6 @@
 # Personal Nutritionist
 **Website Link** - https://personal-nutritionist-jvrrxd2y4-tanishqa-lalwani.vercel.app
-
+</br> **Youtube Demo Link** -
 
 
 # Table of Contents
@@ -9,10 +9,8 @@
 - [Features](#features)
 - [Tech Stack](#tech-stack)
   - [Core](#core)
-  - [Unit Testing](#unit-testing)
-- [Prerequisites](#prerequisites)
-- [User Guide](#user-guide)
-- [Web Application Demo](#demo)
+<!--- [Prerequisites](#prerequisites)
+- [User Guide](#user-guide) --->
 - [Contributors](#contributors)
 
 
@@ -21,10 +19,6 @@ The project aims at being a tool which monitors your nutrient intake, requiremen
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/tanishqa-lalwani/Personal-Nutritionist/blob/main/Readme_images/Home.PNG" width="700" height="400">
 
-
-## What is this?
-
- 
 
 ## Features 
 
@@ -44,6 +38,10 @@ The project aims at being a tool which monitors your nutrient intake, requiremen
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/tanishqa-lalwani/Personal-Nutritionist/blob/main/Readme_images/Profile.PNG" width="350" height="200"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://github.com/tanishqa-lalwani/Personal-Nutritionist/blob/main/Readme_images/Profile_2.PNG" width="350" height="200">
 
+## Tech Stack
+
+### Core
+
 
 
 ## Conclusion 
@@ -51,14 +49,6 @@ The project aims at being a tool which monitors your nutrient intake, requiremen
 Our website offers credible information to help you make healthful eating choices. We are developing a goto website for people who are obsessing over fitness and count their calories and hesitate over mouth watering treats. Our aim is to make sure people know what they eat and how much they need for their day. This is a healthy place for people as they are surrounded by world class nutritionists giving them opinions and prescribing diet plans to work with their routine all packaged in one deal.
 
 We aim to help users to find perfect recipes for themselves. Users can set goals and follow the best diet plans for overall health benefits. We use the best food databases across the internet to provide details about the number of nutrients, vitamins etc. of the food items.
-
-## Contributors
-
-Following are the contributors for this project - 
-
-<a href="https://github.com/tanishqa-lalwani/Personal-Nutritionist/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=tanishqa-lalwani/Personal-Nutritionist" />
-</a>
 
 
 ## Contributors
