@@ -29,9 +29,11 @@ function NutriClientCard({ uid }) {
     }, [clientdata?.length, uid])
 
     return (
-        <div className="nutri__card__prev" onClick = {handleClick}>
-            <Avatar src={clientdata?.image} className="circle" />
+        <div className="nutri__card__prev">
+            <div className = "nutricard__popover"  onClick = {handleClick}>
+            <Avatar src={clientdata?.image} className="circle__followers" style = {{marginLeft : '50px' , marginTop : '10px' }}  />
             <div className="user_name">{clientdata?.name}</div>
+            </div>
             <Popover
                 id={id}
                 open={open}
@@ -46,9 +48,9 @@ function NutriClientCard({ uid }) {
                     horizontal: 'center',
                 }}
             >
-                <div className="nutri__card" style={{height:'fit-content', width:'fit-content'}}>
+                <div className="nutri__card" style={{height:'fit-content', width:'fit-content',paddingTop : '20px'}}>
                     <div className="author__info__nutri">
-                        <Avatar className="avatar__second" style={{ height: '70px', width: '70px' }} src={clientdata?.image} alt="C" />
+                        <Avatar className="avatar__second_2" style={{ height: '70px', width: '70px' ,marginLeft : '110px',marginBottom : '10px'}} src={clientdata?.image} alt="C" />
                     </div>
                     <div className="author__name__nutri">
                         <h4 className="nutri__card__nutritionist" >{clientdata?.name}</h4>
@@ -69,6 +71,7 @@ function NutriClientCard({ uid }) {
                     </div>
 
                 </div>
+            
             </Popover>
         </div>
     );

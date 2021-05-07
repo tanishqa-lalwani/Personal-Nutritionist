@@ -13,6 +13,9 @@ import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import { useAuth } from '../../AuthContext';
+import { db } from '../../firebase';
+import { useParams } from 'react-router';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,14 +37,37 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,foodservings,foodrecipe}) {
+function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,foodservings,foodrecipe,foodId}) {
      const classes = useStyles();
+     const user = useAuth();
+     const params = useParams();
      const [openInst, setOpenInst] = React.useState(false);
      const handleOpenInst = () => {setOpenInst(true);};
      const handleCloseInst = () => {setOpenInst(false);};
 
      const [openBook, setOpenBook] = React.useState(false);
-     const handleOpenBook = () => {setOpenBook(true);};
+     const handleOpenBook = () => {
+      //  user.currentUser == null ?  setOpenBook(true) 
+      db.collection('Users').doc('Client').collection('clientel').doc(user.currentUser.uid).collection('saved-recipes').doc(foodId.toString()).set({
+        foodcal : foodcal,
+        foodcarbs : foodcarbs,
+        foodfat : foodfat,
+        foodimg : foodimg,
+        foodprotein : foodprotein,
+        foodrecipe : foodrecipe,
+        foodservings : foodservings,
+        name : foodname,
+        
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+    })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+    });
+
+      
+      };
      const handleCloseBook = () => {setOpenBook(false);};
 
     return (

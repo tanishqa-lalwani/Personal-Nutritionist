@@ -12,7 +12,7 @@ function Food() {
     const [foodItem, setFoodItem] = useState("");
     const [data, setData] = useState("");
     const [nutrients, setNutrients] = useState("");
-
+    const [mess , setMess] = useState("")
  
 
   useEffect(() => {
@@ -25,17 +25,33 @@ function Food() {
   };
 
   const getNutrition = async () => {
-    const { FoodDatabaseClient } = require("edamam-api");
+    // const { FoodDatabaseClient } = require("edamam-api");
 
-    const client = new FoodDatabaseClient({
-      appId: "8365cf09",
-      appKey: "39add885528600da2cdaecb4a9f1efb4",
-    });
+    // const client = new FoodDatabaseClient({
+    //   appId: "8365cf09",
+    //   appKey: "39add885528600da2cdaecb4a9f1efb4",
+    // });
 
-    const results = await client.search({ query });
-    setData(results.parsed[0].food);
-    setNutrients(results.parsed[0].food.nutrients);
-    console.log(results.parsed[0].food);
+    // const results = await client.search({ query });
+    const nutritionix   = require("nutritionix-api");
+    const YOUR_APP_ID   = '9aca9837'; // Your APP ID
+    const YOUR_API_KEY  = 'ee2edbc36f9d23b5ca59ec30bc85b359	'; // Your KEY
+ 
+    nutritionix.init(YOUR_APP_ID,YOUR_API_KEY);
+    if(query !== '') {
+      nutritionix.natural.search(query).then(result => {
+        if(result.foods) {
+          setData(result.foods[0].photo)
+          setNutrients(result.foods[0])
+        } 
+          
+        else {
+          setMess("This food cannot be found!")
+        }
+     });
+    }
+    
+   
   };
 
   return (
@@ -68,7 +84,11 @@ function Food() {
               </div>
             </form>
         </div>
+                  {mess ? <h3>{mess}</h3> :
+                  
+                  
 
+                 
         <div className="food__display food__display__mobile">
           <div className="desc_of_food desc__food__mobile">
               {/* <div className="sample_boxes"></div>
@@ -80,8 +100,8 @@ function Food() {
               <div className="sample_boxes"></div>
               <div className="sample_boxes"></div> */}
                {
-            data.label ? (
-            <Nutrients NutritionData = {data.label} />
+            nutrients.food_name ? (
+            <Nutrients NutritionData = {nutrients} />
             ):(
                 <h2> </h2>
             )
@@ -89,13 +109,14 @@ function Food() {
         }
           </div>
           
+          {/* <div className = "food__bg" > */}
           <div className="food_page_img food_page_img__mobile">
-            <h1> {data?.label}</h1>
+            <h1> {nutrients?.food_name}</h1>
 
             {
-                data.image ? (
+                data.thumb ? (
 
-                    <div className = "nutrient__img" style =  {{  background :  `url(${data.image})` }} > </div>
+                    <div className = "nutrient__img_2" style =  {{  background :  `url(${data.thumb})` ,backgroundRepeat : 'no-repeat',width : '25vw'}} > </div>
 
 
                 ):(
@@ -116,6 +137,8 @@ function Food() {
             {/* <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max" alt=""/> */}
           </div>
         </div> 
+        // </div>
+           }
        
        
 

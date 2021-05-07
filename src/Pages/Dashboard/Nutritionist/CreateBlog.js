@@ -9,9 +9,28 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { db, firebase, storage } from '../../../firebase'
 import { useAuth } from '../../../AuthContext'
+import { Avatar, IconButton, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 
 
 function CreateBlog({ uid, ndata }) {
+
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+      }
+    const [state, setState] = React.useState({
+        open_2: false,
+        vertical: 'top',
+        horizontal: 'center',
+    });
+    
+    const { vertical, horizontal, open_2 } = state;
+    
+    
+    
+    const handleClose = () => {
+        setState({ ...state, open: false });
+    };
     const user = useAuth()
     const [open, setOpen] = useState(false);
     const [userd, setuserd] = useState([])
@@ -40,7 +59,8 @@ function CreateBlog({ uid, ndata }) {
             .doc(uid).onSnapshot(snap => setuserd(snap.data()))
     }, [userd?.length])
 
-    const handleSubmit = () => {
+    const handleSubmit = (newState) => {
+        setState({ open_2: true, ...newState });
 
         let doc_name = uid.toString() + (Date.now()).toString();
 
@@ -119,7 +139,7 @@ function CreateBlog({ uid, ndata }) {
                         <div style={{ paddingBottom: '15px', display: 'flex', justifyContent: 'space-between' }}>
                             <div>
                                 <label style={{ color: '#321E59' }}>Title</label><br />
-                                <input type="text" value={data.title} name="title" style={{ width: '500px', padding: '12px 15px', margin: '8px 0' }} onChange={handleChange} />
+                                <input type="text" value={data.title} name="title" style={{ width: '500px', padding: '12px 15px', margin: '8px 0' }}  onChange={handleChange} required />
                             </div>
                             <input
                                 id="blogimg"
@@ -127,6 +147,7 @@ function CreateBlog({ uid, ndata }) {
                                 type="file"
                                 accept="image/*"
                                 style={{ display: 'none' }}
+            
                             />
                             <label for="Image">
                                 <div style={{ width: '150px', display: 'flex', background: 'rgba(150,255,0,0.7)', alignItems: 'center', justifyContent: 'center' }}>
@@ -136,7 +157,7 @@ function CreateBlog({ uid, ndata }) {
                         </div>
                         <div style={{ paddingBottom: '15px' }}>
                             <label style={{ color: '#321E59' }}>Short Introduction (1-2 lines)</label><br />
-                            <input type="text" name="short_desc" style={{ width: '100%', padding: '12px 15px', margin: '8px 0' }} value={data.short_desc} onChange={handleChange} />
+                            <input  type="text" name="short_desc" style={{ width: '100%', padding: '12px 15px', margin: '8px 0' }} value={data.short_desc} onChange={handleChange} required />
                         </div>
 
                         <header className="App-header">
@@ -150,8 +171,24 @@ function CreateBlog({ uid, ndata }) {
                             toolbarClassName="toolbar-class"
                             />
                         <div className="uploadbtn">
-                            <button id="upload_btn" onClick={handleSubmit}>Upload blog</button>
+                          
+                            <button id="upload_btn" onClick={handleSubmit({ vertical: 'top', horizontal: 'center' })}>Upload blog</button>
+                            
+
+                            
+                            <Snackbar
+                            anchorOrigin={{ vertical, horizontal }}
+                            open={open_2}
+                            autoHideDuration={2000}
+                            onClose={handleClose}
+                            key={vertical + horizontal}
+                            >
+                            <Alert onClose={handleClose} severity="success">
+                                Blog Has Been Created
+                            </Alert>
+                            </Snackbar>
                         </div>
+
                     </div>
                 }
             </div>

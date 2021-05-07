@@ -185,7 +185,7 @@ function Report() {
     let weekdays = [];
 
     const getDate = () => {
-        db.collection('Users').doc('Client').collection('clientel').doc('13bvu6Gqu6MzjAZLarvklZ0EaNy2')
+        db.collection('Users').doc('Client').collection('clientel').doc(params.uid)
         .onSnapshot(
 
         snap => {
@@ -227,7 +227,6 @@ function Report() {
         // options.data[4].dataPoints[k+1] = {
         //     x : new Date(userData?.recipe_update + 5)  , y : FatPercent + 10
         // }
-        console.log(options.data[0].dataPoints)
     }
 
     const getData = () => {
@@ -235,7 +234,7 @@ function Report() {
         getDate();
 
 
-        db.collection('Users').doc('Client').collection('clientel').doc('13bvu6Gqu6MzjAZLarvklZ0EaNy2').collection('Khaana')
+        db.collection('Users').doc('Client').collection('clientel').doc(params.uid).collection('Khaana')
             .onSnapshot(
             snap => {
                 setProgress(snap.docs.map(document => document.data()))
@@ -255,6 +254,7 @@ function Report() {
 
             setCoordinates(weekdays.length-1)
 
+
         }
     
 
@@ -266,12 +266,11 @@ function Report() {
    
         getData()
         
-    },[progress.length])
+    },[progress,weekdays?.length])
 
     const checkProgress = () => {   
         
        if(progress !== []) {
-        console.log(progress[0])
         let tasks_completed = 0, carbs_total=0,protein_total=0,calorie_total=0,fat_total=0;
         let  carbs_completed=0,protein_completed=0,calorie_completed=0,fat_completed=0;
 
@@ -290,7 +289,6 @@ function Report() {
             calorie_total += progress[i]?.cal;
             fat_total += progress[i]?.fat;
         }
-        console.log(calorie_completed,calorie_total)
         setProgressPercent(tasks_completed/3 * 100);
         setProteinPercent(Math.round(protein_completed/protein_total * 100))
         setCaloriePercent(Math.round(calorie_completed/calorie_total * 100))
@@ -315,7 +313,6 @@ function Report() {
                     <p>Hi, Username!</p>
 
                     <h3 className = "report__intro">You’re doing great </h3>
-{console.log(caloriePercent)}
                     {date}
                     <div className = "user__personal__info">
                         <div className = "report__box">

@@ -6,7 +6,9 @@ import RecipeItem from '../../../Pages/Recipes/Recipeitem'
 import img from './image 1.png'
 import axios from 'axios'
 import {db }from '../../../firebase'
-function RecipeBook({uid}) {
+import { useParams } from 'react-router'
+function RecipeBook() {
+    const params = useParams();
     const [data, setData] = React.useState([])
     const [food, setFood] = React.useState([])
 
@@ -14,21 +16,16 @@ function RecipeBook({uid}) {
         SavedRecipes();
     }, [])
 
-    const Recipe = (id) => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=f8c828fd138c4a9eafba6575753ae18c`)
-        .then(res=> setFood(item => [...item,res.data]))
-    }
-    const  SavedRecipes = async() => {
-       db.collection('Users').doc('Client').collection('clientel').doc(uid).onSnapshot((snap)=>{
+    
+    const  SavedRecipes = () => {
+       db.collection('Users').doc('Client').collection('clientel').doc(params.uid).collection('saved-recipes').onSnapshot((snap)=>{
             setData(
-               snap.data()?.saved_recipes
+               snap.docs.map(document=> document.data())
             );
         })
-
-        await Promise.all(data?.map(async (id)=>{
-            if(data) Recipe(id) 
-         }))
     }
+
+    console.log(data)
 
 
     return (
@@ -45,8 +42,17 @@ function RecipeBook({uid}) {
                 <div className="track__boxes recipe__boxes recipe__boxes__mobile">
 
                     {
-                        food?.map(recipe => (
-                            <RecipeItem foodimg={recipe.image} foodname={recipe.title} foodcal={480} />
+                        data?.map(recipe => (
+                            <RecipeItem 
+                            foodname={recipe.name}  
+                            foodimg = {recipe.foodimg}
+                            foodcal={recipe.foodcal}
+                            foodfat={recipe.foodfat}
+                            foodcarbs={recipe.foodcarbs}
+                            foodprotein={recipe.foodprotein}
+                            foodservings={recipe.foodservings}
+                            foodrecipe={recipe.foodrecipe}
+                            />
                         ))
                     } 
 

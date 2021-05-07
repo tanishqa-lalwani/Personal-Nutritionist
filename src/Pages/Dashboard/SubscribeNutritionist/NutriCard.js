@@ -46,7 +46,7 @@ function NutriCard(props) {
             <h4>{nutridata?.name}</h4>
             <h5>{nutridata?.occupation} </h5>
         </div>
-        <div className = "nutritionist__follow">
+        <div className = "nutritionist__follow"  >
             <h5>Follow</h5>
         </div>
     </div>
@@ -64,7 +64,7 @@ function NutriCard(props) {
           horizontal: 'center',
         }}
       >
-        <div className = "nutri__card">
+        <div className = "nutri__card__nutri">
         <div className="author__info__nutri">
             <Avatar className="avatar__second" style={{ height: '70px', width: '70px' }} src={nutridata?.image} alt="N"/>
         </div>
@@ -77,9 +77,9 @@ function NutriCard(props) {
         </div>
         <div className= "nutri__card__follow">
         <div className = "nutritionist__follow" onClick = {sendNutriFollowRequest}>
-            <h5>Follow</h5>
+            <h5>Following</h5>
         </div>
-        <div className = "nutritionist__follow__gmail">
+        <div className = "nutritionist__follow__gmail_2">
             <h5>{nutridata?.email}</h5>
         </div>
 

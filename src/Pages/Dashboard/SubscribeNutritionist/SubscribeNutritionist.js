@@ -1,10 +1,12 @@
 import React from 'react';
 import NutriCard from './NutriCard'
 import { db , firebase} from '../../../firebase'
-import { Avatar } from '@material-ui/core';
+import { Avatar, Button, Snackbar } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Chip from '@material-ui/core/Chip';
 import { YouTube } from '@material-ui/icons';
+import MuiAlert from '@material-ui/lab/Alert';
+import Alert from '@material-ui/lab/Alert';
 
 function SubscribeNutritionist(props) {
     const [subscribed_nutri, setSubscribed_nutri] = React.useState([])
@@ -12,6 +14,19 @@ function SubscribeNutritionist(props) {
 
     const [res, setres] = React.useState([]);
 
+    const [open, setOpen] = React.useState(false);
+    
+    const handleClick = () => {
+    setOpen(true);
+    };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
     React.useEffect(() => {
         db.collection('Users').doc('Client').collection('clientel')
             .doc(props.uid).collection('Subscribed-Nutritionists').onSnapshot(
@@ -109,7 +124,13 @@ function SubscribeNutritionist(props) {
                                 label="Follow"
                                 clickable
                                 color="primary"
+                                onClick={handleClick}
                                 />
+                           <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                                <Alert onClose={handleClose} severity="success">
+                                    Great, Nutritionist Subscribed!
+                                </Alert>
+                            </Snackbar>
                             </div>
                         </div>
                     ))

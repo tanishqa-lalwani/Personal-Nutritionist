@@ -53,7 +53,7 @@ function Recipes() {
 
        
         try {
-        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=0e06064897434c9ea1e85457f3fb7b26&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&number=30`)
+        const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${query}&apiKey=a882d6ab20d341839f652d5a79751f9b&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&number=30`)
         const json = await response.json();  
         setRecipes(json.results)
         console.log(json.results)
@@ -188,6 +188,7 @@ function Recipes() {
 
                     <Recipeitem 
                     key={recipe.id}
+                    foodId = {recipe.id}
                     foodname={recipe.title}  
                     foodimg = {recipe.image}
                     foodcal={recipe.nutrition.nutrients[0].amount}

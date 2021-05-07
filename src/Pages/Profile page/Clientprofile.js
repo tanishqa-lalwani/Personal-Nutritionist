@@ -7,14 +7,32 @@ import { db, storage } from '../../firebase'
 import './Clientprofile.css';
 import upload from '../../Images/upload.svg';
 import Footer from '../../Components/Footer/footer'
-import { Avatar, IconButton } from '@material-ui/core';
+import { Avatar, IconButton, Snackbar } from '@material-ui/core';
 import { CollectionsOutlined } from '@material-ui/icons';
+import MuiAlert from '@material-ui/lab/Alert';
 
 
 
 export default function Clientprofile(props) {
 
     const name = useRef(null);
+   
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+      }
+    const [state, setState] = React.useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+      });
+    
+      const { vertical, horizontal, open } = state;
+    
+    
+    
+      const handleClose = () => {
+        setState({ ...state, open: false });
+      };
     const det = {
         height: 0,
         weight: 0,
@@ -75,7 +93,11 @@ export default function Clientprofile(props) {
             setdp(0);
 
     }
-    const handlesave = () => {
+    const handlesave = (newState) => {
+        setState({ open: true, ...newState });
+
+
+
         db.collection('Users').doc('Client')
             .collection('clientel')
             .doc(props.match.params.uid).update({
@@ -88,6 +110,9 @@ export default function Clientprofile(props) {
                 age: Number(data.age),
                 email: data.email
             })
+
+            
+          
     }
 
     return (
@@ -153,9 +178,24 @@ export default function Clientprofile(props) {
                 </div>
 
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                    <Button id='trial__but' onClick={handlesave} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
+                <Button id='trial__but' onClick={()=>{
+                    handlesave({ vertical: 'top', horizontal: 'center' });
+                    }} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
                         Save Changes
                 </Button>
+               
+
+                <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                key={vertical + horizontal}
+                >
+                     <Alert onClose={handleClose} severity="success">
+                     Your Changes are Saved!!
+                    </Alert>
+                </Snackbar>
                 </div>
             </div>
             <Footer />

@@ -71,7 +71,8 @@ function Signup({ close }) {
                 goal: 0,
                 age: 0,
                 email: res.user.email,
-                recipe_update: 0
+                recipe_update: 0,
+                progress_update : 0,
               })
             history.push(`/${res.user.uid}/profile`);
           }

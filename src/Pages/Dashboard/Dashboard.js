@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Dashboard.css'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import CaloriesWithoutGoal from '../../calories'
 import AddIcon from '@material-ui/icons/Add';
 import CircularComponent from '../../Components/Circular_Progress/CircularComponent'
@@ -62,7 +62,7 @@ function Dashboard(props) {
 
     const getRecipes = async () => {
         console.log(ct, "API_USED");
-        let mealsearch = "https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories=" + details?.cal + "&apiKey=f8c828fd138c4a9eafba6575753ae18c ";
+        let mealsearch = "https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories=" + details?.cal + "&apiKey=a882d6ab20d341839f652d5a79751f9b ";
         const result = await axios.get(mealsearch);
         setmeals(result.data.meals);
         setchk(ct + 1);
@@ -70,7 +70,7 @@ function Dashboard(props) {
     }
 
     const getRecipeInfo = () => {
-        let recipesearch = "https://api.spoonacular.com/recipes/informationBulk?ids=" + meals[0]?.id + "," + meals[1]?.id + "," + meals[2]?.id + "&includeNutrition=true" + "&apiKey=f8c828fd138c4a9eafba6575753ae18c ";
+        let recipesearch = "https://api.spoonacular.com/recipes/informationBulk?ids=" + meals[0]?.id + "," + meals[1]?.id + "," + meals[2]?.id + "&includeNutrition=true" + "&apiKey=a882d6ab20d341839f652d5a79751f9b ";
         axios.get(recipesearch).then(
             (res) => {
                 // setdum(res.data);
@@ -817,21 +817,24 @@ function Dashboard(props) {
                         </div>
                         : <></>
                 }
+
+                
                 {
-                    page === 1 ? <ProgressReport uid={props.match.params.uid}/> : <></>
+                    page === 1? <ProgressReport uid={props.match.params.uid}/> : <></>
                 }
                 {
-                    page === 3 ? <RecipeBook uid={props.match.params.uid}/> : <></>
+                    page === 3  ? <RecipeBook uid={props.match.params.uid}/> : <></>
                 }
                 {
-                    page === 4 ? <SavedBlogs uid={props.match.params.uid}/> : <></>
+                    page === 4  ? <SavedBlogs uid={props.match.params.uid}/> : <></>
                 }
                 {
-                    page === 5 ? <Nutritionist uid={user.currentUser.uid} udata={userdata}/> : <></>
+                    page === 5  ? <Nutritionist uid={user.currentUser.uid} udata={userdata}/> : <></>
                 }
                 {
-                    page === 6 ? <Friends myname={userdata.name} uid={props.match.params.uid} /> : <></>
+                    page === 6  ? <Friends myname={userdata.name} uid={props.match.params.uid} /> : <></>
                 }
+            
             </div >
         </>
     )

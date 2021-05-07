@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { db , storage} from '../../firebase'
-import { Avatar, IconButton } from '@material-ui/core';
+import { Avatar, IconButton, Snackbar } from '@material-ui/core';
 import upload from '../../Images/upload.svg';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -10,8 +10,25 @@ import './Nutritionistprofile.css';
 import avatar from './user.png';
 import Footer from '../../Components/Footer/footer'
 import { useAuth } from '../../AuthContext'
+import MuiAlert from '@material-ui/lab/Alert';
 
 export default function NutritionistProfile(props) {
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} />;
+      }
+    const [state, setState] = React.useState({
+        open: false,
+        vertical: 'top',
+        horizontal: 'center',
+      });
+    
+      const { vertical, horizontal, open } = state;
+    
+    
+    
+      const handleClose = () => {
+        setState({ ...state, open: false });
+      };
     // const name = useRef(null);
     const det = {
         occupation: "",
@@ -40,7 +57,9 @@ export default function NutritionistProfile(props) {
         setdata({ ...data, [name]: value });
     };
 
-    const handlesave = () => {
+    const handlesave = (newState) => {
+        setState({ open: true, ...newState });
+
         db.collection('Users').doc('Nutritionist')
             .collection('staff')
             .doc(props.match.params.uid).set({
@@ -125,9 +144,22 @@ export default function NutritionistProfile(props) {
                     <TextField id="Bio" name="bio" onChange={handleChange} label="Bio" value={data?.bio} variant="outlined" />
                 </div>
                 <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-                    <Button id='trial__but' onClick={handlesave} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
+                    <Button id='trial__but'onClick={()=>{
+                    handlesave({ vertical: 'top', horizontal: 'center' });
+                    }} variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
                         Save Changes
                 </Button>
+                <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                open={open}
+                autoHideDuration={2000}
+                onClose={handleClose}
+                key={vertical + horizontal}
+                >
+                     <Alert onClose={handleClose} severity="success">
+                     Your Changes are Saved!!
+                    </Alert>
+                    </Snackbar>
                 </div>
             </div>
             <Footer />
