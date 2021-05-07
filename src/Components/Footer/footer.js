@@ -1,38 +1,21 @@
 import React from 'react'
 import './footer.css'
-import { Link } from 'react-router-dom'
-import FavoriteIcon from '@material-ui/icons/Favorite'
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
 
 function Footer(){
 
     return(
-        <div className="footer">
-                <div className="sections">
-                    <Link to='/food' style={{textDecoration: 'none',color:'white'}}>
-                        <div className="pages">
-                            Food
-                        </div>
-                    </Link>
-                    <Link  to='/recipes' style={{textDecoration: 'none',color:'white'}}>
-                        <div className="pages">
-                            Recipes
-                        </div>
-                    </Link>
-                    <Link  to='/blogs' style={{textDecoration: 'none',color:'white'}}>
-                        <div className="pages">
-                            Blogs
-                        </div>
-                    </Link>
-                    <Link  to='/recipes' style={{textDecoration: 'none',color:'white'}}>
-                        <div className="pages">
-                            About Us
-                        </div>
-                    </Link>
+        <div className="footer" style={{background:'#699DFF'}}>
+            <div style={{margin:'auto', color:'white',display:'flex',flexDirection:'column', justifyContent:'space-evenly',alignItems:'center', height:'100%', width:'100%'}}>
+                <div style={{display:'flex', gap:'5%', minWidth:`${window.screen.width > 500 ? "40%" : "80%"}`,justifyContent:'space-evenly'}}>
+                    <h3>Food</h3>
+                    <h3>Recipes</h3>
+                    <h3>Blogs</h3>
+                    <h3 style={{width:'fit-content'}}>About Us</h3>
                 </div>
-                <div style={{paddingTop:'20px',color:'white'}}>
-                    <p>Made with <FavoriteIcon/> and <MusicNoteIcon/></p>
-                </div>
+                <h3 style={{display:'flex', alignItems:'center', gap:'10px'}}>Made with <FavoriteIcon /> and <MusicNoteIcon /></h3>
+            </div>
         </div>
     )
 

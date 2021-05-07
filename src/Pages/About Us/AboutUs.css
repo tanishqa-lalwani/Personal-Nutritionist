@@ -1,0 +1,94 @@
+.aboutus__screen{
+    overflow-x: hidden;
+  }
+  
+  .aboutus__head {
+    background: #DCCEF9;
+    padding: 15vh 50px;
+    padding-bottom: 5vh;
+    color: #321e59;
+    font-weight: 600;
+  }
+  
+  .container__head{
+    text-align: center;
+    margin: 60px 0 20px;
+    font-family: Poppins;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 39px;
+    color: #321E59;
+  }
+  
+  .content{
+    margin: 0 0 20px;
+    padding: 25px 20% 50px;
+    font-family: Poppins;
+    font-size: 130%;
+    line-height: 1.5rem;
+    color: #000000;
+  }
+  
+  .section_container{
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .section-header {
+    text-align: center;
+    padding: 6rem 0 4rem;
+  }
+  
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .object {
+    max-width: 250px;
+    margin: 1rem 0;
+  }
+  
+  .imgbox {
+    width: 167px;
+    height: 182px;
+    background-color: #F1F3Fa;
+    transition: .2s ease-in-out;
+  }
+  
+  .imgbox:hover {
+    transform: scale(1.02);
+  }
+  
+  .text{
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .img-cont {
+    position: absolute;
+    top: 300px;
+    right: 14px;
+    width: 15%;
+    height: 295.53px;
+    }
+  
+  .girl-img {
+    display: block;
+    margin-right: auto;
+    margin-left: auto; }
+  
+  
+  @media only screen and (max-width: 800px) {
+  
+    .img-cont > .girl-img{
+      display: none;
+    }
+  
+    .content{
+      text-align: center;
+    }
+  
+  }

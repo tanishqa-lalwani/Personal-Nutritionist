@@ -63,15 +63,17 @@
 @media only screen and (max-width: 500px) {
     .Login{
         height: calc(100vh - 60px);
-        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
         width: 100vw;
     }   
     .parent__container__login{
-        width: 100vw;
+        width: calc(100% - 40px);
         padding: 20px;
         display: block;
     }
     .left__login{
-        display: none;
+        height: 40vh;
+        width: 100%;
     }
 }

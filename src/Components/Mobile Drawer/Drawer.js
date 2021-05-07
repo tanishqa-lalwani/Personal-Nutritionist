@@ -127,9 +127,11 @@ export default function TemporaryDrawer({ loc,uname , usrimg}) {
                         <div className="listitemsidebar">Blogs</div>
                     </ListItem>
                 </Link>
+                <Link to='/aboutus' style={{ textDecoration: 'none', color: 'black' }}>
                 <ListItem button key="About Us">
                     <div className="listitemsidebar">About Us</div>
                 </ListItem>
+                </Link>
             </List>
         </div>
     );

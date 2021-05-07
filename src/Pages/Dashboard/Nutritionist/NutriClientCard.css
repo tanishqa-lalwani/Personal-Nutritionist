@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+.nutri__card_nut{
+padding-right: 15px;
+width: 153px;
+height: 160px;
+background: #FFFFFF;
+opacity: 1;
+border: 3px solid #B6D1FC;
+box-shadow: 4px 4px 10px rgba(105, 157, 255, 0.2);
+border-radius: inherit;
+align-items: center;
+
+}
+.nutri__card_nut > .author__name__nutri_nut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nutri__card__prev .user_name_nut{
+    width: 50%;
+    text-align: center;
+}
+.nutri__card__prev{
+    width: 10vw;
+    height: 20vh;
+    border: 3px solid #B6D1FC;
+    box-shadow: 4px 4px 10px rgba(105, 157, 255, 0.2);
+}
+.nutri__card__follow{
+    gap:10px;
+}

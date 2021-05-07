@@ -12,6 +12,7 @@
     z-index: 1400;
     top: 0;
 }
+
 .header__user__page{
     display: flex;
     gap:5px;
@@ -34,6 +35,13 @@
     padding: 0 20px;
     margin-left: auto;
 }
+
+#simple-menu .MuiMenu-paper{ 
+    color: #1B3E81;
+    background: aliceblue;
+    margin-right: 50px;
+    border-radius: 15px;
+} 
 
 @media only screen and (max-width: 500px) 
 {

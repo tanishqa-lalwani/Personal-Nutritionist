@@ -1,5 +1,5 @@
 # Personal Nutritionist
-**SE Group 29** - https://personal-nutritionist-6e19a.web.app/
+**SE Group 29** - https://personal-nutritionist-7fbgibehe-tanishqa-lalwani.vercel.app
 
 ## Overview 
 The project aims at being a tool which monitors your nutrient intake, requirements and diet plan. Personal Nutritionist as the name, the system can act as your personal nutritionist while this system can be used also by nutritionists gaining a lot of information and help in many ways. APIs help the system to get the information in many ways. The user can get details about a number of nutrients, vitamins etc of a fruit or vegetable. The user can add his recipes or get recipes using the API. The System basically helps the user in what to eat and which is good, what will help him and etc, the system will help him filter things easily. The System also allows the user to make a diet plan and remind him of his food timings.

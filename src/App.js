@@ -3,8 +3,11 @@ import Intro from './Pages/Intro/Intro'
 import Header from './Components/Header/header'
 import Recipes from "./Pages/Recipes/Recipes";
 import Blogs from "./Pages/Blogs/Blogs";
+import Fblogs from "./Pages/Blogs/FullBlog";
 import Food from "./Pages/Food/Food";
-import Notfound404 from "./Pages/Notfound404/Notfound";
+import verification from "./Pages/Notfound404/verifi";
+import Notfound from "./Pages/Notfound404/Notfound";
+import AboutUs from './Pages/About Us/AboutUs'
 import Progress from './Pages/Progress_Report/Report'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Clientprofile from './Pages/Profile page/Clientprofile'
@@ -20,6 +23,7 @@ import Nutritionist from './Pages/Dashboard/Nutritionist/Nutritionist'
 import CreateBlog from './Pages/Nutritionist/CreateBlog'
 import { AuthProvider } from './AuthContext'
 
+
 function App() {
   return (
     <>
@@ -32,25 +36,23 @@ function App() {
             atActive={{ opacity: 1 }}
             className="switch-wrapper"
           >
+            <Route exact path="/verification" component={verification} />
+            <Route exact path="/:uid/Nutritionistprofile" component={Nutritionistprofile} />
             <Route exact path="/" component={Intro} />
             <Route exact path="/blogs" component={Blogs} />
             <Route exact path="/food" component={Food} />
+            <Route exact path="/aboutus" component={AboutUs} />
             <Route exact path="/recipes" component={Recipes} />
+            <Route exact path="/:blogid/fullBlog" component={Fblogs} />
             <Route exact path="/:uid/dashboard" component={Dashboard} />
-            {/* <Route exact path="/:uid/dashboard/progress" component={Progress} /> */}
-            {/* <Route exact path="/:uid/dashboard/recipebook" component={RecipeBook} /> */}
-            {/* <Route exact path="/:uid/dashboard/savedblogs" component={SavedBlogs} /> */}
+            <Route exact path="/:uid/Nutritionistdashboard" component={Nutritionist} />
             <Route exact path="/:uid/profile" component={Clientprofile} />
-            {/* <Route exact path="/:uid/dashboard/friends" component={Friends} /> */}
             {
               window.screen.width <= 500 ? (<>
                 <Route exact path="/signupmobile" component={Signupmobile} />
                 <Route exact path="/loginmobile" component={loginmobile} /></>)
                 : (<></>)
             }
-            <Route exact path="/Nutritionistprofile" component={Nutritionistprofile} />
-            {/* <Route exact path='/:uid/dashboard/Nutritionist' component={Nutritionist} /> */}
-            <Route component={Notfound404} />
           </AnimatedSwitch>
         </Router>
       </AuthProvider>

@@ -1,90 +1,114 @@
-.recipe__head{
-    background: #9CBEFF;
-    padding: 15vh 50px;
-    padding-bottom: 5vh;
-    color: #321E59;
-    font-weight: 600;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
+
+.recipe__head {
+  background: #9cbeff;
+  padding: 15vh 50px;
+  padding-bottom: 5vh;
+  color: #321e59;
+  font-weight: 600;
 }
-#search{
-    padding: 10px 65px 10px 5px;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    overflow: hidden;
+#search {
+  padding: 10px 65px 10px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
-.searchbox{
-    border:1px solid gray;
-    display: flex;
-    align-self: flex-start;
-    padding: 5px; 
-    gap: 5px;
-    border-radius: 20px;
-    align-items: center;
+.searchbox {
+  border: 1px solid gray;
+  display: flex;
+  align-self: flex-start;
+  padding: 5px;
+  gap: 5px;
+  border-radius: 20px;
+  align-items: center;
 }
-#search>.searchbox>input{
-    border: none;
-    width: 40vw;
-    font-size: medium;
-    outline: none;
+#search > .searchbox > input {
+  border: none;
+  width: 40vw;
+  font-size: medium;
+  outline: none;
 }
 
-.recipes{
-    padding: 30px 50px;
-    margin: auto;
-    display: grid;
-    grid-column-gap: 30px;
-    grid-row-gap: 20px;
-    grid-template-columns: repeat(4,1fr); 
-    width: calc(100vw - 110px);
+.Filterbox {
+  margin: auto;
+  background-color: azure;
+  width: 85%;
+  display: flex;
+  padding: 3%;
+  border-radius: 5px;
 }
-#search>button{
-    border: none;
+
+.Filterbox > h3 {
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 14px;
 }
-#mobile{
-    display: none;
+
+.filterInput {
+  margin-top: 2%;
 }
-#pc{
-    display : flex;
+
+#input-min,
+#input-min-protein {
+  margin-right: 3%;
 }
-#searchmob{
-    display: none;
+
+.recipes {
+  padding: 30px 50px;
+  margin: auto;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-row-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  width: calc(100vw - 110px);
+}
+#search > button {
+  border: none;
+}
+#mobile {
+  display: none;
+}
+#pc {
+  display: flex;
+}
+#searchmob {
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
-
-.recipes{
+  .recipes {
     display: grid;
     padding: 10px 30px;
     width: auto;
-    grid-template-columns: repeat(1,1fr);
-}
+    grid-template-columns: repeat(1, 1fr);
+  }
 
-#pc{
+  #pc {
     display: none;
-}
-#mobile{
+  }
+  #mobile {
     display: flex;
-}
-#search{
+  }
+  #search {
     display: none;
-}
-#searchmob{
+  }
+  #searchmob {
     width: 84vw;
     display: flex;
     padding: 10px 40px 10px 5px;
     padding: 10px 5px;
     justify-content: space-between;
     align-items: center;
-}
-#searchmob>.searchbox>input{
+  }
+  #searchmob > .searchbox > input {
     border: none;
     width: 50vw;
     font-size: medium;
     outline: none;
-}
+  }
 
-form.search{
-    padding:10px 30px;
-}
-
+  form.search {
+    padding: 10px 30px;
+  }
 }

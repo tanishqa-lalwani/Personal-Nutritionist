@@ -1,0 +1,70 @@
+.Blog__head__change {
+  background: #deeaff;
+  padding: 15vh 50px;
+  padding-bottom: 5vh;
+  color: #321e59;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+.full__blogs__content {
+  display: flex;
+  padding: 3%;
+  justify-content: space-between;
+}
+.full__blogs__main {
+  flex: 0.7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.full__blogs__title {
+  font-size: 16px;
+}
+.full__blogs__info {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.full__blog__image {
+  width: 300px;
+  height: 350px;
+}
+.full__blogs__tags {
+  display: flex;
+  width: fit-content;
+  padding: 0 10px;
+  height: 30px;
+  background: #b3f4f9;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  color: rgba(12, 96, 209, 1);
+}
+.full__blogs__tags h3 {
+  font-size: 16px;
+}
+.blogs__follow__nutritionist {
+  padding: 10px;
+  align-items: center;
+  gap: 5%;
+  display: flex;
+  width: 50%;
+  height: 100px;
+  cursor: pointer;
+  border: 2px solid #f9ced8;
+  box-sizing: border-box;
+}
+
+.nutritionist__follow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100px;
+  height: 30px;
+  margin: 5%;
+  background: #699dff;
+  border-radius: 5px;
+}

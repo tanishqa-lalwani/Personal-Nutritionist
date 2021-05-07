@@ -1,5 +1,5 @@
 .BlogDashboard{
-    width: 100%;
+    width: 80vw;
     display: flex;
     margin-top: 50px;
 }
@@ -11,7 +11,7 @@
 
 .Blog_items{
     display: grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,auto);
     grid-column-gap: 10px; 
     grid-row-gap: 15px; 
 }

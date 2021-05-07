@@ -31,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+      duration: theme.tra    }),
   },
   expandOpen: {
     transform: 'rotate(180deg)',
@@ -42,11 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Blogitem() {
-  const user = useAuth()
-  const classes = useStyles();
-  return (
+function Blogitem({}) {
 
+  return (
     <div className="blogs__card">
       <div className="blog__info">
         <div className="content">

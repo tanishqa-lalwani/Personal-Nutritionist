@@ -1,0 +1,55 @@
+.nutri__card {
+  width: 306px;
+  height: 318px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 3px solid #b6d1fc;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 10px rgba(105, 157, 255, 0.2);
+  border-radius: 10px;
+}
+.author__info__nutri {
+  padding-top: 10px;
+}
+.avatar__second {
+  font-size: 50px;
+
+  border-radius: 50%;
+  border: 2px solid rgb(2, 2, 2);
+}
+.nutri__card__nutritionist {
+  color: #321e59;
+}
+.nutri__followers {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+
+  color: #321e59;
+}
+.nutri__card__follow {
+  display: flex;
+}
+.nutritionist__follow__gmail {
+  padding: 13px;
+  margin-top: 15px;
+  width: max-content;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.nutritionist__follow__gmail h5 {
+  font-weight: 500;
+  font-size: 15px;
+}
