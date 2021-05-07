@@ -7,7 +7,7 @@ import Fblogs from "./Pages/Blogs/FullBlog";
 import Food from "./Pages/Food/Food";
 import verification from "./Pages/Notfound404/verifi";
 import Notfound from "./Pages/Notfound404/Notfound";
-import AboutUs from './Pages/About Us/AboutUs'
+import AboutUs from './Pages/AboutUs/AboutUs'
 import Progress from './Pages/Progress_Report/Report'
 import Dashboard from './Pages/Dashboard/Dashboard'
 import Clientprofile from './Pages/Profile page/Clientprofile'
