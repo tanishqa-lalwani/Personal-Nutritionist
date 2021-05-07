@@ -1,5 +1,5 @@
 # Personal Nutritionist
-**Website Link** - https://personal-nutritionist-jvrrxd2y4-tanishqa-lalwani.vercel.app
+**Website Link** - https://personal-nutritionist.vercel.app/
 </br> **Youtube Demo Link** -
 
 
@@ -8,9 +8,9 @@
 - [Overview](#overview)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-  - [Core](#core)
-<!--- [Prerequisites](#prerequisites)
-- [User Guide](#user-guide) --->
+  - [Front End](#front-end)
+  - [Back End](#back-end)
+- [Prerequisites](#prerequisites)
 - [Contributors](#contributors)
 
 
@@ -40,9 +40,19 @@ The project aims at being a tool which monitors your nutrient intake, requiremen
 
 ## Tech Stack
 
-### Core
+### Front End 
+- [HTML](https://html.com/) A markup language which does the basic stucturing of the website.
+- [CSS](https://www.w3schools.com/css/) a style sheet language used for defining the appearance of the website.
+- [React](https://github.com/facebook/react) The front end framework of the website is based on this.
 
+### Back End 
+- [NodeJS](https://github.com/nodejs) Backend of the website is scaled using NodeJS
+- [Firebase](https://firebase.google.com/) It is used for serverless architecture - CDN Hosting, Realtime Database, Authentication and Storage.
 
+## Prerequisites
+- [Firebase](https://firebase.google.com/) account in order to set up the serverless BaaS for the project.
+- [Node.js](https://nodejs.org/) (React frontend) 
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Babel JavaScript ](https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel) plug-ins.
 
 ## Conclusion 
 
