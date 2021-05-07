@@ -1,6 +1,5 @@
 # Personal Nutritionist
 **Website Link** - https://personal-nutritionist-jvrrxd2y4-tanishqa-lalwani.vercel.app
-**Youtube Demo Link** - 
 
 
 
