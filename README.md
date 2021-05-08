@@ -1,6 +1,6 @@
 # Personal Nutritionist
-**Website Link** - https://personal-nutritionist.vercel.app/
-</br> **Youtube Demo Link** -
+**Website Link** - https://personal-nutritionist-nyr7cv8b8-tanishqa-lalwani.vercel.app
+</br> **Youtube Demo Link** - https://youtu.be/Sb0eRm3Y6LY
 
 
 # Table of Contents
