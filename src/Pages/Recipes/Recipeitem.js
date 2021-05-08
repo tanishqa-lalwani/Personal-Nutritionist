@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,foodservings,foodrecipe}) {
+function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,foodservings,foodrecipe, recid}) {
      const classes = useStyles();
      const [openInst, setOpenInst] = React.useState(false);
      const handleOpenInst = () => {setOpenInst(true);};
@@ -157,7 +157,9 @@ function Recipeitem({foodname,foodimg,foodcal,foodfat,foodcarbs,foodprotein,food
 
                         </div>
                       </div>
-
+                      <div>
+                        <h2>Recipe ID : {recid}</h2>
+                      </div>
                       <div className="Recipe_Instructions">  
                         <h2 style={{paddingBottom:'12px'}}>Instructions: </h2>
                         <div className="Instruction">
