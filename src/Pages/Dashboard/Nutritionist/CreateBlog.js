@@ -15,6 +15,7 @@ function CreateBlog({ uid, ndata }) {
     const user = useAuth()
     const [open, setOpen] = useState(false);
     const [userd, setuserd] = useState([])
+    const [filled, setfilled] = useState(0)
 
     const [data, setdet] = useState({
         short_desc: "",
@@ -42,46 +43,45 @@ function CreateBlog({ uid, ndata }) {
 
     const handleSubmit = () => {
 
-        let doc_name = uid.toString() + (Date.now()).toString();
-
-        console.log(firebase.firestore.FieldValue.serverTimestamp());
-
-        db.collection('Users').doc('Nutritionist').collection('blogs').doc(doc_name).set({
-
-            long_desc: data.long_desc,
-            short_desc: data.short_desc,
-            title: data.title,
-            date: data.date,
-            email: ndata.email,
-            name: ndata.name,
-            occupation: ndata.occupation,
-            image: "",
-            uid: uid
-
-        }).then(() => { console.log("Successful") })
-
-        let nameit = (data.image?.name + Date.now().toString()).toString();
-        const upTak = storage.ref(`images/${nameit}`).put(data.image);
-
-        upTak.on(
-            'state_changed', (snapShot) => {
-                console.log((snapShot.bytesTransferred / snapShot.totalBytes) * 100);
-            }, null,
-            () => {
-                storage
+            let doc_name = uid.toString() + (Date.now()).toString();
+            
+            db.collection('Users').doc('Nutritionist').collection('blogs').doc(doc_name).set({
+                
+                long_desc: data.long_desc,
+                short_desc: data.short_desc,
+                title: data.title,
+                date: data.date,
+                email: ndata.email,
+                name: ndata.name,
+                occupation: ndata.occupation,
+                image: "",
+                uid: uid
+                
+            }).then(() => { console.log("Successful") })
+            
+            let nameit = (data.image?.name + Date.now().toString()).toString();
+            const upTak = storage.ref(`images/${nameit}`).put(data.image);
+            
+            upTak.on(
+                'state_changed', (snapShot) => {
+                    console.log((snapShot.bytesTransferred / snapShot.totalBytes) * 100);
+                }, null,
+                () => {
+                    storage
                     .ref('images')
                     .child(nameit)
                     .getDownloadURL()
                     .then((url) => {
                         db.collection('Users').doc('Nutritionist').collection('blogs')
-                            .doc(doc_name).update({
-                                image: url
-                            });
+                        .doc(doc_name).update({
+                            image: url
+                        });
                     });
-            }
-        )
-
-        db.collection('Users').doc('Nutritionist').collection('staff').doc(user.currentUser.uid).collection('blogid').doc(doc_name).set({ status: 'published' })
+                }
+                )
+                
+                db.collection('Users').doc('Nutritionist').collection('staff').doc(user.currentUser.uid).collection('blogid').doc(doc_name).set({ status: 'published' })
+            
 
     }
 
@@ -149,6 +149,7 @@ function CreateBlog({ uid, ndata }) {
                             editorClassName="editor-class"
                             toolbarClassName="toolbar-class"
                             />
+
                         <div className="uploadbtn">
                             <button id="upload_btn" onClick={handleSubmit}>Upload blog</button>
                         </div>

@@ -24,7 +24,6 @@ import fat from './fat.png'
 
 
 function Nutrients({NutritionData}) {
-    console.log(NutritionData)
     
     const [nutrition, setNutrition] = useState("");
     const [fatInfo, setFat] = useState(0);
@@ -54,30 +53,28 @@ function Nutrients({NutritionData}) {
     useEffect(() => {
         getNutriInfo();
        
-    }, [NutritionData])
+    }, [])
 
-    const getNutriInfo = async() => {
+    const getNutriInfo = () => {
        
-        const result =  await axios.get(`https://api.edamam.com/api/nutrition-data?app_id=29ca67c9&app_key=146ca4fe38a3f8d7a2ce13d9070d6227&ingr=1%20${NutritionData}`)
-               
-        setFat(result.data.totalNutrients.FAT)
-        setProtein(result.data.totalNutrients.PROCNT)
-        setCarbs(result.data.totalNutrients.CHOCDF)
-        setfibre(result.data.totalNutrients.FIBTG)
-        setCalcium(result.data.totalNutrients.CA)
-        setCholestrol(result.data.totalNutrients.CHOLE)
-        setVitaminB12(result.data.totalNutrients.VITB12)
+        // const result =  await axios.get(`https://api.edamam.com/api/nutrition-data?app_id=29ca67c9&app_key=146ca4fe38a3f8d7a2ce13d9070d6227&ingr=1%20${NutritionData}`)
+        setFat(NutritionData.nf_total_fat)
+        setProtein(NutritionData.nf_protein)
+        setCarbs( NutritionData.nf_total_carbohydrate)
+        setfibre(NutritionData.nf_dietary_fiber)
+        setCalcium(NutritionData.full_nutrients[12].value)
+        setCholestrol(NutritionData.nf_cholesterol)
+        setVitaminB12(NutritionData.nf_sugars)
 
-        setFatDaily(result.data.totalDaily.FAT.quantity)
-        setProteinDaily(result.data.totalDaily.PROCNT.quantity)
-        setCarbsDaily(result.data.totalDaily.CHOCDF.quantity)
-        setfibreDaily(result.data.totalDaily.FIBTG.quantity)
-        setCalciumDaily(result.data.totalDaily.CA.quantity)
-        setCholestrolDaily(result.data.totalDaily.CHOLE.quantity)
-        setVitaminB12Daily(result.data.totalDaily.VITB12.quantity)
+        // setFatDaily(result.data.totalDaily.FAT.quantity)
+        // setProteinDaily(result.data.totalDaily.PROCNT.quantity)
+        // setCarbsDaily(result.data.totalDaily.CHOCDF.quantity)
+        // setfibreDaily(result.data.totalDaily.FIBTG.quantity)
+        // setCalciumDaily(result.data.totalDaily.CA.quantity)
+        // setCholestrolDaily(result.data.totalDaily.CHOLE.quantity)
+        // setVitaminB12Daily(result.data.totalDaily.VITB12.quantity)
 
-        setCalories(result.data.calories);
-        console.log(result);
+        setCalories(NutritionData.nf_calories);
         
 
 
@@ -85,9 +82,9 @@ function Nutrients({NutritionData}) {
    
     return (
         <div className = "nutrients">
+            
 
             <div className = "nutrients__screen">
-
 
                 <div className="box__food box__mobile__food" style={{background:'white', boxShadow:'4px 4px 10px rgba(221, 250, 252, 0.81)' ,border:'3px solid #b3f4f9'}}>
                 
@@ -95,7 +92,7 @@ function Nutrients({NutritionData}) {
 
                         <div className="title">
                             <b>Calories </b>
-                            <p>{Math.round((calories/2000) * 100)} kcal</p>
+                            <p>{Math.round(calories)} kcal</p>
                         </div>
                         {/* <div className="render_circle__percent">
                             hello
@@ -114,7 +111,7 @@ function Nutrients({NutritionData}) {
 
                         <div className="title">
                             <b>Fat</b>
-                            <p>{Math.round(fatInfo?.quantity)} {fatInfo?.unit}</p>
+                            <p>{Math.round(fatInfo) }g </p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -144,7 +141,7 @@ function Nutrients({NutritionData}) {
 
                         <div className="title">
                             <b>Protein</b>
-                            <p>{Math.round(protein?.quantity)} {protein?.unit}</p>
+                            <p>{Math.round(protein)} g</p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -173,7 +170,7 @@ function Nutrients({NutritionData}) {
 
                         <div className="title">
                             <b>Carbs</b>
-                            <p>{Math.round(carbs?.quantity)} {carbs?.unit}</p>
+                            <p>{Math.round(carbs)} g</p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -201,7 +198,7 @@ function Nutrients({NutritionData}) {
 
                         <div className="title">
                             <b>Calcium</b>
-                            <p>{Math.round(calcium?.quantity)} {calcium?.unit}</p>
+                            <p>{Math.round(calcium)} mg</p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -231,7 +228,7 @@ function Nutrients({NutritionData}) {
 
                         <div className="title">
                             <b>Fibre</b>
-                            <p>{Math.round(fibre?.quantity)} {fibre?.unit}</p>
+                            <p>{Math.round(fibre)} g</p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -260,7 +257,7 @@ function Nutrients({NutritionData}) {
                         <img className = "food__icon" src = {chol} style = {{width : '30px' , height : '30px',marginTop : '2px',marginBottom:'15px',marginLeft : '15px'}} />
 
                             <b>Cholestrol</b>
-                            <p>{Math.round(cholestrol?.quantity)} {cholestrol?.unit}</p>
+                            <p>{Math.round(cholestrol)} mg</p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -288,8 +285,8 @@ function Nutrients({NutritionData}) {
                 <img className = "food__icon" src = {vit} style = {{width : '35px' , height : '35px'}} />
 
                         <div className="title">
-                            <b>Vit-B12</b>
-                            <p>{Math.round(vitaminB12?.quantity)} {vitaminB12?.unit}</p>
+                            <b>Sugars</b>
+                            <p>{Math.round(vitaminB12)} g</p>
                         </div>
                         {/* <div className="render_circle">
                             {
@@ -356,6 +353,7 @@ function Nutrients({NutritionData}) {
                         <h5>{Math.round(calories * 200 / (5*3.5*67))} minutes</h5>
                     </div>
                 </div>
+               
                 </div>
 
            

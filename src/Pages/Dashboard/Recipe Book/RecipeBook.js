@@ -6,35 +6,39 @@ import RecipeItem from '../../../Pages/Recipes/Recipeitem'
 import img from './image 1.png'
 import axios from 'axios'
 import { db } from '../../../firebase'
-function RecipeBook({ uid }) {
+function RecipeBook({ uid, userdata }) {
     const [data, setData] = React.useState([])
     const [food, setFood] = React.useState([])
 
-    React.useEffect(() => {
-        SavedRecipes();
-    }, [])
 
     const Recipe = async (id) => {
-        await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=146ca4fe38a3f8d7a2ce13d9070d6227`)
-            .then(res => setFood(item => [...item, res.data]))
+        let recdat = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=f8c828fd138c4a9eafba6575753ae18c `)
+        return recdat.data
+
     }
+
     const SavedRecipes = async () => {
-        db.collection('Users').doc('Client').collection('clientel').doc(uid).onSnapshot((snap) => {
-            setData(
-                snap.data()?.saved_recipes
-            );
+        let tpdata = []
+        db.collection('Users').doc('Client').collection('clientel').doc(uid).collection('saved recipes').onSnapshot((snap) => {
+            setData(snap.docs.map(d => d.id));
         })
 
         await Promise.all(data?.map(async (id) => {
-            if (data) Recipe(id)
+
+            Recipe(id).then(res => {
+                setFood(it => [...it, res])
+            })
         }))
     }
 
+    React.useEffect(() => {
+        SavedRecipes();
+    }, [data?.length])
 
     return (
-        <div className="recipe__dash recipe__dash__mobile">
+        <div className="recipe__dash recipe__dash__mobile" style={{ marginLeft: '20px' }}>
             <div className="recipe__front recipe__front_mobile">
-                <p>Hi Username!</p>
+                <p>Hi {userdata.name}</p>
                 {
                     window.screen.width > 500 ? (
                         <h2 style={{ marginTop: '40px', color: '#321E59' }}>Your Favourite Recipes!</h2>
@@ -45,8 +49,19 @@ function RecipeBook({ uid }) {
                 <div className="track__boxes recipe__boxes recipe__boxes__mobile">
 
                     {
-                        food?.map(recipe => (
-                            <RecipeItem foodimg={recipe.image} foodname={recipe.title} foodcal={480} />
+                        console.log("ISka", food),
+
+                        food?.map(data => (
+                            <RecipeItem
+                                foodname={data?.title}
+                                foodimg={data?.image}
+                                foodcal={data?.nutrition?.nutrients[0].amount}
+                                foodfat={data?.nutrition?.nutrients[1].amount}
+                                foodcarbs={data?.nutrition?.nutrients[3].amount}
+                                foodprotein={data?.nutrition?.nutrients[8].amount}
+                                foodservings={data?.servings}
+                            // foodrecipe={recipe?.data.analyzedInstructions[0].steps}
+                            />
                         ))
                     }
 

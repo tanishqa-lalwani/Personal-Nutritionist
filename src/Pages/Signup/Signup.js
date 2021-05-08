@@ -13,7 +13,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
-import { db, storage ,auth} from '../../firebase'
+import { db, storage, auth } from '../../firebase'
 
 function Signup({ close }) {
   const emailRef = useRef()
@@ -35,14 +35,13 @@ function Signup({ close }) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if(role == -1)
-    {
+    if (role == -1) {
       setLoading(true);
       setError("Please select a Role.")
       setLoading(false);
       return;
     }
-    if (role == 1 && file===null) {
+    if (role == 1 && file === null) {
       setLoading(true);
       setError("Please drop your resume at given space.")
       setLoading(false);
@@ -76,9 +75,8 @@ function Signup({ close }) {
             history.push(`/${res.user.uid}/profile`);
           }
           else {
-            db.collection('Users').doc("Nutritionist")
-              .collection('staff')
-              .doc(res.user.uid).set({
+            db.collection('Users').doc('Nutritionist')
+              .collection('staff').doc(res.user.uid).set({
                 occupation: "",
                 qualification: "",
                 name: "New Nutritionist",
@@ -86,15 +84,13 @@ function Signup({ close }) {
                 verify: 0,
                 bio: "",
                 email: res.user.email,
-                img: ""
-                // verified:0
-              })
-              storage.ref('users/' + res.user.uid + '/resume.pdf').put(file)
-              auth.signOut();
-              history.push(`/verification`);
-            }
-          })
+                image: ""
+              }).then(() => { storage.ref('users/' + res.user.uid + '/resume.pdf').put(file) }).then(() => { auth.signOut() }).then(console.log('Account Created'))
+
+            history.push(`/verification`);
+          }
         })
+      })
         .catch((error) => {
           console.log(error.code);
           setError(error.message);
@@ -146,7 +142,7 @@ function Signup({ close }) {
                     onFrameDrop={(event) => console.log('onFrameDrop', event)}
                     onDragOver={(event) => console.log('onDragOver', event)}
                     onDragLeave={(event) => console.log('onDragLeave', event)}
-                    onDrop={(files, event) => { console.log('onDrop!', files, event); setresume(files[0].name) ;setFile(files[0])}}
+                    onDrop={(files, event) => { console.log('onDrop!', files, event); setresume(files[0].name); setFile(files[0]) }}
                   >
                     <div style={{ height: "20vh", width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
                       <p>{resume === "" ? "Drop in your resumè" : resume}</p>

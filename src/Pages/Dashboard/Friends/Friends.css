@@ -47,8 +47,8 @@
 }
 
 .leaderboard__card {
-  width: 250px;
-  height: 261px;
+  width: auto;
+  min-height: 20vh;
   background: #ddeaff;
   border-radius: 10px;
 }
@@ -92,7 +92,7 @@
     color: #321e59;
   }
   .friends__leaderboard__heading_mob {
-    width: 100px;
+    width: fit-content;
     height: 33px;
     font-family: Poppins;
     font-style: normal;

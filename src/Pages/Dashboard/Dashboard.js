@@ -823,18 +823,16 @@ function Dashboard(props) {
                     page === 1 ? <ProgressReport uid={props.match.params.uid} userdata={userdata} /> : <></>
                 }
                 {
-                    page === 3 ? <RecipeBook uid={props.match.params.uid} /> : <></>
+                    page === 3 ? <RecipeBook uid={props.match.params.uid} userdata={userdata} /> : <></>
                 }
                 {
-                    page === 2 ? 
-                    <Dietplans uid={props.match.params.uid} userdata={userdata} />
-                    :<></>
+                    page === 2 ? <Dietplans uid={props.match.params.uid} userdata={userdata} />:<></>
                 }
                 {
-                    page === 4 ? <SavedBlogs uid={props.match.params.uid} /> : <></>
+                    page === 4 ? <SavedBlogs uid={props.match.params.uid} udata={userdata}/> : <></>
                 }
                 {
-                    page === 5 ? <Nutritionist uid={user.currentUser.uid} udata={userdata} /> : <></>
+                    page === 5 ? <Nutritionist uid={props.match.params.uid} udata={userdata} /> : <></>
                 }
                 {
                     page === 6 ? <Friends myname={userdata.name} uid={props.match.params.uid} /> : <></>

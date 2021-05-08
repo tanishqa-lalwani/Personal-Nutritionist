@@ -73,10 +73,7 @@ function NutriClientCard({ uid }) {
                             <h5>{clientdata?.email}</h5>
                         </div>
                     </div>
-                    {/* <div> */}
-                    {/* <Button color="primary" variant="contained">Give/Edit Diet Plan</Button> */}
-                    {/* </div> */}
-                    <Diet text="Give/Edit Diet Plan" color="black" border="3px solid #B6D1FC" uid={uid} nuid={user.currentUser.uid}/>
+                    <Diet text="Give/Edit Diet Plan" color="black" border="3px solid #B6D1FC" uid={uid?uid:""} nuid={user?.currentUser.uid}/>
                 </div>
             </Popover>
         </div>

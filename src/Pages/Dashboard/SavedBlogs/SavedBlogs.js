@@ -4,6 +4,7 @@ import Blogitem from '../../../Pages/Blogs/Blogitem copy'
 import DashDrawerMobile from '../../../Components/Dash Drawer/DashDrawerMobile.js'
 import DashDrawer from '../../../Components/Dash Drawer/DashDrawer.js'
 import { db } from '../../../firebase'
+import { UpdateSharp } from '@material-ui/icons'
 
 
 function SavedBlogs(props) {
@@ -19,7 +20,7 @@ function SavedBlogs(props) {
 
         blogid?.map((bl) => {
             db.collection('Users').doc('Nutritionist').collection('blogs').doc(bl.toString().substring(1)).onSnapshot(snap => {
-                setblogdata([...blogdata, snap.data()])
+                setblogdata([...blogdata, {id:bl.toString().substring(1),data:snap.data()}])
             })
         })
 
@@ -30,7 +31,7 @@ function SavedBlogs(props) {
         <div className="BlogDashboard  BlogDashboard_mobile">
 
             <div className="Blog_info Blog_info_mobile">
-                <p style={{ fontFamily: 'Poppins', fontWeight: '600', color: '#321E59' }}>Hii Username!!!</p>
+                <p style={{ fontFamily: 'Poppins', fontWeight: '600', color: '#321E59' }}>Hii {props.udata.name}!</p>
                 {
                     window.screen.width > 500 ?
                         (<h2 style={{ marginTop: '50px', marginBottom: '25px', color: '#321E59' }}>Your favourite blogs</h2>) :
@@ -40,13 +41,14 @@ function SavedBlogs(props) {
                 <div className="Blog_items Blog_items_mobile" style={{width:'100%'}}>
                     {blogdata?.map(blog => (
                         blog ? <Blogitem
-                            nutriName={blog.name}
-                            nutriOccupation={blog.occupation}
-                            tags={blog.tags}
-                            title={blog.title}
-                            date={blog.date}
-                            description={blog.short_desc}
-                            img={blog.image}
+                            id={blog.id}
+                            nutriName={blog.data.name}
+                            nutriOccupation={blog.data.occupation}
+                            tags={blog.data.tags}
+                            title={blog.data.title}
+                            date={blog.data.date}
+                            description={blog.data.short_desc}
+                            img={blog.data.image}
                         /> : <></>
                     ))}
                     {/* <Blogitem/>
