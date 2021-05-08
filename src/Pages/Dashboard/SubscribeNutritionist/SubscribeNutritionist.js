@@ -35,7 +35,7 @@ function SubscribeNutritionist(props) {
                     nutritionists: doc.data()
                 }))))
             )
-            console.log(subscribed_nutri)
+        console.log(subscribed_nutri)
     }, [res?.length])
 
     const search = (e) => {
@@ -108,8 +108,8 @@ function SubscribeNutritionist(props) {
                             </div>
                             <div onClick={() => {
                                 db.collection('Users').doc('Nutritionist').collection('staff').doc(id).collection('Notifs').add({
-                                    name: props.udata.name,
-                                    msg: "subscribed to you!",
+                                    kisne_bheja: props.udata.name,
+                                    text: "subscribed to you!",
                                     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                                 })
                                 db.collection('Users').doc('Nutritionist').collection('staff').doc(id).collection('Followers').doc(props.uid).set({
