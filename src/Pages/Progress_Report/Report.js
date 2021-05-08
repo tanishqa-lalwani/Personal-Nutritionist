@@ -250,7 +250,6 @@ function Report({ uid, userdata }) {
                     <p>Hi, {userdata.name}!</p>
 
                     <h3 className="report__intro">You’re doing great </h3>
-                    {/* {console.log(caloriePercent)} */}
                     {date}
                     <div className="user__personal__info">
                         <div className="report__box">
