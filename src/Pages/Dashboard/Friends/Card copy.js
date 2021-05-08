@@ -46,7 +46,7 @@ const handleClose = () => {
 
 
       if (client_id) {
-      db.collection('Users').doc('Client').collection('clientel').doc(client_id.substring(1)).collection('friends')
+      db.collection('Users').doc('Client').collection('clientel').doc(client_id).collection('friends')
       .doc(my_id).set({
         name: my_name,
       },{merge: true})
