@@ -154,7 +154,7 @@ function AboutUs() {
               </div>
 
               <div className="object">
-                <div className="imgbox"><img src={rushi} alt="" /></div>
+                <div className="imgbox"><img src={rushi} alt="rushi" /></div>
                 <div className="text">
                 Rushi Rajpara<br />ID - 201801410
                 </div>
