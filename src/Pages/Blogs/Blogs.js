@@ -14,14 +14,30 @@ function Blogs() {
     const [search,setSearch] = React.useState("");
     useEffect(() => {
         db.collection('Users').doc('Nutritionist').collection('blogs').orderBy('date','desc').onSnapshot(
-            snap=>(setblogs(snap.docs.map(doc=>({
-                id:doc.id,data:doc.data()
-            }))))
-        )
-    }, [blogs.length])
+            (snapsht) => {
+              setblogs(
+                snapsht.docs.map((docs) => ({
+                  id: docs.id,
+                  data: docs.data(),
+                })))
+            }
+          )    
+    }, [])
 
-    const searchItem = item => {
-        setSearch(item.target.value);
+    const searchBlog = (title) => {
+        setSearch(title)
+        db.collection('Users').doc('Nutritionist').collection('blogs')
+        .orderBy('title')
+        .startAt(title)
+        .endAt(title + '\uf8ff').onSnapshot(
+            (snapsht) => {
+              setblogs(
+                snapsht.docs.map((docs) => ({
+                  id: docs.id,
+                  data: docs.data(),
+                })))
+            }
+          )
     }
 
     return (
@@ -31,8 +47,7 @@ function Blogs() {
         </div>
         <div className='search'>
             <div className="searchbox">
-                {/* <SearchIcon /> */}
-                <input type='text' placeholder="Search for Blogs" value={search} onChange={searchItem}/>
+                <input type='text' placeholder="Search for Blogs" value={search} onChange={(e) => searchBlog(e.target.value)}/>
                 <Button >
                     <SearchIcon /> 
                 </Button>
@@ -43,7 +58,7 @@ function Blogs() {
         </div>
         <div className="Blogs">
             {
-                blogs.map(({id,data})=> (
+                blogs?.length !== 0 && blogs.map(({id,data})=> (
                     <Blogitem 
                     key={id} 
                     id={id}

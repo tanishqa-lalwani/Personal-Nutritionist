@@ -61,7 +61,7 @@ function Blogitem({ title, id,description, nutriName, nutriOccupation, tags, img
         <div className="blog__info">
           <div className="content__blg">
             <h3>{title}</h3>
-            <h4 className="date">{date.substring(0,14)}</h4>
+            <h4 className="date">{date?.substring(0,14)}</h4>
             <div style={{ display: 'flex', gap:'20px', alignItems: 'center', flexWrap: 1 }}>
               {
                 tags?.map(tag => (

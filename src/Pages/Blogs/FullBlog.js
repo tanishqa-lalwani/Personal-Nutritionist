@@ -44,7 +44,7 @@ function FullBlog(props) {
                             }
                         </div>
                     </div>
-                    <NutitionistCard />
+                    <NutitionistCard uid={data?.uid}/>
                     {/* </div> */}
                 </div>
                 <div className="full__image">

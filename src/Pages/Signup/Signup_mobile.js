@@ -8,11 +8,11 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import nutri from './nutri.png'
 import userpic from './user.png'
 import img from './login.png'
-import {FileDrop} from 'react-file-drop'
+import { FileDrop } from 'react-file-drop'
 import TextField from '@material-ui/core/TextField';
 import { useAuth } from '../../AuthContext'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import {db,storage,auth} from '../../firebase'
+import { db, storage, auth } from '../../firebase'
 
 
 function Signup_mobile() {
@@ -33,13 +33,12 @@ function Signup_mobile() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    
-    if(role == -1)
-    {
+
+    if (role == -1) {
       setLoading(true);
       setError("Please select a role.")
       setLoading(false);
-      return ;
+      return;
     }
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       setLoading(true);
@@ -68,23 +67,19 @@ function Signup_mobile() {
               })
             history.push(`/${res.user.uid}/profile`);
           }
-          else
-          {
-            db.collection('Users').doc("Nutritionist")
-            .collection('staff')
-            .doc(res.user.uid).set({
-              occupation: "",
-              qualification: "",
-              name: "New Nutritionist",
-              experience: 0,
-              verify: 0,
-              bio: "",
-              email: res.user.email,
-              img: "",
-              verified:0
-            })
-            storage.ref('users/' + res.user.uid + '/resume.pdf').put(file)
-            auth.signOut();
+          else {
+            db.collection('Users').doc('Nutritionist')
+              .collection('staff').doc(res.user.uid).set({
+                occupation: "",
+                qualification: "",
+                name: "New Nutritionist",
+                experience: 0,
+                verify: 0,
+                bio: "",
+                email: res.user.email,
+                image: ""
+              }).then(() => { storage.ref('users/' + res.user.uid + '/resume.pdf').put(file) }).then(() => { auth.signOut() }).then(console.log('Account Created'))
+
             history.push(`/verification`);
           }
         })
@@ -115,14 +110,14 @@ function Signup_mobile() {
             <TextField id="outlined-basic" inputRef={passwordRef} name="password" label="Password" variant="outlined" type="password" />
             <TextField id="outlined-basic" inputRef={passwordConfirmRef} name="passwordConf" label="Confirm Password" variant="outlined" type="password" />
             {
-              role>-1?
-              <img src={role===1? `${nutri}` : `${userpic}`} style={{margin:'auto', maxHeight:'100px'}}/>
-              :<></>
+              role > -1 ?
+                <img src={role === 1 ? `${nutri}` : `${userpic}`} style={{ margin: 'auto', maxHeight: '100px' }} />
+                : <></>
             }
-            <h3 style={{ display: 'flex', justifyContent: 'space-evenly' , alignItems:'center'}}>I am a :
+            <h3 style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>I am a :
               <RadioGroup row aria-label="position" name="position" defaultValue="top">
-                <FormControlLabel value="1"  control={<Radio color="primary" onClick={(e)=>{setrole(Number(e.target.value))}}/>} label="Nutritionist" />
-                <FormControlLabel value="0"  control={<Radio color="primary" onClick={(e)=>{setrole(Number(e.target.value))}}/>} label="User" />
+                <FormControlLabel value="1" control={<Radio color="primary" onClick={(e) => { setrole(Number(e.target.value)) }} />} label="Nutritionist" />
+                <FormControlLabel value="0" control={<Radio color="primary" onClick={(e) => { setrole(Number(e.target.value)) }} />} label="User" />
               </RadioGroup>
             </h3>
             <input
@@ -140,7 +135,7 @@ function Signup_mobile() {
                     onFrameDrop={(event) => console.log('onFrameDrop', event)}
                     onDragOver={(event) => console.log('onDragOver', event)}
                     onDragLeave={(event) => console.log('onDragLeave', event)}
-                    onDrop={(files, event) => { console.log('onDrop!', files, event); setresume(files[0].name) ;setFile(files[0])}}
+                    onDrop={(files, event) => { console.log('onDrop!', files, event); setresume(files[0].name); setFile(files[0]) }}
                   >
                     <div style={{ height: "20vh", width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid black' }}>
                       <p>{resume === "" ? "Drop in your resumè" : resume}</p>
@@ -157,8 +152,8 @@ function Signup_mobile() {
         </div>
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
           <Button onClick={handleSubmit} id='trial__but' variant="filled" style={{ background: '#699DFF', fontFamily: 'Poppins, sans-serif', textTransform: 'capitalize', color: 'white' }}>
-          {loading?<CircularProgress style={{margin:'auto', color:'white'}}/>:<>Sign Up</>}
-            </Button>
+            {loading ? <CircularProgress style={{ margin: 'auto', color: 'white' }} /> : <>Sign Up</>}
+          </Button>
         </div>
       </div>
     </div>

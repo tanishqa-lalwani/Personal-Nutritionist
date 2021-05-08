@@ -10,7 +10,10 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { useParams } from 'react-router';
 import { Search } from '@material-ui/icons';
 import yellow from '../../../Images/avatar_yellow.png'
-import LeaderBoard from './LeaderBoard';
+import LeaderBoard from './Leaderboard copy';
+import {  IconButton, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+
 const Friends = ({myname}) => {
 
   const params = useParams();
@@ -22,7 +25,22 @@ const Friends = ({myname}) => {
   const [friends, setFriends] = React.useState([])
 
   const [friendrequests, setFriendRequests] = React.useState([])
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+  const [state, setState] = React.useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+  });
 
+const { vertical, horizontal, open } = state;
+
+
+
+const handleClose = () => {
+    setState({ ...state, open: false });
+};
   const accept_requests = (client_id) =>{
     db.collection('Users').doc('Client').collection('clientel').doc(client_id).collection('requests').onSnapshot(friend_requests=>{
       setFriendRequests(
@@ -96,17 +114,19 @@ const Friends = ({myname}) => {
         <div style={{ width: '50%' }}>
           <p className="friends__username friends__username_mob">
             {" "}
-            {"Hii Username!!"}{" "}
+            {`Hii ${myname}!!`}{" "}
           </p>
 
           <p className="friends__leaderboard__heading friends__leaderboard__heading_mob" >
             LeaderBoard
-            {friends?<LeaderBoard friends = {friends} my_name = {myname} my_uid = {params.uid} /> : <></>}
 
 
-          </p>
+          </p> 
 
-          <div className="leaderboard__card leaderboard__card_mob"></div>
+           <div className="leaderboard__card leaderboard__card_mob">
+          {friends?<LeaderBoard friends = {friends}  my_name = {myname} my_uid = {params.uid} /> :<></> }
+
+           </div>
           <p className="yourfriends yourfriends_mob">Your Friend Requests</p>
           <div className="friends_card friedns_card_mob">
 
@@ -162,13 +182,22 @@ const Friends = ({myname}) => {
                   <p>Age : {sers.age}</p>
                 </p>
                 <p onClick={
-                  // add_friend(id)
-                  (e)=>{
-                    // code here
-                    db.collection('Users').doc('Client').collection('clientel').doc(e).collection('requests')
+                  ()=>{
+                    setState({ open: true, ...{ vertical: 'down', horizontal: 'right' } });
+
+                    console.log(params.uid.toString());
+
+                    db.collection('Users').doc('Client').collection('clientel').doc(id).collection('requests')
                     .doc(params.uid.toString()).set(
                       {
                         name: myname,
+                      }
+                    )
+                    db.collection('Users').doc('Client').collection('clientel').doc(id).collection('Notifs')
+                    .doc(params.uid.toString()).set(
+                      {
+                        kisne_bheja: myname,
+                        text : " sent you a friend request"
                       }
                     )
                   }
@@ -181,6 +210,17 @@ const Friends = ({myname}) => {
           }
       </div>
       </div>
+                  <Snackbar
+                    anchorOrigin={{ vertical, horizontal }}
+                    open={open}
+                    autoHideDuration={2000}
+                    onClose={handleClose}
+                    key={vertical + horizontal}
+                  >
+                    <Alert onClose={handleClose} severity="success">
+                     Friend request sent
+                    </Alert>
+                </Snackbar>
     </div>
   );
 }

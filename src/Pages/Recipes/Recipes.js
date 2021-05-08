@@ -189,6 +189,7 @@ function Recipes() {
 
                     <Recipeitem 
                     key={recipe.id}
+                    recid={recipe.id}
                     foodname={recipe.title}  
                     foodimg = {recipe.image}
                     foodcal={recipe.nutrition.nutrients[0].amount}

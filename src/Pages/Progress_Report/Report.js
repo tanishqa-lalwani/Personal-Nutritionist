@@ -175,131 +175,11 @@ const options = {
 
 function Report({ uid, userdata }) {
     const user = useAuth();
-    // const [progress, setProgress] = React.useState([])
     const [nD, setnD] = React.useState(-1)
-    // const [stat, setState] = React.useState([])
     const [cnt, setcnt] = React.useState(0)
-    // const [sequence, setsequence] = React.useState(0)
-    // const [caloriePercent, setCaloriePercent] = React.useState(0)
-    // const [carbPercent, setCarbPercent] = React.useState(0)
-    // const [FatPercent, setFatPercent] = React.useState(0)
-    // const [proteinPercent, setProteinPercent] = React.useState(0)
-    // const [progressPercent, setProgressPercent] = React.useState(0)
-    // const [userData, setUserData] = React.useState([])
 
     const [date, setDate] = React.useState("")
-    // let weekdays = [];
-
-    // console.log(uid)
-
-    // const getDate = () => {
-    //     setUserData(udata)
-    // }
-
-    // const setCoordinates = (k) => {
-    //     options.data[0].dataPoints[k] = {
-    //         x : new Date(userData?.recipe_update)  , y : progressPercent
-    //     }
-
-    //     options.data[1].dataPoints[k] = {
-    //         x : new Date(userData?.recipe_update)  , y : caloriePercent
-    //     }
-    //     options.data[2].dataPoints[k] = {
-    //         x : new Date(userData?.recipe_update)  , y : carbPercent
-    //     }
-    //     options.data[3].dataPoints[k] = {
-    //         x : new Date(userData?.recipe_update)  , y : proteinPercent
-    //     }
-    //     options.data[4].dataPoints[k] = {
-    //         x : new Date(userData?.recipe_update)  , y : FatPercent
-    //     }
-
-    //     // options.data[0].dataPoints[k+1] = {
-    //     //     x : new Date(userData?.recipe_update + 5)  , y : progressPercent + 10
-    //     // }
-    //     // options.data[1].dataPoints[k+1] = {
-    //     //     x : new Date(userData?.recipe_update +5 )  , y : caloriePercent + 10
-    //     // }
-    //     // options.data[2].dataPoints[k+1] = {
-    //     //     x : new Date(userData?.recipe_update + 5)  , y : carbPercent + 10
-    //     // }
-    //     // options.data[3].dataPoints[k+1] = {
-    //     //     x : new Date(userData?.recipe_update + 5 )  , y : proteinPercent + 10
-    //     // }
-    //     // options.data[4].dataPoints[k+1] = {
-    //     //     x : new Date(userData?.recipe_update + 5)  , y : FatPercent + 10
-    //     // }
-    //     console.log(options.data[0].dataPoints)
-    // }
-
-    // const getData = () => {
-
-    //     getDate();
-
-    //     db.collection('Users').doc('Client').collection('clientel').doc(uid).collection('Khaana')
-    //         .onSnapshot(
-    //         snap => {
-    //             setProgress(snap.docs.map(document => document.data()))
-    //         }
-    //     )
-
-    //     if(progress !== []) {
-    //         if(weekdays.length < 7 ) {
-    //             weekdays.push(progress)
-    //         }
-    //         else {
-    //             weekdays.shift()
-    //             weekdays.push(progress)
-    //         }
-
-    //         checkProgress()
-
-    //         setCoordinates(weekdays.length-1)
-
-    //     }
-
-
-
-    // }
-    // React.useEffect(()=>{
-
-    //     getData()
-
-    // },[progress.length])
-
-    // const checkProgress = () => {   
-
-    //    if(progress !== []) {
-    //     console.log(progress[0])
-    //     let tasks_completed = 0, carbs_total=0,protein_total=0,calorie_total=0,fat_total=0;
-    //     let  carbs_completed=0,protein_completed=0,calorie_completed=0,fat_completed=0;
-
-
-    //     for(var i=0;i<3;i++) {
-    //         if( progress[i]?.completed == 1) {
-    //             carbs_completed += progress[i]?.carbs;
-    //             protein_completed += progress[i]?.pro;
-    //             calorie_completed += progress[i]?.cal;
-    //             fat_completed += progress[i]?.fat;
-    //         }
-    //         tasks_completed += progress[i]?.completed;
-
-    //         carbs_total += progress[i]?.carbs;
-    //         protein_total += progress[i]?.pro;
-    //         calorie_total += progress[i]?.cal;
-    //         fat_total += progress[i]?.fat;
-    //     }
-    //     console.log(calorie_completed,calorie_total)
-    //     setProgressPercent(tasks_completed/3 * 100);
-    //     setProteinPercent(Math.round(protein_completed/protein_total * 100))
-    //     setCaloriePercent(Math.round(calorie_completed/calorie_total * 100))
-    //     setFatPercent(Math.round(fat_completed/fat_total * 100))
-    //     setCarbPercent(Math.round(carbs_completed/carbs_total * 100))
-
-    //     }
-
-    // }
-
+    
     const getStat = (noD) => {
 
         fetch_udata().then(userdata => {
@@ -312,7 +192,9 @@ function Report({ uid, userdata }) {
                         let pd = new Date(userdata.progress_update)
                         let rd = new Date(userdata.recipe_update)
 
-                        if (rd.getDate() !== pd.getDate()) { noD += 1 }
+                        if (rd.getDate() !== pd.getDate()) {
+                             noD += 1 
+                        }
                         let docn = (noD).toString()
 
                         db.collection('Users').doc('Client').collection('clientel').doc(user.currentUser.uid).update({
@@ -368,7 +250,6 @@ function Report({ uid, userdata }) {
                     <p>Hi, {userdata.name}!</p>
 
                     <h3 className="report__intro">You’re doing great </h3>
-                    {/* {console.log(caloriePercent)} */}
                     {date}
                     <div className="user__personal__info">
                         <div className="report__box">

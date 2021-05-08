@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import './header.css'
 import { Link } from 'react-router-dom'
 import { db } from '../../firebase'
+import Badge from '@material-ui/core/Badge';
 import logo from './pineapple-icon.png'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button';
@@ -95,8 +96,8 @@ function Header() {
             }
 
 
-
-    }, [location, user, usrimg, name])
+            console.log(naughty)
+    }, [location, user, usrimg, name,naughty?.length])
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [open, setOpen] = React.useState(true);
@@ -172,7 +173,9 @@ function Header() {
                 user.currentUser ?
                     (
                         <div className="four__page" style={{ alignItems: "center" }}>
-                            <NotificationsIcon onClick={handleClickpop} />
+                            <Badge badgeContent={naughty.length} color="primary">
+        {/* <MailIcon /> */}
+                            <NotificationsIcon onClick={handleClickpop} /></Badge>
                             <Menu
                                 id="simple-menu"
                                 anchorEl={anchorElpop}
@@ -222,10 +225,6 @@ function Header() {
                                     <MenuItem
                                         onClick={handleClose_Menu}
                                     >View Dashboard</MenuItem>
-                                </Link>
-                                <Link to={`/${user.currentUser.uid}/Notifications`} style={{ textDecoration: 'none', color: 'black' }}>
-                                    <MenuItem
-                                    >Notifications</MenuItem>
                                 </Link>
                                 <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
                                     <MenuItem onClick={handleClose}>Sign Out</MenuItem>
