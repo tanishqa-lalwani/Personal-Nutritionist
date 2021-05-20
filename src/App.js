@@ -20,6 +20,7 @@ import Signupmobile from './Pages/Signup/Signup_mobile'
 import loginmobile from './Pages/Login/login_mobile'
 import Friends from './Pages/Dashboard/Friends/Friends'
 import Nutritionist from './Pages/Dashboard/Nutritionist/Nutritionist'
+import CreateBlog from './Pages/Nutritionist/CreateBlog'
 import { AuthProvider } from './AuthContext'
 
 

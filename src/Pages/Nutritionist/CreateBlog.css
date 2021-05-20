@@ -1,0 +1,59 @@
+.BlogDashboard{
+    display: flex;
+    margin-top: 50px;
+}
+
+.Blog_info{
+    width: 100%;
+    padding: 5%;
+}
+
+.PreBlog{
+    display:flex;
+    justify-content: space-between;
+    margin-top:50px;
+    margin-bottom:25px;
+}
+.AddBlog{
+    display: flex;
+}
+
+.AddDetails{
+    display: block;
+    font-family:Poppins;
+    padding-top: 50px;
+}
+
+input[type=text] {
+    border: 1px solid #2F80ED;
+  }
+
+ #delete_draft{
+    font-family:'Poppins';
+    font-size:16px;
+    background-color: white;
+    color:#321E59 ;
+    border-radius:8px;
+    border:1px solid black;
+    display: flex;
+    height: 30px;
+ } 
+
+#upload_btn{
+    font-family:'Poppins';
+    font-size:16px;
+    color:white;
+    background:#699DFF;
+    width:20%;
+    height:40px;
+    border-radius:4px;
+    border:none;
+}  
+
+.uploadbtn{
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
